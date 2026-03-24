@@ -1,6 +1,7 @@
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { siteConfig } from "@/config/site";
+import { AnimatedReveal } from "@/components/common/animated-reveal";
 import { Container } from "@/components/marketing/shared/container";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
@@ -18,7 +19,7 @@ export function HeroSection() {
 
       <Container>
         <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-          <div className="space-y-8">
+          <AnimatedReveal className="space-y-8">
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-100">
               <Sparkles className="h-4 w-4" />
               {t("badge")}
@@ -60,36 +61,46 @@ export function HeroSection() {
                 {t("secondaryCta")}
               </a>
             </div>
-          </div>
+          </AnimatedReveal>
 
-          <div className="rounded-[32px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_40px_120px_rgba(0,0,0,0.35)]">
-            <div className="rounded-[26px] border border-white/10 bg-gradient-to-br from-white/10 to-white/[0.02] p-6">
-              <div className="rounded-[22px] border border-white/10 bg-black/20 p-6">
-                <div className="text-sm uppercase tracking-[0.2em] text-white/40">
-                  {t("focusLabel")}
-                </div>
+          <AnimatedReveal delay={0.12}>
+            <div className="rounded-[32px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_40px_120px_rgba(0,0,0,0.35)]">
+              <div className="rounded-[26px] border border-white/10 bg-gradient-to-br from-white/10 to-white/[0.02] p-6">
+                <div className="rounded-[22px] border border-white/10 bg-black/20 p-6">
+                  <div className="text-sm uppercase tracking-[0.2em] text-white/40">
+                    {t("focusLabel")}
+                  </div>
 
-                <div className="mt-5 text-3xl font-semibold tracking-tight text-white">
-                  {t("focusTitle")}
-                </div>
+                  <div className="mt-5 text-3xl font-semibold tracking-tight text-white">
+                    {t("focusTitle")}
+                  </div>
 
-                <div className="mt-6 grid gap-3">
-                  {[t("bullet1"), t("bullet2"), t("bullet3"), t("bullet4")].map(
-                    (item) => (
-                      <div
+                  <div className="mt-6 grid gap-3">
+                    {[
+                      t("bullet1"),
+                      t("bullet2"),
+                      t("bullet3"),
+                      t("bullet4"),
+                    ].map((item, index) => (
+                      <AnimatedReveal
                         key={item}
-                        className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/70"
+                        delay={0.08 + index * 0.05}
+                        y={14}
                       >
-                        {item}
-                      </div>
-                    ),
-                  )}
-                </div>
+                        <div className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/70">
+                          {item}
+                        </div>
+                      </AnimatedReveal>
+                    ))}
+                  </div>
 
-                <p className="mt-6 text-sm text-white/45">{siteConfig.name}</p>
+                  <p className="mt-6 text-sm text-white/45">
+                    {siteConfig.name}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          </AnimatedReveal>
         </div>
       </Container>
     </section>

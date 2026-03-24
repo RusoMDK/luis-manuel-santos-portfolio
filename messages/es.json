@@ -3,11 +3,14 @@
     "en": "EN",
     "es": "ES"
   },
-  "Navigation": {
-    "work": "Proyectos",
-    "contact": "Contacto",
-    "cta": "Contacto"
-  },
+"Navigation": {
+  "work": "Proyectos",
+  "services": "Servicios",
+  "stack": "Stack",
+  "about": "Sobre mí",
+  "contact": "Contacto",
+  "cta": "Contacto"
+},
   "Hero": {
     "badge": "Disponible para proyectos freelance y productos premium.",
     "role": "Desarrollador Full Stack",

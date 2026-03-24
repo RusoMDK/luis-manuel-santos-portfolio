@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/config/site";
 import { LanguageSwitcher } from "@/components/common/language-switcher";
+import { MobileNav } from "@/components/common/mobile-nav";
 import { Container } from "@/components/marketing/shared/container";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
@@ -12,6 +13,9 @@ export function SiteHeader() {
 
   const navItems = [
     { label: t("work"), href: "#projects" },
+    { label: t("services"), href: "#services" },
+    { label: t("stack"), href: "#stack" },
+    { label: t("about"), href: "#about" },
     { label: t("contact"), href: "#contact" },
   ];
 
@@ -58,6 +62,8 @@ export function SiteHeader() {
             {t("cta")}
           </a>
         </div>
+
+        <MobileNav navItems={navItems} ctaLabel={t("cta")} />
       </Container>
     </header>
   );
