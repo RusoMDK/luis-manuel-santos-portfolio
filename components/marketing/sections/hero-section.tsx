@@ -1,4 +1,4 @@
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { siteConfig } from "@/config/site";
 import { AnimatedReveal } from "@/components/common/animated-reveal";
@@ -52,14 +52,29 @@ export function HeroSection() {
               </a>
 
               <a
-                href="#contact"
+                href={siteConfig.cv}
+                target="_blank"
+                rel="noreferrer"
                 className={cn(
                   buttonVariants({ size: "lg", variant: "outline" }),
                   "rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white",
                 )}
               >
-                {t("secondaryCta")}
+                {t("downloadCv")}
+                <Download className="ml-2 h-4 w-4" />
               </a>
+            </div>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/70">
+                {siteConfig.availability}
+              </div>
+              <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/70">
+                {siteConfig.location}
+              </div>
+              <div className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/70">
+                Next.js · Node.js · Product UI
+              </div>
             </div>
           </AnimatedReveal>
 
@@ -92,6 +107,33 @@ export function HeroSection() {
                         </div>
                       </AnimatedReveal>
                     ))}
+                  </div>
+
+                  <div className="mt-8 grid grid-cols-3 gap-3">
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                      <div className="text-2xl font-semibold text-white">
+                        UI
+                      </div>
+                      <div className="mt-1 text-xs uppercase tracking-[0.18em] text-white/45">
+                        Premium
+                      </div>
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                      <div className="text-2xl font-semibold text-white">
+                        API
+                      </div>
+                      <div className="mt-1 text-xs uppercase tracking-[0.18em] text-white/45">
+                        Scalable
+                      </div>
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                      <div className="text-2xl font-semibold text-white">
+                        RT
+                      </div>
+                      <div className="mt-1 text-xs uppercase tracking-[0.18em] text-white/45">
+                        Systems
+                      </div>
+                    </div>
                   </div>
 
                   <p className="mt-6 text-sm text-white/45">

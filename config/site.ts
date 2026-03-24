@@ -8,6 +8,9 @@ export const siteConfig = {
   email: "luismanuelsantos.dev@gmail.com",
   github: "https://github.com/tuusuario",
   linkedin: "https://linkedin.com/in/tuusuario",
+  cv: "/docs/luis-manuel-santos-cv.pdf",
+  availability: "Available for freelance",
+  location: "Miami, FL",
 } as const;
 
 export const projects = [
