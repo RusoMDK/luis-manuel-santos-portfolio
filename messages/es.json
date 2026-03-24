@@ -1,0 +1,100 @@
+{
+  "LanguageSwitcher": {
+    "en": "EN",
+    "es": "ES"
+  },
+  "Navigation": {
+    "work": "Proyectos",
+    "contact": "Contacto",
+    "cta": "Contacto"
+  },
+  "Hero": {
+    "badge": "Disponible para proyectos freelance y productos premium.",
+    "role": "Desarrollador Full Stack",
+    "title": "Construyo productos web premium que combinan UX elegante, arquitectura robusta y valor real de negocio.",
+    "description": "Desde interfaces pulidas hasta sistemas backend escalables, creo experiencias digitales modernas diseñadas para rendir, convertir y crecer.",
+    "primaryCta": "Ver proyectos",
+    "secondaryCta": "Trabajemos juntos",
+    "focusLabel": "Enfoque principal",
+    "focusTitle": "UI premium + backend robusto + visión de producto",
+    "bullet1": "Ejecución frontend de alto nivel",
+    "bullet2": "Arquitectura backend escalable",
+    "bullet3": "Sistemas en tiempo real e integraciones",
+    "bullet4": "Construcción orientada a negocio"
+  },
+  "Projects": {
+    "eyebrow": "Trabajo destacado",
+    "title": "Proyectos seleccionados que muestran diseño y profundidad técnica.",
+    "description": "Me enfoco en trabajos que demuestran sensibilidad visual, ingeniería sólida y ejecución orientada al negocio.",
+    "cta": "Ver caso de estudio",
+    "items": {
+      "iotPlatform": {
+        "title": "Plataforma IoT Empresarial",
+        "category": "Full Stack · Tiempo real",
+        "description": "Una plataforma IoT en tiempo real con telemetría en vivo, integración MQTT, manejo de estado de dispositivos y dashboards premium."
+      },
+      "ecommerce": {
+        "title": "Experiencia E-Commerce Moderna",
+        "category": "E-Commerce · UX",
+        "description": "Una tienda online refinada con flujos de compra premium, gestión de direcciones, wishlist y arquitectura escalable."
+      },
+      "creativePlatform": {
+        "title": "Plataforma Creativa de Colaboración",
+        "category": "Comunidad · Diseño de producto",
+        "description": "Una plataforma visualmente rica para creadores con flujos de medios, interacción social y una dirección UI premium."
+      }
+    }
+  },
+  "Services": {
+    "eyebrow": "Servicios",
+    "title": "Lo que puedo construir y mejorar.",
+    "description": "Trabajo sobre interfaz, backend, producto e integración de sistemas para entregar experiencias pulidas y confiables.",
+    "items": {
+      "frontend": {
+        "title": "Ingeniería Frontend",
+        "description": "Interfaces responsivas y pulidas con jerarquía visual fuerte, estilo premium, motion y rendimiento."
+      },
+      "backend": {
+        "title": "Backend y APIs",
+        "description": "Servidores escalables, autenticación, roles, APIs mantenibles y modelado sólido de datos."
+      },
+      "fullstack": {
+        "title": "Desarrollo Full Stack",
+        "description": "Desde el concepto hasta el lanzamiento, construyo productos digitales cohesivos, robustos y listos para producción."
+      },
+      "realtime": {
+        "title": "Sistemas en Tiempo Real",
+        "description": "Dashboards, sockets, flujos MQTT y experiencias de producto conectadas en vivo."
+      }
+    }
+  },
+  "Stack": {
+    "eyebrow": "Stack",
+    "title": "Las herramientas detrás del trabajo.",
+    "description": "Elijo tecnologías según objetivos del producto, mantenibilidad y rendimiento, no por moda."
+  },
+  "About": {
+    "eyebrow": "Sobre mí",
+    "title": "Construyo productos con criterio, estructura e intención.",
+    "description": "Soy un Desarrollador Full Stack enfocado en crear experiencias digitales premium: visualmente refinadas, técnicamente sólidas y realmente útiles.",
+    "sideEyebrow": "Lo que me diferencia",
+    "sideTitle": "Mentalidad de producto con profundidad técnica.",
+    "sideDescription": "Me importan tanto los detalles que perciben los usuarios como la arquitectura de la que depende el equipo.",
+    "point1": "Combino ejecución frontend pulida con profundidad backend.",
+    "point2": "Pienso en calidad de producto, no solo en completar código.",
+    "point3": "Construyo sistemas que se ven premium y se sienten confiables.",
+    "point4": "Me importa la mantenibilidad, la confianza del usuario y la entrega real."
+  },
+  "Contact": {
+    "eyebrow": "Construyamos algo grande",
+    "title": "¿Necesitas un desarrollador que haga que el producto se vea premium y aguante técnicamente?",
+    "description": "Estoy abierto a trabajo freelance, colaboraciones y productos de alta calidad. Convirtamos tu idea en algo sólido, creíble y listo para lanzar.",
+    "email": "Escríbeme",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "Footer": {
+    "rights": "Todos los derechos reservados.",
+    "builtWith": "Hecho con Next.js, Tailwind CSS y una obsesión premium."
+  }
+}
