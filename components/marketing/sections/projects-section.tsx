@@ -9,7 +9,7 @@ export function ProjectsSection() {
   const t = useTranslations("Projects");
 
   return (
-    <section id="projects" className="py-16 md:py-24">
+    <section id="projects" className="scroll-mt-28 py-16 md:py-24">
       <Container>
         <AnimatedReveal>
           <SectionHeading
@@ -28,6 +28,7 @@ export function ProjectsSection() {
                 description={t(`items.${project.id}.description`)}
                 stack={project.stack}
                 href={project.href}
+                image={project.image}
                 ctaLabel={t("cta")}
               />
             </AnimatedReveal>

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Luis Manuel Santos | Full Stack Developer",
-  description:
-    "Premium full stack portfolio built with Next.js, Tailwind CSS and next-intl.",
+  metadataBase: new URL(siteConfig.url),
+  title: siteConfig.title,
+  description: siteConfig.description,
 };
 
 export default function RootLayout({

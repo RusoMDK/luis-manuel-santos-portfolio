@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
@@ -7,6 +8,7 @@ type ProjectCardProps = {
   description: string;
   stack: string[];
   href: string;
+  image: string;
   ctaLabel: string;
 };
 
@@ -16,11 +18,24 @@ export function ProjectCard({
   description,
   stack,
   href,
+  image,
   ctaLabel,
 }: ProjectCardProps) {
   return (
-    <article className="group overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.25)]">
-      <div className="rounded-[22px] border border-white/10 bg-gradient-to-br from-cyan-400/10 via-white/[0.04] to-fuchsia-400/10 p-5">
+    <article className="group overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_20px_80px_rgba(0,0,0,0.25)]">
+      <div className="overflow-hidden rounded-[22px] border border-white/10 bg-black/20">
+        <div className="relative aspect-[16/10] overflow-hidden">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover transition duration-500 group-hover:scale-[1.04]"
+            sizes="(max-width: 1024px) 100vw, 33vw"
+          />
+        </div>
+      </div>
+
+      <div className="mt-6 space-y-4 px-2 pb-2">
         <div className="flex items-center justify-between">
           <span className="text-xs uppercase tracking-[0.2em] text-white/50">
             {category}
@@ -28,13 +43,6 @@ export function ProjectCard({
           <ArrowUpRight className="h-4 w-4 text-white/35 transition group-hover:text-white/70" />
         </div>
 
-        <div className="mt-10 rounded-[18px] border border-dashed border-white/10 bg-black/20 p-5">
-          <div className="text-sm text-white/45">Project Preview</div>
-          <div className="mt-2 text-xl font-semibold text-white">{title}</div>
-        </div>
-      </div>
-
-      <div className="mt-6 space-y-4">
         <h3 className="text-2xl font-semibold tracking-tight text-white">
           {title}
         </h3>

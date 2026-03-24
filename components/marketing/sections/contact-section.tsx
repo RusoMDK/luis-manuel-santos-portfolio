@@ -10,7 +10,7 @@ export function ContactSection() {
   const t = useTranslations("Contact");
 
   return (
-    <section id="contact" className="py-16 md:py-24">
+    <section id="contact" className="scroll-mt-28 py-16 md:py-24">
       <Container>
         <AnimatedReveal>
           <div className="overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-cyan-400/10 via-white/[0.06] to-fuchsia-400/10 p-8 shadow-[0_40px_120px_rgba(0,0,0,0.32)] md:p-12">

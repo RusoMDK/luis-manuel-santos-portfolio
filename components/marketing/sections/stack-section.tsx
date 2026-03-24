@@ -9,7 +9,7 @@ export function StackSection() {
   const t = useTranslations("Stack");
 
   return (
-    <section id="stack" className="py-16 md:py-24">
+    <section id="stack" className="scroll-mt-28 py-16 md:py-24">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <AnimatedReveal>

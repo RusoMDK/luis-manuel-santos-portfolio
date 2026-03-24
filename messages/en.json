@@ -96,8 +96,36 @@
     "github": "GitHub",
     "linkedin": "LinkedIn"
   },
+  "Proof": {
+  "eyebrow": "Why work with me",
+  "title": "A quick view of what I bring to a product.",
+  "description": "I combine visual polish, solid engineering and practical product thinking to build work that feels premium and reliable.",
+  "items": {
+    "ui": {
+      "title": "Premium UI Execution",
+      "description": "Modern interfaces with clean hierarchy, refined spacing, strong visual decisions and polished interactions."
+    },
+    "backend": {
+      "title": "Scalable Backend Thinking",
+      "description": "Secure APIs, auth flows, maintainable architecture and systems built to grow without chaos."
+    },
+    "realtime": {
+      "title": "Real-Time Capabilities",
+      "description": "Dashboards, sockets, MQTT workflows and connected product experiences that feel alive."
+    },
+    "product": {
+      "title": "Product-Oriented Mindset",
+      "description": "I build with user trust, business value and long-term maintainability in mind."
+    }
+  }
+},
   "Footer": {
     "rights": "All rights reserved.",
     "builtWith": "Built with Next.js, Tailwind CSS, and a premium obsession."
+  }
+  ,
+  "Metadata": {
+    "title": "Luis Manuel Santos | Full Stack Developer",
+    "description": "Premium full stack developer portfolio focused on elegant UX, scalable architecture and modern digital products."
   }
 }

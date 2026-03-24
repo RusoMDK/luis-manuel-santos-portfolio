@@ -6,11 +6,14 @@ declare const messages: {
     "en": "EN",
     "es": "ES"
   },
-  "Navigation": {
-    "work": "Work",
-    "contact": "Contact",
-    "cta": "Contact"
-  },
+"Navigation": {
+  "work": "Work",
+  "services": "Services",
+  "stack": "Stack",
+  "about": "About",
+  "contact": "Contact",
+  "cta": "Contact"
+},
   "Hero": {
     "badge": "Available for freelance and premium product builds.",
     "role": "Full Stack Developer",
@@ -99,6 +102,11 @@ declare const messages: {
   "Footer": {
     "rights": "All rights reserved.",
     "builtWith": "Built with Next.js, Tailwind CSS, and a premium obsession."
+  }
+  ,
+  "Metadata": {
+    "title": "Luis Manuel Santos | Full Stack Developer",
+    "description": "Premium full stack developer portfolio focused on elegant UX, scalable architecture and modern digital products."
   }
 };
 export default messages;

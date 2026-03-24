@@ -9,7 +9,7 @@ export function ServicesSection() {
   const t = useTranslations("Services");
 
   return (
-    <section id="services" className="py-16 md:py-24">
+    <section id="services" className="scroll-mt-28 py-16 md:py-24">
       <Container>
         <AnimatedReveal>
           <SectionHeading

@@ -11,7 +11,7 @@ export function AboutSection() {
   const points = [t("point1"), t("point2"), t("point3"), t("point4")];
 
   return (
-    <section id="about" className="py-16 md:py-24">
+    <section id="about" className="scroll-mt-28 py-16 md:py-24">
       <Container>
         <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <AnimatedReveal>
