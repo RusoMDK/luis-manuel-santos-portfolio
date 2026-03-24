@@ -7,6 +7,7 @@
   "work": "Proyectos",
   "services": "Servicios",
   "stack": "Stack",
+  "experience": "Experiencia",
   "about": "Sobre mí",
   "contact": "Contacto",
   "cta": "Contacto"
@@ -127,5 +128,33 @@
   "Metadata": {
     "title": "Luis Manuel Santos | Desarrollador Full Stack",
     "description": "Portfolio premium de desarrollador full stack enfocado en UX elegante, arquitectura escalable y productos digitales modernos."
+  },
+  "Experience": {
+  "eyebrow": "Experiencia",
+  "title": "Cómo abordo el desarrollo de productos modernos.",
+  "description": "Mi experiencia se mueve entre la calidad frontend, la solidez backend y una ejecución orientada a producto.",
+  "items": {
+    "engineering": {
+      "period": "Enfoque central",
+      "title": "Ingeniería Full Stack",
+      "subtitle": "Frontend pulido + arquitectura backend",
+      "badge": "Calidad de construcción",
+      "description": "Desarrollo productos digitales modernos con una ejecución frontend fuerte, bases backend escalables y foco claro en mantenibilidad."
+    },
+    "systems": {
+      "period": "Especialización",
+      "title": "Sistemas en Tiempo Real y Conectados",
+      "subtitle": "Dashboards, sockets, MQTT y flujos en vivo",
+      "badge": "Sistemas",
+      "description": "Disfruto construir productos que se mantengan conectados, reactivos y vivos: desde dashboards de telemetría hasta experiencias en tiempo real."
+    },
+    "product": {
+      "period": "Mentalidad",
+      "title": "Entrega Orientada a Producto",
+      "subtitle": "Valor para usuario, negocio y pulido final",
+      "badge": "Pensamiento de producto",
+      "description": "Más allá de implementar, me enfoco en cómo se siente el producto, cómo escala y cómo apoya objetivos reales de usuarios y equipos."
+    }
   }
+}
 }

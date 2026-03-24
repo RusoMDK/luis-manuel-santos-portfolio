@@ -15,6 +15,7 @@ export function SiteHeader() {
     { label: t("work"), href: "#projects" },
     { label: t("services"), href: "#services" },
     { label: t("stack"), href: "#stack" },
+    { label: t("experience"), href: "#experience" },
     { label: t("about"), href: "#about" },
     { label: t("contact"), href: "#contact" },
   ];

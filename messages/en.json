@@ -7,6 +7,7 @@
   "work": "Work",
   "services": "Services",
   "stack": "Stack",
+  "experience": "Experience",
   "about": "About",
   "contact": "Contact",
   "cta": "Contact"
@@ -127,5 +128,33 @@
   "Metadata": {
     "title": "Luis Manuel Santos | Full Stack Developer",
     "description": "Premium full stack developer portfolio focused on elegant UX, scalable architecture and modern digital products."
+  },
+  "Experience": {
+  "eyebrow": "Experience",
+  "title": "How I approach modern product development.",
+  "description": "My experience sits at the intersection of frontend quality, backend reliability and product-minded execution.",
+  "items": {
+    "engineering": {
+      "period": "Core Focus",
+      "title": "Full Stack Engineering",
+      "subtitle": "Frontend craft + backend architecture",
+      "badge": "Build Quality",
+      "description": "I develop modern digital products with strong frontend execution, scalable backend foundations and a clear focus on maintainability."
+    },
+    "systems": {
+      "period": "Specialization",
+      "title": "Real-Time and Connected Systems",
+      "subtitle": "Dashboards, sockets, MQTT and live workflows",
+      "badge": "Systems",
+      "description": "I enjoy building products that stay connected, reactive and alive — from telemetry dashboards to real-time product experiences."
+    },
+    "product": {
+      "period": "Mindset",
+      "title": "Product-Oriented Delivery",
+      "subtitle": "User value, business value and polish",
+      "badge": "Product Thinking",
+      "description": "Beyond implementation, I focus on how the product feels, how it scales, and how it supports real goals for users and teams."
+    }
   }
+}
 }

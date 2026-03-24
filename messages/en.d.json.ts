@@ -10,6 +10,7 @@ declare const messages: {
   "work": "Work",
   "services": "Services",
   "stack": "Stack",
+  "experience": "Experience",
   "about": "About",
   "contact": "Contact",
   "cta": "Contact"
@@ -99,6 +100,29 @@ declare const messages: {
     "github": "GitHub",
     "linkedin": "LinkedIn"
   },
+  "Proof": {
+  "eyebrow": "Why work with me",
+  "title": "A quick view of what I bring to a product.",
+  "description": "I combine visual polish, solid engineering and practical product thinking to build work that feels premium and reliable.",
+  "items": {
+    "ui": {
+      "title": "Premium UI Execution",
+      "description": "Modern interfaces with clean hierarchy, refined spacing, strong visual decisions and polished interactions."
+    },
+    "backend": {
+      "title": "Scalable Backend Thinking",
+      "description": "Secure APIs, auth flows, maintainable architecture and systems built to grow without chaos."
+    },
+    "realtime": {
+      "title": "Real-Time Capabilities",
+      "description": "Dashboards, sockets, MQTT workflows and connected product experiences that feel alive."
+    },
+    "product": {
+      "title": "Product-Oriented Mindset",
+      "description": "I build with user trust, business value and long-term maintainability in mind."
+    }
+  }
+},
   "Footer": {
     "rights": "All rights reserved.",
     "builtWith": "Built with Next.js, Tailwind CSS, and a premium obsession."
@@ -107,6 +131,34 @@ declare const messages: {
   "Metadata": {
     "title": "Luis Manuel Santos | Full Stack Developer",
     "description": "Premium full stack developer portfolio focused on elegant UX, scalable architecture and modern digital products."
+  },
+  "Experience": {
+  "eyebrow": "Experience",
+  "title": "How I approach modern product development.",
+  "description": "My experience sits at the intersection of frontend quality, backend reliability and product-minded execution.",
+  "items": {
+    "engineering": {
+      "period": "Core Focus",
+      "title": "Full Stack Engineering",
+      "subtitle": "Frontend craft + backend architecture",
+      "badge": "Build Quality",
+      "description": "I develop modern digital products with strong frontend execution, scalable backend foundations and a clear focus on maintainability."
+    },
+    "systems": {
+      "period": "Specialization",
+      "title": "Real-Time and Connected Systems",
+      "subtitle": "Dashboards, sockets, MQTT and live workflows",
+      "badge": "Systems",
+      "description": "I enjoy building products that stay connected, reactive and alive — from telemetry dashboards to real-time product experiences."
+    },
+    "product": {
+      "period": "Mindset",
+      "title": "Product-Oriented Delivery",
+      "subtitle": "User value, business value and polish",
+      "badge": "Product Thinking",
+      "description": "Beyond implementation, I focus on how the product feels, how it scales, and how it supports real goals for users and teams."
+    }
   }
+}
 };
 export default messages;
