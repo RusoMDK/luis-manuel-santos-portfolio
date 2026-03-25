@@ -20,14 +20,14 @@ export function ExperienceSection() {
             />
           </AnimatedReveal>
 
-          <div className="relative pl-8">
+          <div className="relative pl-6 sm:pl-8">
             <div className="absolute left-3 top-2 bottom-2 w-px bg-white/10" />
 
             <div className="space-y-8">
               {experienceItems.map((item, index) => (
                 <AnimatedReveal key={item} delay={index * 0.08} y={18}>
                   <article className="relative rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.18)]">
-                    <div className="absolute -left-[1.9rem] top-8 h-4 w-4 rounded-full border border-cyan-300/30 bg-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.45)]" />
+                    <div className="absolute -left-[1.45rem] top-8 h-4 w-4 rounded-full border border-cyan-300/30 bg-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.45)] sm:-left-[1.9rem]" />
 
                     <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                       <div>

@@ -19,7 +19,7 @@ export function ProjectsSection() {
           />
         </AnimatedReveal>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => (
             <AnimatedReveal key={project.id} delay={index * 0.08}>
               <ProjectCard

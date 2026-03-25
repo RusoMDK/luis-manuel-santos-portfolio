@@ -24,7 +24,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-white/10 py-12 md:py-16">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <div className="space-y-5">
             <div>
               <p className="text-sm uppercase tracking-[0.24em] text-white/40">

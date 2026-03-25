@@ -16,23 +16,23 @@ export function AboutSection() {
   return (
     <section id="about" className="scroll-mt-28 py-16 md:py-24">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[0.94fr_1.06fr] lg:items-start">
+        <div className="grid gap-8 lg:grid-cols-[0.94fr_1.06fr] lg:items-start lg:gap-10">
           <AnimatedReveal>
-            <div className="overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-white/[0.07] via-white/[0.04] to-white/[0.02] p-5 shadow-[0_30px_120px_rgba(0,0,0,0.25)] md:p-6">
-              <div className="rounded-[28px] border border-white/10 bg-black/20 p-5 md:p-6">
-                <div className="mb-5 flex items-center justify-between gap-4">
-                  <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs uppercase tracking-[0.22em] text-cyan-100">
+            <div className="overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-white/[0.07] via-white/[0.04] to-white/[0.02] p-4 shadow-[0_30px_120px_rgba(0,0,0,0.25)] sm:rounded-[32px] sm:p-5 md:p-6">
+              <div className="rounded-[24px] border border-white/10 bg-black/20 p-4 sm:rounded-[28px] sm:p-5 md:p-6">
+                <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="inline-flex w-fit items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs uppercase tracking-[0.22em] text-cyan-100">
                     <Sparkles className="h-4 w-4" />
                     {t("eyebrow")}
                   </div>
 
-                  <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
+                  <div className="w-fit rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
                     {siteConfig.availability}
                   </div>
                 </div>
 
-                <div className="mx-auto w-full max-w-[360px]">
-                  <div className="relative aspect-[1808/2046] overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
+                <div className="mx-auto w-full max-w-[320px] sm:max-w-[360px]">
+                  <div className="relative aspect-[1808/2046] overflow-hidden rounded-[24px] border border-white/10 bg-white/5 shadow-[0_20px_60px_rgba(0,0,0,0.25)] sm:rounded-[28px]">
                     <Image
                       src={siteConfig.profileImage}
                       alt={siteConfig.name}
@@ -44,15 +44,15 @@ export function AboutSection() {
                 </div>
 
                 <div className="mt-6 text-center sm:text-left">
-                  <h3 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
+                  <h3 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                     {siteConfig.name}
                   </h3>
 
-                  <p className="mt-3 text-sm uppercase tracking-[0.2em] text-white/45">
+                  <p className="mt-3 text-xs uppercase tracking-[0.2em] text-white/45 sm:text-sm">
                     Full Stack Developer
                   </p>
 
-                  <p className="mt-4 text-base leading-8 text-white/65">
+                  <p className="mt-4 text-base leading-7 text-white/65 sm:leading-8">
                     {t("description")}
                   </p>
                 </div>
@@ -68,14 +68,14 @@ export function AboutSection() {
                   </div>
                 </div>
 
-                <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                <div className="mt-6 grid gap-3 md:grid-cols-3">
                   <a
                     href={siteConfig.github}
                     target="_blank"
                     rel="noreferrer"
                     className={cn(
                       buttonVariants({ variant: "outline" }),
-                      "rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white",
+                      "w-full justify-center rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white",
                     )}
                   >
                     GitHub
@@ -88,7 +88,7 @@ export function AboutSection() {
                     rel="noreferrer"
                     className={cn(
                       buttonVariants({ variant: "outline" }),
-                      "rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white",
+                      "w-full justify-center rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white",
                     )}
                   >
                     LinkedIn
@@ -99,7 +99,7 @@ export function AboutSection() {
                     href={`mailto:${siteConfig.email}`}
                     className={cn(
                       buttonVariants({ variant: "default" }),
-                      "rounded-full bg-white text-black hover:bg-white/90",
+                      "w-full justify-center rounded-full bg-white text-black hover:bg-white/90",
                     )}
                   >
                     Email
