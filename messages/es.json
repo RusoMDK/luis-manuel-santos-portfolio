@@ -32,6 +32,7 @@
     "title": "Proyectos seleccionados que muestran diseño y profundidad técnica.",
     "description": "Me enfoco en trabajos que demuestran sensibilidad visual, ingeniería sólida y ejecución orientada al negocio.",
     "cta": "Ver caso de estudio",
+    "repoCta": "Ver repositorio",
     "items": {
       "iotPlatform": {
         "title": "Plataforma IoT Empresarial",
@@ -122,10 +123,20 @@
   }
 },
   "Footer": {
+    "description": "Desarrollador Full Stack que construye productos digitales premium con frontend pulido, backend escalable y enfoque real en producto.",
+    "email": "Escríbeme",
+    "cv": "Ver CV",
+    "navigation": "Navegación",
+    "connect": "Conecta",
+    "work": "Proyectos",
+    "services": "Servicios",
+    "stack": "Stack",
+    "experience": "Experiencia",
+    "about": "Sobre mí",
+    "contact": "Contacto",
     "rights": "Todos los derechos reservados.",
-    "builtWith": "Hecho con Next.js, Tailwind CSS y una obsesión premium."
-  }
-  ,
+    "builtWith": "Hecho con Next.js, Tailwind CSS y una obsesión poco sana por una UI bien pulida."
+},
   "Metadata": {
     "title": "Luis Manuel Santos | Desarrollador Full Stack",
     "description": "Portfolio premium de desarrollador full stack enfocado en UX elegante, arquitectura escalable y productos digitales modernos."

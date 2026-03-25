@@ -1,9 +1,12 @@
-import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
+import { CheckCircle2, ExternalLink, MapPin, Sparkles } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { siteConfig } from "@/config/site";
 import { AnimatedReveal } from "@/components/common/animated-reveal";
 import { Container } from "@/components/marketing/shared/container";
 import { SectionHeading } from "@/components/marketing/shared/section-heading";
+import { buttonVariants } from "@/components/ui/button-variants";
+import { cn } from "@/lib/utils";
 
 export function AboutSection() {
   const t = useTranslations("About");
@@ -13,23 +16,95 @@ export function AboutSection() {
   return (
     <section id="about" className="scroll-mt-28 py-16 md:py-24">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <div className="grid gap-10 lg:grid-cols-[0.94fr_1.06fr] lg:items-start">
           <AnimatedReveal>
-            <div className="rounded-[32px] border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.03] p-6 md:p-8">
-              <div className="rounded-[28px] border border-white/10 bg-black/20 p-8">
-                <div className="text-sm uppercase tracking-[0.24em] text-white/45">
-                  {t("eyebrow")}
+            <div className="overflow-hidden rounded-[32px] border border-white/10 bg-gradient-to-br from-white/[0.07] via-white/[0.04] to-white/[0.02] p-5 shadow-[0_30px_120px_rgba(0,0,0,0.25)] md:p-6">
+              <div className="rounded-[28px] border border-white/10 bg-black/20 p-5 md:p-6">
+                <div className="mb-5 flex items-center justify-between gap-4">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs uppercase tracking-[0.22em] text-cyan-100">
+                    <Sparkles className="h-4 w-4" />
+                    {t("eyebrow")}
+                  </div>
+
+                  <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
+                    {siteConfig.availability}
+                  </div>
                 </div>
 
-                <div className="mt-4 text-3xl font-semibold tracking-tight text-white md:text-4xl">
-                  {t("title")}
+                <div className="mx-auto w-full max-w-[360px]">
+                  <div className="relative aspect-[1808/2046] overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
+                    <Image
+                      src={siteConfig.profileImage}
+                      alt={siteConfig.name}
+                      fill
+                      className="scale-[1.01] object-cover object-center"
+                      sizes="(max-width: 1024px) 100vw, 360px"
+                    />
+                  </div>
                 </div>
 
-                <p className="mt-5 text-base leading-8 text-white/65">
-                  {t("description")}
-                </p>
+                <div className="mt-6 text-center sm:text-left">
+                  <h3 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
+                    {siteConfig.name}
+                  </h3>
 
-                <p className="mt-6 text-sm text-white/40">{siteConfig.name}</p>
+                  <p className="mt-3 text-sm uppercase tracking-[0.2em] text-white/45">
+                    Full Stack Developer
+                  </p>
+
+                  <p className="mt-4 text-base leading-8 text-white/65">
+                    {t("description")}
+                  </p>
+                </div>
+
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/65">
+                    <MapPin className="h-4 w-4 text-cyan-300" />
+                    {siteConfig.location}
+                  </div>
+
+                  <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/65">
+                    Next.js · Node.js · Product UI
+                  </div>
+                </div>
+
+                <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                  <a
+                    href={siteConfig.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={cn(
+                      buttonVariants({ variant: "outline" }),
+                      "rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white",
+                    )}
+                  >
+                    GitHub
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+
+                  <a
+                    href={siteConfig.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={cn(
+                      buttonVariants({ variant: "outline" }),
+                      "rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white",
+                    )}
+                  >
+                    LinkedIn
+                    <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
+
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className={cn(
+                      buttonVariants({ variant: "default" }),
+                      "rounded-full bg-white text-black hover:bg-white/90",
+                    )}
+                  >
+                    Email
+                  </a>
+                </div>
               </div>
             </div>
           </AnimatedReveal>

@@ -22,6 +22,7 @@ declare const messages: {
     "description": "From polished interfaces to scalable backend systems, I create modern digital experiences designed to perform, convert, and grow.",
     "primaryCta": "View Projects",
     "secondaryCta": "Let's Work Together",
+    "downloadCv": "Download CV",
     "focusLabel": "Selected Focus",
     "focusTitle": "Premium UI + robust backend + product thinking",
     "bullet1": "High-end frontend execution",
@@ -34,6 +35,7 @@ declare const messages: {
     "title": "Selected projects that show both craft and technical depth.",
     "description": "I focus on work that demonstrates design sensitivity, strong engineering, and business-oriented execution.",
     "cta": "View Case Study",
+    "repoCta": "View Repository",
     "items": {
       "iotPlatform": {
         "title": "Enterprise IoT Platform",
@@ -124,10 +126,20 @@ declare const messages: {
   }
 },
   "Footer": {
+    "description": "Full Stack Developer building premium digital products with polished frontend execution, scalable backend systems and product-focused thinking.",
+    "email": "Email me",
+    "cv": "View CV",
+    "navigation": "Navigation",
+    "connect": "Connect",
+    "work": "Work",
+    "services": "Services",
+    "stack": "Stack",
+    "experience": "Experience",
+    "about": "About",
+    "contact": "Contact",
     "rights": "All rights reserved.",
-    "builtWith": "Built with Next.js, Tailwind CSS, and a premium obsession."
-  }
-  ,
+    "builtWith": "Built with Next.js, Tailwind CSS and an unhealthy respect for polished UI."
+  },
   "Metadata": {
     "title": "Luis Manuel Santos | Full Stack Developer",
     "description": "Premium full stack developer portfolio focused on elegant UX, scalable architecture and modern digital products."

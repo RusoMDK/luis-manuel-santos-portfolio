@@ -1,15 +1,17 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 
 type ProjectCardProps = {
   title: string;
   category: string;
   description: string;
   stack: string[];
-  href: string;
   image: string;
-  ctaLabel: string;
+  repoHref: string;
+  repoLabel: string;
+  caseStudyHref?: string;
+  caseStudyLabel?: string;
 };
 
 export function ProjectCard({
@@ -17,9 +19,11 @@ export function ProjectCard({
   category,
   description,
   stack,
-  href,
   image,
-  ctaLabel,
+  repoHref,
+  repoLabel,
+  caseStudyHref,
+  caseStudyLabel,
 }: ProjectCardProps) {
   return (
     <article className="group overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_20px_80px_rgba(0,0,0,0.25)]">
@@ -60,13 +64,27 @@ export function ProjectCard({
           ))}
         </div>
 
-        <Link
-          href={href}
-          className="inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition hover:text-cyan-200"
-        >
-          {ctaLabel}
-          <ArrowUpRight className="h-4 w-4" />
-        </Link>
+        <div className="flex flex-wrap gap-3 pt-2">
+          {caseStudyHref ? (
+            <Link
+              href={caseStudyHref}
+              className="inline-flex items-center gap-2 text-sm font-medium text-cyan-300 transition hover:text-cyan-200"
+            >
+              {caseStudyLabel}
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          ) : null}
+
+          <a
+            href={repoHref}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-medium text-white/70 transition hover:text-white"
+          >
+            {repoLabel}
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        </div>
       </div>
     </article>
   );

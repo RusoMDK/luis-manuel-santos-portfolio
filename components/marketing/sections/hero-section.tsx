@@ -1,5 +1,5 @@
 import { ArrowRight, Download, Sparkles } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { siteConfig } from "@/config/site";
 import { AnimatedReveal } from "@/components/common/animated-reveal";
 import { Container } from "@/components/marketing/shared/container";
@@ -8,6 +8,9 @@ import { cn } from "@/lib/utils";
 
 export function HeroSection() {
   const t = useTranslations("Hero");
+  const locale = useLocale();
+
+  const cvHref = locale === "es" ? siteConfig.cv.es : siteConfig.cv.en;
 
   return (
     <section className="relative overflow-hidden py-20 md:py-28">
@@ -52,7 +55,7 @@ export function HeroSection() {
               </a>
 
               <a
-                href={siteConfig.cv}
+                href={cvHref}
                 target="_blank"
                 rel="noreferrer"
                 className={cn(

@@ -27,9 +27,15 @@ export function ProjectsSection() {
                 category={t(`items.${project.id}.category`)}
                 description={t(`items.${project.id}.description`)}
                 stack={project.stack}
-                href={project.href}
                 image={project.image}
-                ctaLabel={t("cta")}
+                repoHref={project.repoHref}
+                repoLabel={t("repoCta")}
+                caseStudyHref={
+                  "caseStudySlug" in project
+                    ? `/projects/${project.caseStudySlug}`
+                    : undefined
+                }
+                caseStudyLabel={t("cta")}
               />
             </AnimatedReveal>
           ))}
