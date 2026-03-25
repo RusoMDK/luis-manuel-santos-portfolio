@@ -6,7 +6,7 @@ type ProjectCardProps = {
   title: string;
   category: string;
   description: string;
-  stack: string[];
+  stack: readonly string[];
   image: string;
   repoHref: string;
   repoLabel: string;
