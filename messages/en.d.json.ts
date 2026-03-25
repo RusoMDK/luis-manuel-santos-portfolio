@@ -80,7 +80,28 @@ declare const messages: {
   "Stack": {
     "eyebrow": "Stack",
     "title": "The tools behind the work.",
-    "description": "I choose technologies based on product goals, maintainability and performance, not hype alone."
+    "description": "I choose technologies based on product goals, maintainability and performance, not hype alone.",
+    "coreEyebrow": "Core technologies",
+    "coreTitle": "Tools I use to build modern products",
+    "coreMeta": "{count} technologies across frontend, backend and infrastructure",
+    "highlights": {
+      "frontend": {
+        "title": "Frontend",
+        "description": "Modern interfaces with premium UX and polished execution."
+      },
+      "backend": {
+        "title": "Backend",
+        "description": "Scalable APIs, secure logic and maintainable server architecture."
+      },
+      "data": {
+        "title": "Data",
+        "description": "Reliable persistence, ORM workflows and structured data systems."
+      },
+      "product": {
+        "title": "Product Stack",
+        "description": "Tools chosen for delivery quality, speed and long-term maintainability."
+      }
+    }
   },
   "About": {
     "eyebrow": "About Me",

@@ -77,7 +77,28 @@
   "Stack": {
     "eyebrow": "Stack",
     "title": "Las herramientas detrás del trabajo.",
-    "description": "Elijo tecnologías según objetivos del producto, mantenibilidad y rendimiento, no por moda."
+    "description": "Elijo tecnologías según los objetivos del producto, la mantenibilidad y el rendimiento, no solo por moda.",
+    "coreEyebrow": "Tecnologías clave",
+    "coreTitle": "Herramientas que uso para construir productos modernos",
+    "coreMeta": "{count} tecnologías entre frontend, backend e infraestructura",
+    "highlights": {
+      "frontend": {
+        "title": "Frontend",
+        "description": "Interfaces modernas con UX premium y una ejecución visual pulida."
+      },
+      "backend": {
+        "title": "Backend",
+        "description": "APIs escalables, lógica segura y arquitectura mantenible del lado del servidor."
+      },
+      "data": {
+        "title": "Datos",
+        "description": "Persistencia confiable, flujos con ORM y sistemas de datos bien estructurados."
+      },
+      "product": {
+        "title": "Stack de producto",
+        "description": "Herramientas elegidas por calidad de entrega, velocidad y mantenibilidad a largo plazo."
+      }
+    }
   },
   "About": {
     "eyebrow": "Sobre mí",
