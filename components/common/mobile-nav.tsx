@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, PanelRightOpen } from "lucide-react";
+import { PanelRightOpen } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
@@ -62,7 +62,7 @@ export function MobileNav({ navItems, ctaLabel, ctaHref }: MobileNavProps) {
             </nav>
 
             <div className="mt-8">
-              <LanguageSwitcher />
+              <LanguageSwitcher onSelect={() => setOpen(false)} />
             </div>
 
             <div className="mt-8">
