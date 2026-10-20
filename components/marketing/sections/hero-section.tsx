@@ -1,153 +1,79 @@
-import { ArrowRight, Download, MapPin } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, Download, MapPin } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { siteConfig } from "@/config/site";
-import { AnimatedReveal } from "@/components/common/animated-reveal";
 import { Container } from "@/components/marketing/shared/container";
-import { buttonVariants } from "@/components/ui/button-variants";
-import { cn } from "@/lib/utils";
 
-export function HeroSection() {
+const highlights = ["React / TypeScript", "Node.js / NestJS", "B2B SaaS / IoT"] as const;
+
+export const HeroSection = () => {
   const t = useTranslations("Hero");
   const locale = useLocale();
-
   const cvHref = locale === "es" ? siteConfig.cv.es : siteConfig.cv.en;
 
   return (
-    <section className="relative overflow-hidden py-20 sm:py-24 md:py-32 lg:py-36">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-0 h-[22rem] w-[22rem] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl sm:h-[28rem] sm:w-[28rem]" />
-        <div className="absolute right-0 top-32 h-[16rem] w-[16rem] rounded-full bg-teal-500/[0.06] blur-3xl sm:top-40 sm:h-[22rem] sm:w-[22rem]" />
-        <div className="absolute left-0 top-64 h-[16rem] w-[16rem] rounded-full bg-emerald-500/[0.04] blur-3xl sm:top-72 sm:h-[20rem] sm:w-[20rem]" />
+    <section aria-labelledby="hero-title" className="relative isolate overflow-hidden pb-20 pt-20 sm:pb-24 sm:pt-28 lg:pb-32 lg:pt-32">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute right-[12%] top-[12%] h-[32rem] w-[32rem] rounded-full bg-emerald-900/10 blur-[140px]" />
+        <div className="editorial-grid absolute inset-0 opacity-35" />
       </div>
-
       <Container>
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-12">
-          <AnimatedReveal className="space-y-6 sm:space-y-8">
-            <div className="inline-flex w-fit items-center gap-2 rounded-md border border-emerald-400/25 bg-emerald-400/10 px-3 py-2 text-xs text-emerald-100 sm:px-4 sm:text-sm">
-              <MapPin className="h-4 w-4" />
+        <div className="mb-10 flex items-center justify-between gap-4 border-b border-white/15 pb-4 font-mono text-[10px] uppercase tracking-[0.18em] text-white/45 sm:text-xs">
+          <span>01 / {locale === "es" ? "Presentación" : "Introduction"}</span>
+          <span>{locale === "es" ? "Ingeniería × Diseño" : "Engineering × Design"}</span>
+        </div>
+
+        <div className="grid items-end gap-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.65fr)] lg:gap-16">
+          <div>
+            <div className="mb-8 inline-flex items-center gap-2 text-xs font-medium tracking-wide text-emerald-300 sm:text-sm">
+              <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
               {t("badge")}
             </div>
+            <p className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-white/50">{t("role")}</p>
+            <h1 id="hero-title" className="max-w-[17ch] text-[clamp(3.25rem,7.25vw,7.25rem)] font-medium leading-[0.99] tracking-[-0.075em] text-[#f3f2ed]">
+              {t("title")}
+            </h1>
+            <p className="mt-8 max-w-[58ch] text-base leading-8 text-white/65 sm:text-lg">{t("description")}</p>
 
-            <div className="space-y-4 sm:space-y-6">
-              <p className="text-xs uppercase tracking-[0.26em] text-emerald-300/80 sm:text-sm sm:tracking-[0.3em]">
-                {t("role")}
-              </p>
-
-              <h1 className="max-w-5xl text-4xl font-semibold leading-[1.04] tracking-[-0.055em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
-                {t("title")}
-              </h1>
-
-              <p className="max-w-2xl text-base leading-7 text-white/65 sm:text-lg sm:leading-8 md:text-xl">
-                {t("description")}
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a
-                href="#projects"
-                className={cn(
-                  buttonVariants({ size: "lg", variant: "default" }),
-                  "w-full justify-center rounded-full bg-white px-6 text-black hover:bg-white/90 sm:w-auto",
-                )}
-              >
-                {t("primaryCta")}
-                <ArrowRight className="ml-2 h-4 w-4" />
+            <div className="mt-10 flex flex-wrap items-center gap-3">
+              <a href="#kwad" className="inline-flex min-h-12 items-center justify-center gap-3 rounded-sm bg-[#c6efcd] px-6 text-sm font-semibold text-[#10241a] transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300">
+                {t("primaryCta")} <ArrowUpRight aria-hidden="true" size={17} />
               </a>
-
-              <a
-                href={cvHref}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(
-                  buttonVariants({ size: "lg", variant: "outline" }),
-                  "w-full justify-center rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white sm:w-auto",
-                )}
-              >
-                {t("downloadCv")}
-                <Download className="ml-2 h-4 w-4" />
+              <a href={cvHref} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center gap-3 rounded-sm border border-white/25 px-6 text-sm font-medium text-white transition-colors hover:border-white/60 hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300">
+                {t("downloadCv")} <Download aria-hidden="true" size={16} />
               </a>
             </div>
+          </div>
 
-            <div className="flex flex-wrap gap-2 pt-1 sm:gap-3 sm:pt-2">
-              <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white/70 sm:px-4 sm:text-sm">
-                {siteConfig.availability}
-              </div>
-              <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white/70 sm:px-4 sm:text-sm">
-                {siteConfig.location}
-              </div>
-              <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs text-white/70 sm:px-4 sm:text-sm">
-                Next.js · Node.js · Product UI
-              </div>
+          <aside aria-label={locale === "es" ? "Perfil profesional" : "Professional overview"} className="border-t border-white/25 pt-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+            <div className="flex items-center gap-2 text-xs text-white/60">
+              <MapPin aria-hidden="true" size={15} className="text-emerald-300" />
+              {siteConfig.location}
             </div>
-          </AnimatedReveal>
-
-          <AnimatedReveal delay={0.12}>
-            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-3 shadow-[0_30px_100px_rgba(0,0,0,0.3)] sm:rounded-[32px] sm:p-4">
-              <div className="rounded-[24px] border border-white/10 bg-gradient-to-br from-emerald-300/[0.09] to-white/[0.02] p-4 sm:rounded-[26px] sm:p-6">
-                <div className="rounded-[20px] border border-white/10 bg-black/20 p-4 sm:rounded-[22px] sm:p-6">
-                  <div className="text-xs uppercase tracking-[0.18em] text-white/40 sm:text-sm sm:tracking-[0.2em]">
-                    {t("focusLabel")}
-                  </div>
-
-                  <div className="mt-4 text-2xl font-semibold tracking-tight text-white sm:mt-5 sm:text-3xl">
-                    {t("focusTitle")}
-                  </div>
-
-                  <div className="mt-5 grid gap-3 sm:mt-6">
-                    {[
-                      t("bullet1"),
-                      t("bullet2"),
-                      t("bullet3"),
-                      t("bullet4"),
-                    ].map((item, index) => (
-                      <AnimatedReveal
-                        key={item}
-                        delay={0.08 + index * 0.05}
-                        y={14}
-                      >
-                        <div className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/70">
-                          {item}
-                        </div>
-                      </AnimatedReveal>
-                    ))}
-                  </div>
-
-                  <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-3">
-                    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-                      <div className="text-2xl font-semibold text-white">
-                        UI
-                      </div>
-                      <div className="mt-1 text-xs uppercase tracking-[0.18em] text-white/45">
-                        Premium
-                      </div>
-                    </div>
-                    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-                      <div className="text-2xl font-semibold text-white">
-                        API
-                      </div>
-                      <div className="mt-1 text-xs uppercase tracking-[0.18em] text-white/45">
-                        Scalable
-                      </div>
-                    </div>
-                    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-                      <div className="text-2xl font-semibold text-white">
-                        RT
-                      </div>
-                      <div className="mt-1 text-xs uppercase tracking-[0.18em] text-white/45">
-                        Systems
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="mt-5 text-sm text-white/45 sm:mt-6">
-                    {siteConfig.name}
-                  </p>
+            <div className="mt-10 border-b border-white/15 pb-5">
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-300/85">
+                {locale === "es" ? "Proyecto destacado" : "Featured product"}
+              </p>
+              <h2 className="mt-4 font-serif text-5xl italic tracking-[-0.045em] text-[#f3f2ed] sm:text-6xl">KWAD.</h2>
+              <p className="mt-3 max-w-sm text-sm leading-7 text-white/55">
+                {locale === "es" ? "SaaS multiempresa. Cinco aplicaciones. Producto desarrollado de extremo a extremo." : "Multi-tenant SaaS. Five applications. Built end to end."}
+              </p>
+            </div>
+            <div className="mt-6 space-y-4">
+              {highlights.map((item, index) => (
+                <div key={item} className="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
+                  <span className="font-mono text-[10px] text-white/35">0{index + 1}</span>
+                  <span className="flex-1 text-sm text-white/75">{item}</span>
+                  <ArrowDownRight aria-hidden="true" size={15} className="text-emerald-300/70" />
                 </div>
-              </div>
+              ))}
             </div>
-          </AnimatedReveal>
+          </aside>
+        </div>
+        <div className="mt-20 flex items-center justify-between border-t border-white/15 pt-4 font-mono text-[10px] uppercase tracking-[0.16em] text-white/35">
+          <span>{siteConfig.name} © 2026</span>
+          <span>{locale === "es" ? "Desliza para explorar" : "Scroll to explore"} ↓</span>
         </div>
       </Container>
     </section>
   );
-}
+};
