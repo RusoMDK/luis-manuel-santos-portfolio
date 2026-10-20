@@ -22,8 +22,8 @@ test("Spanish and English translations preserve matching keys", () => {
 test("both locales describe the current location and core work", () => {
   assert.match(spanish.Hero.description, /Valladolid/);
   assert.match(english.Hero.description, /Valladolid/);
-  assert.match(spanish.Experience.items.systems.description, /KWAD|plataforma/i);
-  assert.match(english.Experience.items.systems.description, /KWAD|platform/i);
+  assert.match(spanish.Experience.items.systems.title, /KWAD/);
+  assert.match(english.Experience.items.systems.title, /KWAD/);
 });
 
 test("all featured project translations exist in both locales", () => {
