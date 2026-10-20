@@ -26,3 +26,5 @@ const MarketingHomePage = async ({ params }: MarketingHomePageProps) => {
     </>
   );
 };
+
+export default MarketingHomePage;
