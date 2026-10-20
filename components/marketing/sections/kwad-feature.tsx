@@ -1,5 +1,6 @@
 import { ArrowUpRight, Boxes, Database, LayoutDashboard, ShieldCheck, ShoppingBag, Globe2 } from "lucide-react";
 import { Container } from "@/components/marketing/shared/container";
+import { Link } from "@/i18n/navigation";
 
 type FeatureItem = {
   title: string;
@@ -45,9 +46,14 @@ export const KwadFeature = ({ locale }: KwadFeatureProps) => {
                 <span key={technology} className="rounded-md border border-white/15 px-3 py-1.5 text-xs text-white/65">{technology}</span>
               ))}
             </div>
-            <a href="https://getkwad.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border-b border-emerald-300 pb-2 text-sm font-semibold text-emerald-200 transition-colors hover:text-white">
-              {isSpanish ? "Explorar el producto" : "Explore the product"} <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
-            </a>
+            <div className="flex flex-wrap items-center gap-7">
+              <Link href="/kwad" className="inline-flex items-center gap-2 border-b border-emerald-300 pb-2 text-sm font-semibold text-emerald-200 transition-colors hover:text-white">
+                {isSpanish ? "Ver caso de estudio" : "Read the case study"} <ArrowUpRight aria-hidden="true" className="h-4 w-4" />
+              </Link>
+              <a href="https://getkwad.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border-b border-white/30 pb-2 text-sm text-white/70 transition-colors hover:text-white">
+                {isSpanish ? "Web del producto" : "Product website"} ↗
+              </a>
+            </div>
             <p className="max-w-lg text-xs leading-6 text-white/40">
               {isSpanish ? "El repositorio es privado: presento las funcionalidades y decisiones técnicas sin exponer código propietario." : "The repository is private: product features and engineering decisions are presented without exposing proprietary code."}
             </p>
