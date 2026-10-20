@@ -3,20 +3,20 @@
     "en": "EN",
     "es": "ES"
   },
-  "Navigation": {
-    "work": "Work",
-    "services": "Services",
-    "stack": "Stack",
-    "experience": "Experience",
-    "about": "About",
-    "contact": "Contact",
-    "cta": "Contact"
-  },
+"Navigation": {
+  "work": "Work",
+  "services": "Services",
+  "stack": "Stack",
+  "experience": "Experience",
+  "about": "About",
+  "contact": "Contact",
+  "cta": "Contact"
+},
   "Hero": {
-    "badge": "Open to Full Stack / Backend roles",
+    "badge": "Available for freelance and premium product builds.",
     "role": "Full Stack Developer",
-    "title": "I design interfaces. Engineer systems. Ship complete products.",
-    "description": "I'm Luis Manuel Santos, a software engineer based in Valladolid, Spain. I worked with NestJS and Angular at FORTES and I develop KWAD, a multi-tenant B2B SaaS platform.",
+    "title": "I build premium web products that combine elegant UX, robust architecture, and real business value.",
+    "description": "From polished interfaces to scalable backend systems, I create modern digital experiences designed to perform, convert, and grow.",
     "primaryCta": "View Projects",
     "secondaryCta": "Let's Work Together",
     "downloadCv": "Download CV",
@@ -30,7 +30,7 @@
   "Projects": {
     "eyebrow": "Featured Work",
     "title": "Selected projects that show both craft and technical depth.",
-    "description": "Systems I've designed and built, shaped by real architecture, product and UI challenges.",
+    "description": "I focus on work that demonstrates design sensitivity, strong engineering, and business-oriented execution.",
     "cta": "View Case Study",
     "repoCta": "View Repository",
     "items": {
@@ -48,11 +48,6 @@
         "title": "Creative Collaboration Platform",
         "category": "Community · Product Design",
         "description": "A visually rich platform for creators with media workflows, interaction systems, and strong UI direction."
-      },
-      "kwad": {
-        "title": "KWAD · B2B SaaS Platform",
-        "category": "SaaS · Full Stack · Multi-tenant",
-        "description": "End-to-end development of a retail platform: POS, inventory, cash registers, e-commerce, permissions and platform administration."
       }
     }
   },
@@ -118,36 +113,36 @@
     "point4": "I care about maintainability, user trust and real delivery."
   },
   "Contact": {
-    "eyebrow": "Open to new opportunities",
-    "title": "Looking for an engineer who can turn an idea into working software?",
-    "description": "I'm looking for Full Stack or Backend positions, ideally hybrid in Valladolid, Spain. Let's connect.",
+    "eyebrow": "Let's build something great",
+    "title": "Need a developer who can make the product look premium and hold up technically?",
+    "description": "I’m open to freelance work, collaborations, and high-quality product builds. Let’s turn your idea into something sharp, credible, and launch-ready.",
     "email": "Email Me",
     "github": "GitHub",
     "linkedin": "LinkedIn"
   },
   "Proof": {
-    "eyebrow": "Why work with me",
-    "title": "A quick view of what I bring to a product.",
-    "description": "I combine visual polish, solid engineering and practical product thinking to build work that feels premium and reliable.",
-    "items": {
-      "ui": {
-        "title": "Premium UI Execution",
-        "description": "Modern interfaces with clean hierarchy, refined spacing, strong visual decisions and polished interactions."
-      },
-      "backend": {
-        "title": "Scalable Backend Thinking",
-        "description": "Secure APIs, auth flows, maintainable architecture and systems built to grow without chaos."
-      },
-      "realtime": {
-        "title": "Real-Time Capabilities",
-        "description": "Dashboards, sockets, MQTT workflows and connected product experiences that feel alive."
-      },
-      "product": {
-        "title": "Product-Oriented Mindset",
-        "description": "I build with user trust, business value and long-term maintainability in mind."
-      }
+  "eyebrow": "Why work with me",
+  "title": "A quick view of what I bring to a product.",
+  "description": "I combine visual polish, solid engineering and practical product thinking to build work that feels premium and reliable.",
+  "items": {
+    "ui": {
+      "title": "Premium UI Execution",
+      "description": "Modern interfaces with clean hierarchy, refined spacing, strong visual decisions and polished interactions."
+    },
+    "backend": {
+      "title": "Scalable Backend Thinking",
+      "description": "Secure APIs, auth flows, maintainable architecture and systems built to grow without chaos."
+    },
+    "realtime": {
+      "title": "Real-Time Capabilities",
+      "description": "Dashboards, sockets, MQTT workflows and connected product experiences that feel alive."
+    },
+    "product": {
+      "title": "Product-Oriented Mindset",
+      "description": "I build with user trust, business value and long-term maintainability in mind."
     }
-  },
+  }
+},
   "Footer": {
     "description": "Full Stack Developer building premium digital products with polished frontend execution, scalable backend systems and product-focused thinking.",
     "email": "Email me",
@@ -165,34 +160,34 @@
   },
   "Metadata": {
     "title": "Luis Manuel Santos | Full Stack Developer",
-    "description": "Full Stack Developer in Valladolid, Spain. React, TypeScript, Node.js, NestJS, Angular and B2B SaaS architecture."
+    "description": "Premium full stack developer portfolio focused on elegant UX, scalable architecture and modern digital products."
   },
   "Experience": {
-    "eyebrow": "Experience",
-    "title": "Professional experience",
-    "description": "Independent product development and institutional software, from frontend and backend to security and support.",
-    "items": {
-      "engineering": {
-        "period": "2024 — 2026",
-        "title": "Developer · FORTES",
-        "subtitle": "SIGIES · NestJS and Angular",
-        "badge": "Professional role",
-        "description": "Developed modules for the new SIGIES version, including user-role functionality, and supported the legacy system."
-      },
-      "systems": {
-        "period": "IN DEVELOPMENT",
-        "title": "KWAD · B2B SaaS",
-        "subtitle": "End-to-end product development",
-        "badge": "Independent product",
-        "description": "Multi-tenant architecture with API, back-office, storefront, platform administration and landing. React, TypeScript, Fastify, Prisma and PostgreSQL."
-      },
-      "product": {
-        "period": "2025",
-        "title": "IoT research",
-        "subtitle": "UCIENCIA · Connected systems",
-        "badge": "Research",
-        "description": "Co-authored Smart IoT, a publication on secure sensor management and AI-powered automation."
-      }
+  "eyebrow": "Experience",
+  "title": "How I approach modern product development.",
+  "description": "My experience sits at the intersection of frontend quality, backend reliability and product-minded execution.",
+  "items": {
+    "engineering": {
+      "period": "Core Focus",
+      "title": "Full Stack Engineering",
+      "subtitle": "Frontend craft + backend architecture",
+      "badge": "Build Quality",
+      "description": "I develop modern digital products with strong frontend execution, scalable backend foundations and a clear focus on maintainability."
+    },
+    "systems": {
+      "period": "Specialization",
+      "title": "Real-Time and Connected Systems",
+      "subtitle": "Dashboards, sockets, MQTT and live workflows",
+      "badge": "Systems",
+      "description": "I enjoy building products that stay connected, reactive and alive — from telemetry dashboards to real-time product experiences."
+    },
+    "product": {
+      "period": "Mindset",
+      "title": "Product-Oriented Delivery",
+      "subtitle": "User value, business value and polish",
+      "badge": "Product Thinking",
+      "description": "Beyond implementation, I focus on how the product feels, how it scales, and how it supports real goals for users and teams."
     }
   }
+}
 }

@@ -1,50 +1,36 @@
-# Luis Manuel Santos — Engineering Portfolio
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A bilingual engineering portfolio focused on tangible work: KWAD (multi-tenant B2B SaaS), FORTES / SIGIES, and real-time IoT systems.
+## Getting Started
 
-## Technology
-
-- Next.js App Router, React, and strict TypeScript conventions
-- Tailwind CSS and composable presentation components
-- `next-intl` translations for Spanish and English
-- Motion for progressive enhancement, with reduced-motion support
-
-## Development
+First, run the development server:
 
 ```bash
-pnpm install
+npm run dev
+# or
+yarn dev
+# or
 pnpm dev
-pnpm lint
-pnpm build
-pnpm test:content
+# or
+bun dev
 ```
 
-> `test:content` uses Node's built-in test runner to verify locale parity and critical portfolio facts without adding dependencies. It is not a substitute for component-level or end-to-end testing.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Repository structure
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- `app/[locale]`: localized routes and metadata
-- `components/marketing/sections`: page sections
-- `components/marketing/shared`: reusable presentation components
-- `config/site.ts`: profile, project metadata, URLs and assets
-- `messages/{es,en}.json`: localized copy
-- `tests`: automated checks for copy and content contracts
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Engineering decisions
+## Learn More
 
-1. **Claims should be verifiable.** The featured KWAD project describes architecture and contributions without exposing proprietary source code or inventing customer metrics.
-2. **Accessibility before animation.** Respect reduced-motion preferences and maintain semantic landmarks, labels and keyboard-friendly links.
-3. **Code in English, UI in the reader's language.** Identifiers, comments and documentation are in English; user-facing copy is translated.
-4. **Typed boundaries.** Prefer explicit prop and domain types; avoid `any` and unsafe casts.
-5. **Functional consistency over stylistic dogma.** Arrow functions are reasonable for components and callbacks, but function declarations are valid TypeScript and not automatically deprecated.
+To learn more about Next.js, take a look at the following resources:
 
-## Next improvements
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-- Add verified KWAD screenshots and a substantial case study, with sensitive tenant data removed.
-- Add component tests with Vitest + React Testing Library and user-flow tests with Playwright.
-- Replace the PDF assets under `public/docs` with the approved, updated CVs.
-- Run production build, accessibility checks and Lighthouse before merging.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Privacy
+## Deploy on Vercel
 
-KWAD is private proprietary software. Do not publish source files, tenant credentials, personal data or internal architecture documents.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

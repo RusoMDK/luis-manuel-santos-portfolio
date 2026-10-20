@@ -3,20 +3,20 @@
     "en": "EN",
     "es": "ES"
   },
-  "Navigation": {
-    "work": "Proyectos",
-    "services": "Servicios",
-    "stack": "Stack",
-    "experience": "Experiencia",
-    "about": "Sobre mí",
-    "contact": "Contacto",
-    "cta": "Contacto"
-  },
+"Navigation": {
+  "work": "Proyectos",
+  "services": "Servicios",
+  "stack": "Stack",
+  "experience": "Experiencia",
+  "about": "Sobre mí",
+  "contact": "Contacto",
+  "cta": "Contacto"
+},
   "Hero": {
-    "badge": "Buscando oportunidades Full Stack / Backend",
+    "badge": "Disponible para proyectos freelance y productos premium.",
     "role": "Desarrollador Full Stack",
-    "title": "Diseño interfaces. Construyo sistemas. Entrego productos completos.",
-    "description": "Soy Luis Manuel Santos, ingeniero informático en Valladolid. He trabajado con NestJS y Angular en FORTES y desarrollo KWAD, una plataforma SaaS B2B multiempresa.",
+    "title": "Construyo productos web premium que combinan UX elegante, arquitectura robusta y valor real de negocio.",
+    "description": "Desde interfaces pulidas hasta sistemas backend escalables, creo experiencias digitales modernas diseñadas para rendir, convertir y crecer.",
     "primaryCta": "Ver proyectos",
     "secondaryCta": "Trabajemos juntos",
     "downloadCv": "Descargar CV",
@@ -30,7 +30,7 @@
   "Projects": {
     "eyebrow": "Trabajo destacado",
     "title": "Proyectos seleccionados que muestran diseño y profundidad técnica.",
-    "description": "Sistemas que he diseñado y construido, con problemas reales de arquitectura, producto e interfaz.",
+    "description": "Me enfoco en trabajos que demuestran sensibilidad visual, ingeniería sólida y ejecución orientada al negocio.",
     "cta": "Ver caso de estudio",
     "repoCta": "Ver repositorio",
     "items": {
@@ -48,11 +48,6 @@
         "title": "Plataforma Creativa de Colaboración",
         "category": "Comunidad · Diseño de producto",
         "description": "Una plataforma visualmente rica para creadores con flujos de medios, interacción social y una dirección UI premium."
-      },
-      "kwad": {
-        "title": "KWAD · Plataforma SaaS B2B",
-        "category": "SaaS · Full Stack · Multi-tenant",
-        "description": "Desarrollo integral de una plataforma para comercios: punto de venta, inventario, cajas, e-commerce, permisos y panel de control de la plataforma."
       }
     }
   },
@@ -118,36 +113,36 @@
     "point4": "Me importa la mantenibilidad, la confianza del usuario y la entrega real."
   },
   "Contact": {
-    "eyebrow": "Abierto a nuevas oportunidades",
-    "title": "¿Buscáis un desarrollador que pueda convertir una idea en software real?",
-    "description": "Busco oportunidades Full Stack o Backend, preferentemente híbridas en Valladolid. Conversemos.",
+    "eyebrow": "Construyamos algo grande",
+    "title": "¿Necesitas un desarrollador que haga que el producto se vea premium y aguante técnicamente?",
+    "description": "Estoy abierto a trabajo freelance, colaboraciones y productos de alta calidad. Convirtamos tu idea en algo sólido, creíble y listo para lanzar.",
     "email": "Escríbeme",
     "github": "GitHub",
     "linkedin": "LinkedIn"
   },
   "Proof": {
-    "eyebrow": "Por qué trabajar conmigo",
-    "title": "Una vista rápida de lo que aporto a un producto.",
-    "description": "Combino pulido visual, ingeniería sólida y criterio de producto para construir trabajo que se sienta premium y confiable.",
-    "items": {
-      "ui": {
-        "title": "Ejecución UI Premium",
-        "description": "Interfaces modernas con jerarquía clara, espaciado refinado, decisiones visuales fuertes e interacciones pulidas."
-      },
-      "backend": {
-        "title": "Pensamiento Backend Escalable",
-        "description": "APIs seguras, flujos de autenticación, arquitectura mantenible y sistemas pensados para crecer sin caos."
-      },
-      "realtime": {
-        "title": "Capacidades en Tiempo Real",
-        "description": "Dashboards, sockets, flujos MQTT y experiencias conectadas que se sienten vivas."
-      },
-      "product": {
-        "title": "Mentalidad Orientada a Producto",
-        "description": "Construyo pensando en la confianza del usuario, el valor de negocio y la mantenibilidad a largo plazo."
-      }
+  "eyebrow": "Por qué trabajar conmigo",
+  "title": "Una vista rápida de lo que aporto a un producto.",
+  "description": "Combino pulido visual, ingeniería sólida y criterio de producto para construir trabajo que se sienta premium y confiable.",
+  "items": {
+    "ui": {
+      "title": "Ejecución UI Premium",
+      "description": "Interfaces modernas con jerarquía clara, espaciado refinado, decisiones visuales fuertes e interacciones pulidas."
+    },
+    "backend": {
+      "title": "Pensamiento Backend Escalable",
+      "description": "APIs seguras, flujos de autenticación, arquitectura mantenible y sistemas pensados para crecer sin caos."
+    },
+    "realtime": {
+      "title": "Capacidades en Tiempo Real",
+      "description": "Dashboards, sockets, flujos MQTT y experiencias conectadas que se sienten vivas."
+    },
+    "product": {
+      "title": "Mentalidad Orientada a Producto",
+      "description": "Construyo pensando en la confianza del usuario, el valor de negocio y la mantenibilidad a largo plazo."
     }
-  },
+  }
+},
   "Footer": {
     "description": "Desarrollador Full Stack que construye productos digitales premium con frontend pulido, backend escalable y enfoque real en producto.",
     "email": "Escríbeme",
@@ -162,37 +157,37 @@
     "contact": "Contacto",
     "rights": "Todos los derechos reservados.",
     "builtWith": "Hecho con Next.js, Tailwind CSS y una obsesión poco sana por una UI bien pulida."
-  },
+},
   "Metadata": {
     "title": "Luis Manuel Santos | Desarrollador Full Stack",
-    "description": "Desarrollador Full Stack en Valladolid. React, TypeScript, Node.js, NestJS, Angular y arquitectura SaaS B2B."
+    "description": "Portfolio premium de desarrollador full stack enfocado en UX elegante, arquitectura escalable y productos digitales modernos."
   },
   "Experience": {
-    "eyebrow": "Experiencia",
-    "title": "Trayectoria profesional",
-    "description": "Proyectos propios y experiencia institucional, desde frontend y backend hasta seguridad y soporte.",
-    "items": {
-      "engineering": {
-        "period": "2024 — 2026",
-        "title": "Desarrollador · FORTES",
-        "subtitle": "SIGIES · NestJS y Angular",
-        "badge": "Experiencia profesional",
-        "description": "Desarrollo de módulos para la nueva versión de SIGIES, incluyendo funcionalidades relacionadas con roles de usuarios, y soporte a la versión anterior."
-      },
-      "systems": {
-        "period": "EN DESARROLLO",
-        "title": "KWAD · SaaS B2B",
-        "subtitle": "Desarrollo integral del producto",
-        "badge": "Proyecto propio",
-        "description": "Arquitectura multiempresa con API, back-office, storefront, panel de administración y landing. React, TypeScript, Fastify, Prisma y PostgreSQL."
-      },
-      "product": {
-        "period": "2025",
-        "title": "Investigación IoT",
-        "subtitle": "UCIENCIA · Sistemas conectados",
-        "badge": "Investigación",
-        "description": "Coautor del trabajo Smart IoT sobre gestión segura de sensores físicos y automatización basada en inteligencia artificial."
-      }
+  "eyebrow": "Experiencia",
+  "title": "Cómo abordo el desarrollo de productos modernos.",
+  "description": "Mi experiencia se mueve entre la calidad frontend, la solidez backend y una ejecución orientada a producto.",
+  "items": {
+    "engineering": {
+      "period": "Enfoque central",
+      "title": "Ingeniería Full Stack",
+      "subtitle": "Frontend pulido + arquitectura backend",
+      "badge": "Calidad de construcción",
+      "description": "Desarrollo productos digitales modernos con una ejecución frontend fuerte, bases backend escalables y foco claro en mantenibilidad."
+    },
+    "systems": {
+      "period": "Especialización",
+      "title": "Sistemas en Tiempo Real y Conectados",
+      "subtitle": "Dashboards, sockets, MQTT y flujos en vivo",
+      "badge": "Sistemas",
+      "description": "Disfruto construir productos que se mantengan conectados, reactivos y vivos: desde dashboards de telemetría hasta experiencias en tiempo real."
+    },
+    "product": {
+      "period": "Mentalidad",
+      "title": "Entrega Orientada a Producto",
+      "subtitle": "Valor para usuario, negocio y pulido final",
+      "badge": "Pensamiento de producto",
+      "description": "Más allá de implementar, me enfoco en cómo se siente el producto, cómo escala y cómo apoya objetivos reales de usuarios y equipos."
     }
   }
+}
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 type AnimatedRevealProps = {
@@ -16,12 +16,6 @@ export function AnimatedReveal({
   delay = 0,
   y = 24,
 }: AnimatedRevealProps) {
-  const reducedMotion = useReducedMotion();
-
-  if (reducedMotion) {
-    return <div className={cn(className)}>{children}</div>;
-  }
-
   return (
     <motion.div
       className={cn(className)}
