@@ -78,14 +78,14 @@ export function SiteHeader() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#050816]/75 backdrop-blur-xl will-change-transform transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
+          "fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0c1210]/92 backdrop-blur-xl will-change-transform transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
           isHidden ? "-translate-y-[110%]" : "translate-y-0",
         )}
       >
         <Container className="flex h-20 items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-3">
-            <div className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/5 shadow-[0_0_40px_rgba(34,211,238,0.12)]">
-              <Code2 className="h-5 w-5 text-cyan-300" />
+            <div className="grid h-11 w-11 place-items-center rounded-sm border border-emerald-200/25 bg-emerald-200/[0.05]">
+              <Code2 className="h-5 w-5 text-emerald-200" />
             </div>
 
             <div>
@@ -117,7 +117,7 @@ export function SiteHeader() {
               href={contactHref}
               className={cn(
                 buttonVariants({ variant: "default" }),
-                "rounded-full bg-white px-5 text-black hover:bg-white/90",
+                "rounded-sm bg-[#c6efcd] px-5 text-[#10241a] hover:bg-white",
               )}
             >
               {t("cta")}

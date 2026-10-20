@@ -1,51 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050816;
-  --foreground: #f5f7fb;
-  --card: rgba(255, 255, 255, 0.04);
-  --border: rgba(255, 255, 255, 0.1);
-  --muted: rgba(255, 255, 255, 0.65);
+  color-scheme: dark;
+  --background: #0c1210;
+  --foreground: #f3f2ed;
+  --card: rgba(243, 242, 237, 0.035);
+  --border: rgba(243, 242, 237, 0.14);
+  --muted: rgba(243, 242, 237, 0.64);
+  --accent: #c6efcd;
 }
 
-html,
-body {
+html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  scroll-padding-top: 6rem;
 }
 
 body {
-  background:
-    radial-gradient(circle at top, rgba(34, 211, 238, 0.12), transparent 30%),
-    radial-gradient(circle at 85% 20%, rgba(217, 70, 239, 0.1), transparent 25%),
-    radial-gradient(circle at 15% 80%, rgba(59, 130, 246, 0.08), transparent 25%),
-    var(--background);
+  background: var(--background);
   color: var(--foreground);
   min-height: 100vh;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-*,
-*::before,
-*::after {
-  min-width: 0;
-  box-sizing: border-box;
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas { max-width: 100%; }
+::selection { background: rgba(198, 239, 205, .28); color: #fff; }
+
+.editorial-grid {
+  background-image:
+    linear-gradient(to right, rgba(243, 242, 237, .035) 1px, transparent 1px);
+  background-size: 25% 100%;
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 70%, transparent);
 }
 
-::selection {
-  background: rgba(34, 211, 238, 0.25);
-  color: white;
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
-a {
-  text-decoration: none;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-img,
-svg,
-video,
-canvas {
-  display: block;
-  max-width: 100%;
+@media (max-width: 640px) {
+  .editorial-grid { background-size: 50% 100%; }
 }
