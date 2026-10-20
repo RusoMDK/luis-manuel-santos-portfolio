@@ -2,18 +2,18 @@ export const siteConfig = {
   name: "Luis Manuel Santos",
   title: "Luis Manuel Santos | Full Stack Developer",
   description:
-    "Full Stack Developer in Valladolid, Spain. React, TypeScript, Node.js, NestJS, B2B SaaS and IoT.",
-  url: "https://luismsldev.vercel.app",
+    "Premium full stack developer portfolio focused on elegant UX, scalable architecture and modern digital products.",
+  url: "https://luissantosdev.vercel.app",
   ogImage: "/images/og-cover.jpg",
   email: "luissantoslezcano@gmail.com",
   github: "https://github.com/RusoMDK",
-  linkedin: "https://www.linkedin.com/in/luissantosdev/",
+  linkedin: "https://www.linkedin.com/in/luis-manuel-santos-lezcano-633956108/",
   cv: {
     es: "/docs/luis-manuel-santos-cv-es.pdf",
     en: "/docs/luis-manuel-santos-cv-en.pdf",
   },
-  availability: "Open to work",
-  location: "Valladolid, Spain",
+  availability: "Available for freelance",
+  location: "Miami, FL",
   profileImage: "/images/profile/luis-manuel-santos-headshot-cropped.png",
 } as const;
 
@@ -67,8 +67,6 @@ export const stack = [
   "Node.js",
   "Express",
   "Fastify",
-  "NestJS",
-  "Angular",
   "MongoDB",
   "PostgreSQL",
   "Prisma",
