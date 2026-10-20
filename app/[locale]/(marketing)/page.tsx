@@ -1,3 +1,4 @@
+import { KwadFeature } from "@/components/marketing/sections/kwad-feature";
 import { HeroSection } from "@/components/marketing/sections/hero-section";
 import { ProofSection } from "@/components/marketing/sections/proof-section";
 import { ProjectsSection } from "@/components/marketing/sections/projects-section";
@@ -7,17 +8,23 @@ import { ExperienceSection } from "@/components/marketing/sections/experience-se
 import { AboutSection } from "@/components/marketing/sections/about-section";
 import { ContactSection } from "@/components/marketing/sections/contact-section";
 
-export default function MarketingHomePage() {
+type MarketingHomePageProps = { params: Promise<{ locale: string }> };
+
+const MarketingHomePage = async ({ params }: MarketingHomePageProps) => {
+  const { locale } = await params;
   return (
     <>
       <HeroSection />
-      <ProofSection />
+      <KwadFeature locale={locale} />
       <ProjectsSection />
-      <ServicesSection />
-      <StackSection />
       <ExperienceSection />
+      <StackSection />
+      <ServicesSection />
+      <ProofSection />
       <AboutSection />
       <ContactSection />
     </>
   );
-}
+};
+
+export default MarketingHomePage;

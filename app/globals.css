@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050816;
+  --background: #0b1113;
   --foreground: #f5f7fb;
   --card: rgba(255, 255, 255, 0.04);
   --border: rgba(255, 255, 255, 0.1);
@@ -16,9 +16,9 @@ body {
 
 body {
   background:
-    radial-gradient(circle at top, rgba(34, 211, 238, 0.12), transparent 30%),
-    radial-gradient(circle at 85% 20%, rgba(217, 70, 239, 0.1), transparent 25%),
-    radial-gradient(circle at 15% 80%, rgba(59, 130, 246, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 5%, rgba(52, 211, 153, 0.09), transparent 35%),
+    radial-gradient(circle at 10% 48%, rgba(20, 184, 166, 0.04), transparent 32%),
+    linear-gradient(180deg, rgba(255,255,255,0.014), transparent 65%),
     var(--background);
   color: var(--foreground);
   min-height: 100vh;
@@ -48,4 +48,7 @@ video,
 canvas {
   display: block;
   max-width: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  html, body { scroll-behavior: auto; }
 }
