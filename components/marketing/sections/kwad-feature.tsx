@@ -1,4 +1,4 @@
-import { ArrowUpRight, Boxes, Database, LayoutDashboard, ShieldCheck, ShoppingBag } from "lucide-react";
+import { ArrowUpRight, Boxes, Database, LayoutDashboard, ShieldCheck, ShoppingBag, Globe2 } from "lucide-react";
 import { Container } from "@/components/marketing/shared/container";
 
 type FeatureItem = {
@@ -12,6 +12,7 @@ const features: readonly FeatureItem[] = [
   { title: "Storefront", detail: "Catalog · Orders · Checkout", Icon: ShoppingBag },
   { title: "Platform admin", detail: "SaaS administration", Icon: ShieldCheck },
   { title: "API & data", detail: "Fastify · Prisma · PostgreSQL", Icon: Database },
+  { title: "Landing", detail: "Public product website", Icon: Globe2 },
 ];
 
 type KwadFeatureProps = {
@@ -24,15 +25,15 @@ export const KwadFeature = ({ locale }: KwadFeatureProps) => {
   return (
     <section id="kwad" aria-labelledby="kwad-title" className="scroll-mt-28 border-y border-white/10 py-20 md:py-28">
       <Container>
-        <div className="mb-8 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
+        <div className="mb-10 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
           <span>{isSpanish ? "02 / Proyecto destacado" : "02 / Featured work"}</span>
           <span className="text-white/50">KWAD / MiNegocio</span>
         </div>
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
           <div className="space-y-7">
             <p className="text-sm font-medium text-white/55">{isSpanish ? "Producto propio · Desarrollo integral" : "Independent product · End-to-end development"}</p>
-            <h2 id="kwad-title" className="max-w-2xl text-5xl font-semibold leading-[1.05] tracking-[-0.055em] text-white sm:text-6xl">
-              {isSpanish ? "El software detrás de un negocio que funciona." : "Software that keeps a business running."}
+            <h2 id="kwad-title" className="max-w-2xl text-5xl font-medium leading-[1.06] tracking-[-0.055em] text-white sm:text-6xl">
+              {isSpanish ? "Software para negocios reales." : "Software for real businesses."}
             </h2>
             <p className="max-w-xl text-base leading-8 text-white/65">
               {isSpanish
@@ -51,7 +52,7 @@ export const KwadFeature = ({ locale }: KwadFeatureProps) => {
               {isSpanish ? "El repositorio es privado: presento las funcionalidades y decisiones técnicas sin exponer código propietario." : "The repository is private: product features and engineering decisions are presented without exposing proprietary code."}
             </p>
           </div>
-          <div className="overflow-hidden rounded-[28px] border border-white/15 bg-[#121e23] p-4 shadow-[0_30px_100px_rgba(0,0,0,0.28)] sm:p-6">
+          <div className="overflow-hidden rounded-[4px] border border-white/15 bg-[#132019] p-4 shadow-[0_30px_100px_rgba(0,0,0,0.28)] sm:p-6">
             <div className="mb-6 flex items-center justify-between gap-4 border-b border-white/10 pb-5">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-emerald-300">KWAD / SYSTEM MAP</p>
@@ -61,7 +62,7 @@ export const KwadFeature = ({ locale }: KwadFeatureProps) => {
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
               {features.map(({ title, detail, Icon }, index) => (
-                <div key={title} className={`min-h-32 rounded-2xl border border-white/10 bg-white/[0.035] p-5 ${index === 3 ? "sm:col-span-2" : ""}`}>
+                <div key={title} className={`min-h-32 rounded-[3px] border border-white/10 bg-white/[0.025] p-5 ${index === 4 ? "sm:col-span-2" : ""}`}>
                   <div className="mb-4 flex items-center justify-between"><Icon aria-hidden="true" className="h-5 w-5 text-emerald-300"/><span className="font-mono text-[11px] text-white/35">0{index + 1}</span></div>
                   <h4 className="font-semibold text-white">{title}</h4>
                   <p className="mt-1 text-xs text-white/50">{detail}</p>
