@@ -22,49 +22,49 @@ const caseStudyContent = {
   en: {
     eyebrow: "Case Study",
     back: "Back to projects",
-    title: "Enterprise IoT Platform",
+    title: "PlataformaIoT",
     summary:
-      "A premium real-time monitoring platform focused on live telemetry, device state handling, operator dashboards and scalable communication workflows.",
+      "A personal full stack project to register IoT devices, ingest their readings in real time and display them in configurable dashboards.",
     challengeTitle: "The challenge",
     challenge:
-      "The goal was to create a real-time IoT product experience that felt robust for operators and flexible for growth. The platform needed to handle telemetry streams, device connectivity state, dashboard usability and a clean architecture across frontend and backend.",
+      "Take device data from the sensor to the screen in real time: provisioning devices, receiving readings reliably, storing them and showing them live, without coupling the dashboard to the ingestion path.",
     architectureTitle: "Architecture and approach",
     architecture:
-      "The solution combined a React + Vite + Tailwind frontend with a Node.js and Express backend. MQTT was used for device messaging and Socket.IO for real-time UI updates, enabling a responsive operator experience while keeping the system maintainable and extensible.",
+      "A React + Vite + Tailwind frontend and a Node.js + Express backend. Devices publish over MQTT; a worker persists readings to MongoDB and the backend pushes updates to the dashboard over Socket.IO, with separate namespaces for agents and the panel.",
     highlightsTitle: "Key implementation highlights",
     highlights: [
-      "Live telemetry visualization with operator-focused dashboard patterns.",
-      "MQTT integration for device messaging and shadow/state workflows.",
-      "Socket.IO updates to reflect system activity in real time.",
-      "Backend structure designed for maintainability and future scaling.",
+      "MQTT ingestion through a worker that persists readings to MongoDB.",
+      "Live dashboard updates over Socket.IO, with draggable, resizable widgets and time-series charts.",
+      "Device provisioning (claim, registration, heartbeat) and downloadable Arduino sketch generation.",
+      "Security: cookie-based JWT, CSRF protection, TOTP 2FA, roles and input validation with Zod and AJV.",
     ],
     outcomeTitle: "Outcome",
     outcome:
-      "The result was a solid full stack foundation for an enterprise-style IoT product: technically reliable, visually polished and designed with real usage in mind.",
+      "A working end-to-end real-time pipeline, from device to dashboard, with rule-based alerts, exports to Excel, PDF and CSV, and an API documented with Swagger.",
     repoCta: "Open repository",
   },
   es: {
     eyebrow: "Caso de estudio",
     back: "Volver a proyectos",
-    title: "Plataforma IoT Empresarial",
+    title: "PlataformaIoT",
     summary:
-      "Una plataforma premium de monitoreo en tiempo real enfocada en telemetría en vivo, manejo de estado de dispositivos, dashboards para operadores y flujos de comunicación escalables.",
+      "Proyecto personal full stack para registrar dispositivos IoT, recibir sus lecturas en tiempo real y visualizarlas en dashboards configurables.",
     challengeTitle: "El reto",
     challenge:
-      "El objetivo era crear una experiencia IoT en tiempo real que se sintiera robusta para operadores y flexible para crecer. La plataforma debía manejar flujos de telemetría, estado de conectividad, usabilidad del dashboard y una arquitectura limpia entre frontend y backend.",
+      "Llevar los datos del sensor a la pantalla en tiempo real: dar de alta dispositivos, recibir lecturas de forma fiable, guardarlas y mostrarlas en vivo, sin acoplar el dashboard a la ingesta.",
     architectureTitle: "Arquitectura y enfoque",
     architecture:
-      "La solución combinó un frontend en React + Vite + Tailwind con un backend en Node.js y Express. MQTT se usó para la mensajería con dispositivos y Socket.IO para las actualizaciones en tiempo real hacia la interfaz, logrando una experiencia reactiva y una base mantenible.",
+      "Frontend en React + Vite + Tailwind y backend en Node.js + Express. Los dispositivos publican por MQTT; un worker persiste las lecturas en MongoDB y el backend envía las actualizaciones al dashboard por Socket.IO, con namespaces separados para agentes y panel.",
     highlightsTitle: "Puntos clave de implementación",
     highlights: [
-      "Visualización de telemetría en vivo con patrones de dashboard orientados a operadores.",
-      "Integración MQTT para mensajería de dispositivos y flujos de shadow/state.",
-      "Actualizaciones con Socket.IO para reflejar la actividad del sistema en tiempo real.",
-      "Estructura backend pensada para mantenibilidad y crecimiento futuro.",
+      "Ingesta por MQTT con un worker que persiste las lecturas en MongoDB.",
+      "Dashboard en vivo por Socket.IO, con widgets que se arrastran y redimensionan y gráficas de series temporales.",
+      "Aprovisionamiento de dispositivos (claim, registro, heartbeat) y generación de sketches de Arduino descargables.",
+      "Seguridad: JWT en cookies, protección CSRF, 2FA con TOTP, roles y validación de entrada con Zod y AJV.",
     ],
     outcomeTitle: "Resultado",
     outcome:
-      "El resultado fue una base full stack sólida para un producto IoT de estilo empresarial: confiable técnicamente, visualmente pulido y diseñado pensando en uso real.",
+      "Un flujo en tiempo real completo, del dispositivo al dashboard, con alertas por reglas, exportación a Excel, PDF y CSV y una API documentada con Swagger.",
     repoCta: "Abrir repositorio",
   },
 } as const;

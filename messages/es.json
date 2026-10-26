@@ -5,7 +5,6 @@
   },
   "Navigation": {
     "work": "Proyectos",
-    "services": "Servicios",
     "stack": "Stack",
     "experience": "Experiencia",
     "about": "Sobre mí",
@@ -21,11 +20,12 @@
     "secondaryCta": "Trabajemos juntos",
     "downloadCv": "Descargar CV",
     "focusLabel": "Enfoque principal",
-    "focusTitle": "UI premium + backend robusto + visión de producto",
+    "focusTitle": "Frontend cuidado + backend sólido + visión de producto",
     "bullet1": "Ejecución frontend de alto nivel",
     "bullet2": "Arquitectura backend escalable",
     "bullet3": "Sistemas en tiempo real e integraciones",
-    "bullet4": "Construcción orientada a negocio"
+    "bullet4": "Construcción orientada a negocio",
+    "location": "Valladolid, España"
   },
   "Projects": {
     "eyebrow": "Trabajo destacado",
@@ -35,47 +35,24 @@
     "repoCta": "Ver repositorio",
     "items": {
       "iotPlatform": {
-        "title": "Plataforma IoT Empresarial",
-        "category": "Full Stack · Tiempo real",
-        "description": "Una plataforma IoT en tiempo real con telemetría en vivo, integración MQTT, manejo de estado de dispositivos y dashboards premium."
+        "title": "PlataformaIoT · Telemetría en tiempo real",
+        "category": "Proyecto personal · Tiempo real",
+        "description": "Registro de dispositivos IoT con ingesta por MQTT: un worker persiste las lecturas en MongoDB y las emite en vivo por Socket.IO. Dashboards configurables, alertas por reglas y exportación a Excel, PDF y CSV."
       },
       "ecommerce": {
-        "title": "Experiencia E-Commerce Moderna",
-        "category": "E-Commerce · UX",
-        "description": "Una tienda online refinada con flujos de compra premium, gestión de direcciones, wishlist y arquitectura escalable."
+        "title": "Tienda Virtual",
+        "category": "E-commerce · Full Stack",
+        "description": "Tienda online con catálogo filtrable, carrito, lista de deseos, multimoneda y panel de administración con stock, importación CSV y edición del home. Fue la base del storefront de KWAD."
       },
       "creativePlatform": {
-        "title": "Plataforma Creativa de Colaboración",
-        "category": "Comunidad · Diseño de producto",
-        "description": "Una plataforma visualmente rica para creadores con flujos de medios, interacción social y una dirección UI premium."
+        "title": "ArtCollab",
+        "category": "Comunidad · Full Stack",
+        "description": "Plataforma para artistas: perfiles públicos, galería con archivos en Cloudinary, proyectos colaborativos, feedback y autenticación JWT con roles."
       },
       "kwad": {
         "title": "KWAD · Plataforma SaaS B2B",
         "category": "SaaS · Full Stack · Multi-tenant",
         "description": "Desarrollo integral de una plataforma para comercios: punto de venta, inventario, cajas, e-commerce, permisos y panel de control de la plataforma."
-      }
-    }
-  },
-  "Services": {
-    "eyebrow": "Servicios",
-    "title": "Lo que puedo construir y mejorar.",
-    "description": "Trabajo sobre interfaz, backend, producto e integración de sistemas para entregar experiencias pulidas y confiables.",
-    "items": {
-      "frontend": {
-        "title": "Ingeniería Frontend",
-        "description": "Interfaces responsivas y pulidas con jerarquía visual fuerte, estilo premium, motion y rendimiento."
-      },
-      "backend": {
-        "title": "Backend y APIs",
-        "description": "Servidores escalables, autenticación, roles, APIs mantenibles y modelado sólido de datos."
-      },
-      "fullstack": {
-        "title": "Desarrollo Full Stack",
-        "description": "Desde el concepto hasta el lanzamiento, construyo productos digitales cohesivos, robustos y listos para producción."
-      },
-      "realtime": {
-        "title": "Sistemas en Tiempo Real",
-        "description": "Dashboards, sockets, flujos MQTT y experiencias de producto conectadas en vivo."
       }
     }
   },
@@ -89,7 +66,7 @@
     "highlights": {
       "frontend": {
         "title": "Frontend",
-        "description": "Interfaces modernas con UX premium y una ejecución visual pulida."
+        "description": "Interfaces en React y Angular con componentes reutilizables y estado bien gestionado."
       },
       "backend": {
         "title": "Backend",
@@ -108,54 +85,33 @@
   "About": {
     "eyebrow": "Sobre mí",
     "title": "Construyo productos con criterio, estructura e intención.",
-    "description": "Soy un Desarrollador Full Stack enfocado en crear experiencias digitales premium: visualmente refinadas, técnicamente sólidas y realmente útiles.",
+    "description": "Soy Desarrollador Full Stack: construyo desde la interfaz hasta la API y el modelo de datos, con foco en software mantenible y útil para quien lo usa.",
     "sideEyebrow": "Lo que me diferencia",
     "sideTitle": "Mentalidad de producto con profundidad técnica.",
     "sideDescription": "Me importan tanto los detalles que perciben los usuarios como la arquitectura de la que depende el equipo.",
     "point1": "Combino ejecución frontend pulida con profundidad backend.",
     "point2": "Pienso en calidad de producto, no solo en completar código.",
-    "point3": "Construyo sistemas que se ven premium y se sienten confiables.",
-    "point4": "Me importa la mantenibilidad, la confianza del usuario y la entrega real."
+    "point3": "Construyo sistemas mantenibles y fiables.",
+    "point4": "Me importa la mantenibilidad, la confianza del usuario y la entrega real.",
+    "role": "Desarrollador Full Stack",
+    "availability": "Disponible",
+    "location": "Valladolid, España"
   },
   "Contact": {
     "eyebrow": "Abierto a nuevas oportunidades",
     "title": "¿Buscáis un desarrollador que pueda convertir una idea en software real?",
-    "description": "Busco oportunidades Full Stack o Backend, preferentemente híbridas en Valladolid. Conversemos.",
+    "description": "Busco puestos Full Stack o Backend en remoto (España) o híbrido en Valladolid. Tengo permiso de trabajo e incorporación inmediata.",
     "email": "Escríbeme",
     "github": "GitHub",
     "linkedin": "LinkedIn"
   },
-  "Proof": {
-    "eyebrow": "Por qué trabajar conmigo",
-    "title": "Una vista rápida de lo que aporto a un producto.",
-    "description": "Combino pulido visual, ingeniería sólida y criterio de producto para construir trabajo que se sienta premium y confiable.",
-    "items": {
-      "ui": {
-        "title": "Ejecución UI Premium",
-        "description": "Interfaces modernas con jerarquía clara, espaciado refinado, decisiones visuales fuertes e interacciones pulidas."
-      },
-      "backend": {
-        "title": "Pensamiento Backend Escalable",
-        "description": "APIs seguras, flujos de autenticación, arquitectura mantenible y sistemas pensados para crecer sin caos."
-      },
-      "realtime": {
-        "title": "Capacidades en Tiempo Real",
-        "description": "Dashboards, sockets, flujos MQTT y experiencias conectadas que se sienten vivas."
-      },
-      "product": {
-        "title": "Mentalidad Orientada a Producto",
-        "description": "Construyo pensando en la confianza del usuario, el valor de negocio y la mantenibilidad a largo plazo."
-      }
-    }
-  },
   "Footer": {
-    "description": "Desarrollador Full Stack que construye productos digitales premium con frontend pulido, backend escalable y enfoque real en producto.",
+    "description": "Desarrollador Full Stack en Valladolid. TypeScript, Node.js, React y Angular, de la interfaz a la base de datos.",
     "email": "Escríbeme",
     "cv": "Ver CV",
     "navigation": "Navegación",
     "connect": "Conecta",
     "work": "Proyectos",
-    "services": "Servicios",
     "stack": "Stack",
     "experience": "Experiencia",
     "about": "Sobre mí",
@@ -174,16 +130,16 @@
     "items": {
       "engineering": {
         "period": "2024 — 2026",
-        "title": "Desarrollador · FORTES",
+        "title": "Ingeniero de Software · FORTES",
         "subtitle": "SIGIES · NestJS y Angular",
         "badge": "Experiencia profesional",
         "description": "Desarrollo de módulos para la nueva versión de SIGIES, incluyendo funcionalidades relacionadas con roles de usuarios, y soporte a la versión anterior."
       },
       "systems": {
-        "period": "EN DESARROLLO",
+        "period": "2026 — actualidad",
         "title": "KWAD · SaaS B2B",
         "subtitle": "Desarrollo integral del producto",
-        "badge": "Proyecto propio",
+        "badge": "Proyecto propio · beta en producción",
         "description": "Arquitectura multiempresa con API, back-office, storefront, panel de administración y landing. React, TypeScript, Fastify, Prisma y PostgreSQL."
       },
       "product": {

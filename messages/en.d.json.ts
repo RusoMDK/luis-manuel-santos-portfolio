@@ -6,74 +6,56 @@ declare const messages: {
     "en": "EN",
     "es": "ES"
   },
-"Navigation": {
-  "work": "Work",
-  "services": "Services",
-  "stack": "Stack",
-  "experience": "Experience",
-  "about": "About",
-  "contact": "Contact",
-  "cta": "Contact"
-},
+  "Navigation": {
+    "work": "Work",
+    "stack": "Stack",
+    "experience": "Experience",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Contact"
+  },
   "Hero": {
-    "badge": "Available for freelance and premium product builds.",
+    "badge": "Open to Full Stack / Backend roles",
     "role": "Full Stack Developer",
-    "title": "I build premium web products that combine elegant UX, robust architecture, and real business value.",
-    "description": "From polished interfaces to scalable backend systems, I create modern digital experiences designed to perform, convert, and grow.",
+    "title": "I design interfaces. Engineer systems. Ship complete products.",
+    "description": "I'm Luis Manuel Santos, a software engineer based in Valladolid, Spain. I worked with NestJS and Angular at FORTES and I develop KWAD, a multi-tenant B2B SaaS platform.",
     "primaryCta": "View Projects",
     "secondaryCta": "Let's Work Together",
     "downloadCv": "Download CV",
     "focusLabel": "Selected Focus",
-    "focusTitle": "Premium UI + robust backend + product thinking",
+    "focusTitle": "Careful frontend + solid backend + product thinking",
     "bullet1": "High-end frontend execution",
     "bullet2": "Scalable backend architecture",
     "bullet3": "Real-time systems and integrations",
-    "bullet4": "Business-focused product builds"
+    "bullet4": "Business-focused product builds",
+    "location": "Valladolid, Spain"
   },
   "Projects": {
     "eyebrow": "Featured Work",
     "title": "Selected projects that show both craft and technical depth.",
-    "description": "I focus on work that demonstrates design sensitivity, strong engineering, and business-oriented execution.",
+    "description": "Systems I've designed and built, shaped by real architecture, product and UI challenges.",
     "cta": "View Case Study",
     "repoCta": "View Repository",
     "items": {
       "iotPlatform": {
-        "title": "Enterprise IoT Platform",
-        "category": "Full Stack · Real-Time",
-        "description": "A real-time IoT platform with live telemetry, MQTT integration, device state handling, and premium admin dashboards."
+        "title": "PlataformaIoT · Real-Time Telemetry",
+        "category": "Personal project · Real-time",
+        "description": "IoT device registry with MQTT ingestion: a worker persists readings to MongoDB and streams them live over Socket.IO. Configurable dashboards, rule-based alerts and exports to Excel, PDF and CSV."
       },
       "ecommerce": {
-        "title": "Modern E-Commerce Experience",
-        "category": "E-Commerce · UX",
-        "description": "A refined online store with premium shopping flows, address management, wishlist, and scalable architecture."
+        "title": "Tienda Virtual",
+        "category": "E-commerce · Full Stack",
+        "description": "Online store with a filterable catalog, cart, wishlist, multi-currency pricing and an admin panel for stock, CSV import and home page editing. It became the foundation of KWAD's storefront."
       },
       "creativePlatform": {
-        "title": "Creative Collaboration Platform",
-        "category": "Community · Product Design",
-        "description": "A visually rich platform for creators with media workflows, interaction systems, and strong UI direction."
-      }
-    }
-  },
-  "Services": {
-    "eyebrow": "Services",
-    "title": "What I can build and improve.",
-    "description": "I work across interface, backend, product and systems integration to deliver experiences that feel polished and dependable.",
-    "items": {
-      "frontend": {
-        "title": "Frontend Engineering",
-        "description": "Responsive, polished interfaces with strong hierarchy, premium styling, motion and performance."
+        "title": "ArtCollab",
+        "category": "Community · Full Stack",
+        "description": "Platform for artists: public profiles, a media gallery backed by Cloudinary, collaborative projects, feedback and JWT authentication with roles."
       },
-      "backend": {
-        "title": "Backend & APIs",
-        "description": "Scalable servers, authentication, roles, maintainable APIs and solid data modeling."
-      },
-      "fullstack": {
-        "title": "Full Stack Product Development",
-        "description": "From concept to launch, I build digital products that feel cohesive, robust and production-ready."
-      },
-      "realtime": {
-        "title": "Real-Time Systems",
-        "description": "Dashboards, sockets, MQTT workflows and live connected product experiences."
+      "kwad": {
+        "title": "KWAD · B2B SaaS Platform",
+        "category": "SaaS · Full Stack · Multi-tenant",
+        "description": "End-to-end development of a retail platform: POS, inventory, cash registers, e-commerce, permissions and platform administration."
       }
     }
   },
@@ -87,7 +69,7 @@ declare const messages: {
     "highlights": {
       "frontend": {
         "title": "Frontend",
-        "description": "Modern interfaces with premium UX and polished execution."
+        "description": "React and Angular interfaces with reusable components and well-managed state."
       },
       "backend": {
         "title": "Backend",
@@ -106,54 +88,33 @@ declare const messages: {
   "About": {
     "eyebrow": "About Me",
     "title": "I build products with taste, structure and intent.",
-    "description": "I’m a Full Stack Developer focused on creating premium digital experiences — the kind that feel visually refined, technically solid and genuinely useful.",
+    "description": "I'm a Full Stack Developer: I build from the interface down to the API and the data model, focused on maintainable software that is genuinely useful to the people using it.",
     "sideEyebrow": "What sets me apart",
     "sideTitle": "A product mindset with engineering depth.",
     "sideDescription": "I care about the details users notice and the architecture teams depend on.",
     "point1": "I combine polished frontend execution with backend depth.",
     "point2": "I think in terms of product quality, not only code completion.",
-    "point3": "I build systems that look premium and feel reliable.",
-    "point4": "I care about maintainability, user trust and real delivery."
+    "point3": "I build systems that are maintainable and reliable.",
+    "point4": "I care about maintainability, user trust and real delivery.",
+    "role": "Full Stack Developer",
+    "availability": "Open to work",
+    "location": "Valladolid, Spain"
   },
   "Contact": {
-    "eyebrow": "Let's build something great",
-    "title": "Need a developer who can make the product look premium and hold up technically?",
-    "description": "I’m open to freelance work, collaborations, and high-quality product builds. Let’s turn your idea into something sharp, credible, and launch-ready.",
+    "eyebrow": "Open to new opportunities",
+    "title": "Looking for an engineer who can turn an idea into working software?",
+    "description": "I'm looking for Full Stack or Backend roles, remote in Spain or hybrid in Valladolid. Authorized to work in Spain and available immediately.",
     "email": "Email Me",
     "github": "GitHub",
     "linkedin": "LinkedIn"
   },
-  "Proof": {
-  "eyebrow": "Why work with me",
-  "title": "A quick view of what I bring to a product.",
-  "description": "I combine visual polish, solid engineering and practical product thinking to build work that feels premium and reliable.",
-  "items": {
-    "ui": {
-      "title": "Premium UI Execution",
-      "description": "Modern interfaces with clean hierarchy, refined spacing, strong visual decisions and polished interactions."
-    },
-    "backend": {
-      "title": "Scalable Backend Thinking",
-      "description": "Secure APIs, auth flows, maintainable architecture and systems built to grow without chaos."
-    },
-    "realtime": {
-      "title": "Real-Time Capabilities",
-      "description": "Dashboards, sockets, MQTT workflows and connected product experiences that feel alive."
-    },
-    "product": {
-      "title": "Product-Oriented Mindset",
-      "description": "I build with user trust, business value and long-term maintainability in mind."
-    }
-  }
-},
   "Footer": {
-    "description": "Full Stack Developer building premium digital products with polished frontend execution, scalable backend systems and product-focused thinking.",
+    "description": "Full Stack Developer in Valladolid, Spain. TypeScript, Node.js, React and Angular, from the interface to the database.",
     "email": "Email me",
     "cv": "View CV",
     "navigation": "Navigation",
     "connect": "Connect",
     "work": "Work",
-    "services": "Services",
     "stack": "Stack",
     "experience": "Experience",
     "about": "About",
@@ -163,35 +124,35 @@ declare const messages: {
   },
   "Metadata": {
     "title": "Luis Manuel Santos | Full Stack Developer",
-    "description": "Premium full stack developer portfolio focused on elegant UX, scalable architecture and modern digital products."
+    "description": "Full Stack Developer in Valladolid, Spain. React, TypeScript, Node.js, NestJS, Angular and B2B SaaS architecture."
   },
   "Experience": {
-  "eyebrow": "Experience",
-  "title": "How I approach modern product development.",
-  "description": "My experience sits at the intersection of frontend quality, backend reliability and product-minded execution.",
-  "items": {
-    "engineering": {
-      "period": "Core Focus",
-      "title": "Full Stack Engineering",
-      "subtitle": "Frontend craft + backend architecture",
-      "badge": "Build Quality",
-      "description": "I develop modern digital products with strong frontend execution, scalable backend foundations and a clear focus on maintainability."
-    },
-    "systems": {
-      "period": "Specialization",
-      "title": "Real-Time and Connected Systems",
-      "subtitle": "Dashboards, sockets, MQTT and live workflows",
-      "badge": "Systems",
-      "description": "I enjoy building products that stay connected, reactive and alive — from telemetry dashboards to real-time product experiences."
-    },
-    "product": {
-      "period": "Mindset",
-      "title": "Product-Oriented Delivery",
-      "subtitle": "User value, business value and polish",
-      "badge": "Product Thinking",
-      "description": "Beyond implementation, I focus on how the product feels, how it scales, and how it supports real goals for users and teams."
+    "eyebrow": "Experience",
+    "title": "Professional experience",
+    "description": "Independent product development and institutional software, from frontend and backend to security and support.",
+    "items": {
+      "engineering": {
+        "period": "2024 — 2026",
+        "title": "Software Engineer · FORTES",
+        "subtitle": "SIGIES · NestJS and Angular",
+        "badge": "Professional role",
+        "description": "Developed modules for the new SIGIES version, including user-role functionality, and supported the legacy system."
+      },
+      "systems": {
+        "period": "2026 — present",
+        "title": "KWAD · B2B SaaS",
+        "subtitle": "End-to-end product development",
+        "badge": "Independent product · beta in production",
+        "description": "Multi-tenant architecture with API, back-office, storefront, platform administration and landing. React, TypeScript, Fastify, Prisma and PostgreSQL."
+      },
+      "product": {
+        "period": "2025",
+        "title": "IoT research",
+        "subtitle": "UCIENCIA · Connected systems",
+        "badge": "Research",
+        "description": "Co-authored Smart IoT, a publication on secure sensor management and AI-powered automation."
+      }
     }
   }
-}
 };
 export default messages;

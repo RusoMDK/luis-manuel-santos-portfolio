@@ -47,7 +47,7 @@ export const HeroSection = () => {
           <aside aria-label={locale === "es" ? "Perfil profesional" : "Professional overview"} className="border-t border-white/25 pt-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
             <div className="flex items-center gap-2 text-xs text-white/60">
               <MapPin aria-hidden="true" size={15} className="text-emerald-300" />
-              {siteConfig.location}
+              {t("location")}
             </div>
             <div className="mt-10 border-b border-white/15 pb-5">
               <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-300/85">

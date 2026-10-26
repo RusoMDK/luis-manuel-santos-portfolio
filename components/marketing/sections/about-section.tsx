@@ -27,7 +27,7 @@ export function AboutSection() {
                   </div>
 
                   <div className="w-fit rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs uppercase tracking-[0.18em] text-white/55">
-                    {siteConfig.availability}
+                    {t("availability")}
                   </div>
                 </div>
 
@@ -49,7 +49,7 @@ export function AboutSection() {
                   </h3>
 
                   <p className="mt-3 text-xs uppercase tracking-[0.2em] text-white/45 sm:text-sm">
-                    Full Stack Developer
+                    {t("role")}
                   </p>
 
                   <p className="mt-4 text-base leading-7 text-white/65 sm:leading-8">
@@ -60,7 +60,7 @@ export function AboutSection() {
                 <div className="mt-5 flex flex-wrap gap-3">
                   <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/65">
                     <MapPin className="h-4 w-4 text-cyan-300" />
-                    {siteConfig.location}
+                    {t("location")}
                   </div>
 
                   <div className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-white/65">

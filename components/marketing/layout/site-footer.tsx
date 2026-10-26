@@ -16,7 +16,6 @@ export function SiteFooter() {
 
   const navItems = [
     { label: t("work"), href: `${homeHref}#projects` },
-    { label: t("services"), href: `${homeHref}#services` },
     { label: t("stack"), href: `${homeHref}#stack` },
     { label: t("experience"), href: `${homeHref}#experience` },
     { label: t("about"), href: `${homeHref}#about` },

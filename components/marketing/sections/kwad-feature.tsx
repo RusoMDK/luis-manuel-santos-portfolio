@@ -28,7 +28,7 @@ export const KwadFeature = ({ locale }: KwadFeatureProps) => {
       <Container>
         <div className="mb-10 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">
           <span>{isSpanish ? "02 / Proyecto destacado" : "02 / Featured work"}</span>
-          <span className="text-white/50">KWAD / MiNegocio</span>
+          <span className="text-white/50">KWAD</span>
         </div>
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
           <div className="space-y-7">
