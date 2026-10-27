@@ -12,7 +12,7 @@ export function SiteHeader({ locale }: SiteHeaderProps) {
 
   const links = [
     { href: "/#kwad", label: t("kwad") },
-    { href: "/#trabajo", label: t("work") },
+    { href: "/#trayectoria", label: t("roll") },
     { href: "/#sobre-mi", label: t("about") },
     { href: "/#contacto", label: t("contact") },
   ];

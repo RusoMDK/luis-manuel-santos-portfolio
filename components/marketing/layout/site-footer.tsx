@@ -1,6 +1,5 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { photoCredits, siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
 
 type SiteFooterProps = {
   locale: "es" | "en";
@@ -9,7 +8,6 @@ type SiteFooterProps = {
 export function SiteFooter({ locale }: SiteFooterProps) {
   const t = useTranslations("Footer");
   const nav = useTranslations("Contact");
-  const havana = photoCredits[0];
 
   return (
     <footer className="site-footer field-stone">
@@ -20,7 +18,6 @@ export function SiteFooter({ locale }: SiteFooterProps) {
             <p>{t("message")}</p>
           </div>
           <div className="ticket-back-address">
-            <Image className="footer-stamp" src={havana.src} width={88} height={117} alt="" />
             <ul aria-label={t("linksLabel")}>
               <li>
                 <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
@@ -44,20 +41,6 @@ export function SiteFooter({ locale }: SiteFooterProps) {
           </div>
           <div className="ticket-back-imprint">
             <p>{t("rights")}</p>
-            <p>
-              {t("credits")}:{" "}
-              {photoCredits.map((photo, index) => (
-                <span key={photo.id}>
-                  <a href={photo.source}>«{photo.title}»</a>{" "}
-                  {t.rich("creditsBy", {
-                    author: photo.author,
-                    name: photo.license,
-                    license: (chunks) => <a href={photo.licenseUrl}>{chunks}</a>,
-                  })}
-                  {index < photoCredits.length - 1 ? "; " : "."}
-                </span>
-              ))}
-            </p>
           </div>
         </div>
       </div>

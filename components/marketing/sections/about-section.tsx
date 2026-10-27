@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { photoCredits, siteConfig } from "@/config/site";
-
-const valladolid = photoCredits[1];
+import { siteConfig } from "@/config/site";
 
 export function AboutSection() {
   const t = useTranslations("About");
@@ -27,7 +25,6 @@ export function AboutSection() {
             <p>{t("p1")}</p>
             <p>{t("p2")}</p>
             <p>{t("p3")}</p>
-            <p>{t("p4")}</p>
             <p className="signature">{t("signature")}</p>
             <p className="signature-role">{t("role")}</p>
           </div>
@@ -36,19 +33,6 @@ export function AboutSection() {
             <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
           </div>
         </article>
-        <figure className="arrival" data-reveal>
-          <div className="photo-crop">
-            <Image
-              src={valladolid.src}
-              width={valladolid.width}
-              height={valladolid.height}
-              alt={t("photoAlt")}
-              sizes="(max-width: 900px) 100vw, 40vw"
-              data-drift
-            />
-          </div>
-          <figcaption className="caption">{t("photoCaption")}</figcaption>
-        </figure>
       </div>
     </section>
   );

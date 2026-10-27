@@ -4,13 +4,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
+import { MODULE_ENTER_EVENT } from "@/lib/events";
 
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
 /**
  * The page's motion layer: headlines rise line by line, section parts rise in as
- * they enter, found photographs drift with the scroll. Content is only hidden once
+ * they enter, the roll's years turn over digit by digit. Content is only hidden once
  * this script runs, and nothing moves when the visitor prefers reduced motion.
+ * It also tells the KWAD module index which row crosses the middle of the screen.
  */
 export default function MotionLayer({ scope }: { scope: React.RefObject<HTMLDivElement | null> }) {
   useGSAP(
@@ -54,27 +56,36 @@ export default function MotionLayer({ scope }: { scope: React.RefObject<HTMLDivE
             }),
         });
 
-        for (const image of gsap.utils.toArray<HTMLElement>("[data-drift]")) {
-          gsap.fromTo(
-            image,
-            { scale: 1.12, yPercent: -4 },
-            {
-              scale: 1,
-              yPercent: 4,
-              ease: "none",
-              scrollTrigger: { trigger: image.parentElement, start: "top bottom", end: "bottom top", scrub: true },
-            },
-          );
+        // Each year in the roll's margin turns over, digit by digit, as its copies arrive.
+        for (const year of gsap.utils.toArray<HTMLElement>("[data-roll-year]")) {
+          SplitText.create(year, {
+            type: "chars",
+            mask: "chars",
+            aria: "none",
+            onSplit: (self) =>
+              gsap.from(self.chars, {
+                yPercent: 100,
+                duration: 0.55,
+                ease: "power3.out",
+                stagger: 0.06,
+                scrollTrigger: { trigger: year.parentElement, start: "top 75%", once: true },
+              }),
+          });
         }
+      });
 
-        for (const folder of gsap.utils.toArray<HTMLElement>(".folder")) {
-          gsap.from(folder.querySelectorAll(".folder-tab, .folder-meta, .folder-stack, .folder-text"), {
-            y: 24,
-            autoAlpha: 0,
-            duration: 0.6,
-            ease: "power2.out",
-            stagger: 0.07,
-            scrollTrigger: { trigger: folder, start: "top 80%", once: true },
+      // The KWAD module frame follows the scroll on desktop: the row crossing the middle
+      // of the screen becomes the active one. This is state, not motion, so it runs
+      // with reduced motion too.
+      mm.add("(min-width: 901px)", () => {
+        for (const row of gsap.utils.toArray<HTMLElement>(".module-row")) {
+          ScrollTrigger.create({
+            trigger: row,
+            start: "top center",
+            end: "bottom center",
+            onToggle: (self) => {
+              if (self.isActive) row.dispatchEvent(new Event(MODULE_ENTER_EVENT, { bubbles: true }));
+            },
           });
         }
       });

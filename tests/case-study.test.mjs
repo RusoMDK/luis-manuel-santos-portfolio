@@ -41,14 +41,14 @@ test("case study provides content for both locales", () => {
   assert.match(source, /purpose\[locale\]/);
 });
 
-test("KWAD is the only case study; other work links to its repository", () => {
+test("KWAD is the only case study; the roll links other work to its repository", () => {
   assert.equal(existsSync(new URL("../app/[locale]/(marketing)/projects", import.meta.url)), false);
   const config = readSource("config/site.ts");
   assert.doesNotMatch(config, /caseStudySlug/);
-  const section = readSource("components/marketing/sections/projects-section.tsx");
+  const section = readSource("components/marketing/sections/roll-section.tsx");
   assert.doesNotMatch(section, /\/projects\//);
-  assert.match(section, /project\.repoHref/);
-  for (const repo of ["iot-testbench", "PlataformaIoT", "Tienda-Virtual"]) {
+  assert.match(section, /entry\.repoHref/);
+  for (const repo of ["iot-testbench", "PlataformaIoT", "ProxyAgent-UCI", "Tienda-Virtual"]) {
     assert.match(config, new RegExp(`repoHref: "https://github.com/RusoMDK/${repo}"`));
   }
 });

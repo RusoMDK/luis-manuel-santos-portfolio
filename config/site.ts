@@ -34,27 +34,34 @@ export const ticketStack = [
   "PostgreSQL",
 ] as const;
 
-export const projects = [
-  {
-    id: "sigies",
-  },
-  {
-    id: "iotTestbench",
-    repoHref: "https://github.com/RusoMDK/iot-testbench",
-  },
-  {
-    id: "iotPlatform",
-    repoHref: "https://github.com/RusoMDK/PlataformaIoT",
-  },
-  {
-    id: "ecommerce",
-    repoHref: "https://github.com/RusoMDK/Tienda-Virtual",
-  },
+// The roll: one dated copy per stage, oldest first. Months are 1-based; null
+// when only the year is certain. The copy for each entry lives in messages (Roll).
+export const rollEntries = [
+  { id: "uci", year: 2019, month: null },
+  { id: "iotModule", year: 2023, month: 11 },
+  { id: "thesis", year: 2024, month: 6, repoHref: "https://github.com/RusoMDK/iot-testbench" },
+  { id: "sigies", year: 2024, month: 9 },
+  { id: "iotPlatform", year: 2025, month: 4, repoHref: "https://github.com/RusoMDK/PlataformaIoT" },
+  { id: "proxyAgent", year: 2025, month: 6, repoHref: "https://github.com/RusoMDK/ProxyAgent-UCI" },
+  // September or October 2025: no certain month, so it prints the year alone.
+  { id: "smartIot", year: 2025, month: null },
+  { id: "ecommerce", year: 2025, month: 11, repoHref: "https://github.com/RusoMDK/Tienda-Virtual" },
+  { id: "kwad", year: 2026, month: 4, anchor: "#kwad" },
+  { id: "sesamo", year: 2026, month: 6 },
+  // The ground turns from walnut to stone at this copy.
+  { id: "valladolid", year: 2026, month: 10, stone: true },
 ] as const;
 
-export type ProjectId = (typeof projects)[number]["id"];
+export type RollEntryId = (typeof rollEntries)[number]["id"];
 
-// Sample data for the Havana point-of-sale demo. Prices are in USD;
+// Luisma's own photographs, cropped from public/images/invernadero/originales (not versioned).
+export const rollPhotos = {
+  thesisBench: { src: "/images/invernadero/tesis-planta-escritorio.jpg", width: 1600, height: 1200 },
+  thesisLcd: { src: "/images/invernadero/tesis-planta-lcd-temperatura.jpg", width: 1200, height: 800 },
+  seedbed: { src: "/images/invernadero/plataformaiot-semillero.jpg", width: 1500, height: 1000 },
+} as const;
+
+// Sample data for the point-of-sale demo ("I learned in Havana", in the KWAD chapter). Prices are in USD;
 // the rates are labelled as samples on the page.
 export const demoRates = { USD: 1, CUP: 650, EUR: 0.92 } as const;
 
@@ -68,29 +75,3 @@ export const demoProducts = [
 ] as const;
 
 export type DemoProductId = (typeof demoProducts)[number]["id"];
-
-export const photoCredits = [
-  {
-    id: "havana",
-    src: "/images/places/centro-habana-calle-hospital.jpg",
-    width: 1200,
-    height: 1600,
-    title: "Centro Habana Calle Hospital",
-    author: "Escla",
-    license: "CC BY 3.0",
-    licenseUrl: "https://creativecommons.org/licenses/by/3.0",
-    source: "https://commons.wikimedia.org/wiki/File:Centro_Habana_Calle_Hospital.JPG",
-  },
-  {
-    id: "valladolid",
-    src: "/images/places/calle-de-la-plateria-valladolid.jpg",
-    width: 1920,
-    height: 1279,
-    title: "Calle de la Platería (Valladolid)",
-    author: "José Luis Filpo Cabana",
-    license: "CC BY-SA 4.0",
-    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0",
-    source:
-      "https://commons.wikimedia.org/wiki/File:Calle_de_la_Plater%C3%ADa_(Valladolid).jpg",
-  },
-] as const;

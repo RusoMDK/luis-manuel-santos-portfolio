@@ -2,9 +2,8 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { PageMotion } from "@/components/common/page-motion";
 import { HeroSection } from "@/components/marketing/sections/hero-section";
-import { HavanaSection } from "@/components/marketing/sections/havana-section";
 import { KwadFeature } from "@/components/marketing/sections/kwad-feature";
-import { ProjectsSection } from "@/components/marketing/sections/projects-section";
+import { RollSection } from "@/components/marketing/sections/roll-section";
 import { AboutSection } from "@/components/marketing/sections/about-section";
 import { ContactSection } from "@/components/marketing/sections/contact-section";
 
@@ -20,9 +19,8 @@ const MarketingHomePage = async ({ params }: MarketingHomePageProps) => {
   return (
     <PageMotion>
       <HeroSection locale={locale} />
-      <HavanaSection />
       <KwadFeature />
-      <ProjectsSection />
+      <RollSection />
       <AboutSection />
       <ContactSection locale={locale} />
     </PageMotion>

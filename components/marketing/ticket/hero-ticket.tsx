@@ -19,7 +19,7 @@ export function HeroTicket() {
           <header className="ticket-center">
             <p className="ticket-strong">{t("header")}</p>
             <p>
-              {t("place")} · <span>{visit.date}</span> ·{" "}
+              {t("register")} · <span>{visit.date}</span> ·{" "}
               <span>{visit.time}</span>
             </p>
           </header>

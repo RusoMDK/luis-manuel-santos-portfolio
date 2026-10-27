@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/config/site";
 import { PageMotion } from "@/components/common/page-motion";
-import { hasPhoneCrop, Shot } from "@/components/marketing/kwad/shot";
+import { Shot } from "@/components/marketing/kwad/shot";
 
 type KwadCaseStudyProps = {
   locale: "es" | "en";
@@ -62,13 +62,13 @@ const content = {
     proof: "Diseño de interfaces de administración, desarrollo de APIs, modelado de datos, seguridad de acceso, integración entre aplicaciones y capacidad de llevar un producto complejo de extremo a extremo.",
     limitations: "El código fuente es propietario y permanece privado. Esta página explica mi contribución y decisiones técnicas sin mostrar secretos, datos de clientes ni métricas no verificadas.",
     cta: "Visitar la web del producto",
-    shotAlt: "Recepción de mercancía en KWAD: orden de compra con productos, cantidades y coste por línea en CUP",
+    shotAlt: "Ítems de una compra recibida en KWAD: producto, unidad, cantidad, coste y total en dólares, cada uno con su importe registrado en CUP",
     sample: "Datos de ejemplo.",
     gallery: [
-      { shot: "terminal", alt: "Pantalla del TPV de KWAD que bloquea una terminal no vinculada", caption: "El TPV se niega a cobrar en un dispositivo no vinculado. Datos de ejemplo." },
+      { shot: "terminal", alt: "TPV de KWAD en un dispositivo sin vincular: pide el código de vinculación del panel administrativo antes de operar", caption: "El TPV se niega a cobrar en un dispositivo no vinculado. Datos de ejemplo." },
       { shot: "ledger", alt: "Movimientos de inventario de KWAD con el stock antes y después", caption: "Datos de ejemplo." },
       { shot: "currency", alt: "Catálogo de KWAD con precio en USD y base en CUP", caption: "Datos de ejemplo." },
-      { shot: "store", alt: "Panel de tienda online de KWAD con su catálogo público y los apartados de configuración", caption: "Datos de ejemplo." },
+      { shot: "audit", alt: "Registro de auditoría de KWAD: el total de una compra, antes 547.46 y después 335380", caption: "Auditoría con el antes y el después de cada cambio. Datos de ejemplo." },
     ],
   },
   en: {
@@ -91,13 +91,13 @@ const content = {
     proof: "Administrative UI design, API development, data modeling, access security, integration between applications and end-to-end ownership of a complex product.",
     limitations: "The source code is proprietary and remains private. This case study describes my work without exposing secrets, tenant data or unverified business metrics.",
     cta: "Visit the product website",
-    shotAlt: "Goods receipt in KWAD: a purchase order with products, quantities and line cost in CUP",
+    shotAlt: "Items of a received purchase in KWAD: product, unit, quantity, cost and total in dollars, each with its amount recorded in CUP",
     sample: "Sample data.",
     gallery: [
-      { shot: "terminal", alt: "KWAD point-of-sale screen blocking an unpaired till", caption: "The till refuses to take payments on an unpaired device. Sample data." },
+      { shot: "terminal", alt: "KWAD point of sale on an unpaired device: it asks for the pairing code from the admin panel before it will operate", caption: "The till refuses to take payments on an unpaired device. Sample data." },
       { shot: "ledger", alt: "KWAD inventory movements with stock before and after", caption: "Sample data." },
       { shot: "currency", alt: "KWAD catalogue with USD price and CUP base", caption: "Sample data." },
-      { shot: "store", alt: "KWAD online shop panel with its public catalogue and setup sections", caption: "Sample data." },
+      { shot: "audit", alt: "KWAD audit log: a purchase total, before 547.46 and after 335380", caption: "Audit with the before and after of every change. Sample data." },
     ],
   },
 } as const;
@@ -125,9 +125,9 @@ export const KwadCaseStudy = ({ locale }: KwadCaseStudyProps) => {
         </header>
 
         <figure className="frame case-shot">
-        <Shot id="reception" alt={copy.shotAlt} sizes="100vw" priority />
-        <figcaption className="caption">{copy.sample}</figcaption>
-      </figure>
+          <Shot id="reception" alt={copy.shotAlt} priority />
+          <figcaption className="caption">{copy.sample}</figcaption>
+        </figure>
 
         <section className="frame grid case-section" aria-labelledby="challenge-heading">
           <h2 id="challenge-heading" className="heading case-side" data-reveal>{copy.overviewTitle}</h2>
@@ -136,17 +136,13 @@ export const KwadCaseStudy = ({ locale }: KwadCaseStudyProps) => {
 
         <ul className="frame grid case-gallery">
           {copy.gallery.map((item) => (
-          <li
-            key={item.shot}
-            className={hasPhoneCrop(item.shot) ? "case-gallery-item" : "case-gallery-item phone-hidden"}
-            data-reveal
-          >
-            <figure>
-              <Shot id={item.shot} alt={item.alt} sizes="(max-width: 900px) 100vw, 45vw" />
-              <figcaption className="caption">{item.caption}</figcaption>
-            </figure>
-          </li>
-        ))}
+            <li key={item.shot} className="case-gallery-item" data-reveal>
+              <figure>
+                <Shot id={item.shot} alt={item.alt} />
+                <figcaption className="caption">{item.caption}</figcaption>
+              </figure>
+            </li>
+          ))}
         </ul>
 
         <section className="frame grid case-section" aria-labelledby="architecture-heading">

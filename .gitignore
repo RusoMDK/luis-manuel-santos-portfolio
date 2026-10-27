@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Raw KWAD screenshots stay local; only the reviewed crops are published
 /public/images/kwad/*.jpg
+
+# Luisma's original photographs; only the cropped versions are published.
+/public/images/invernadero/originales/

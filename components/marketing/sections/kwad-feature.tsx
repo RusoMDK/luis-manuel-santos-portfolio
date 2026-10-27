@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/config/site";
 import { KwadModules } from "@/components/marketing/kwad/kwad-modules";
 import { Shot } from "@/components/marketing/kwad/shot";
+import { PosDemo } from "@/components/marketing/havana/pos-demo";
 
 // Technology names are not translated; they sit on the right of each slip row.
 const tenantSteps = [
@@ -15,6 +16,7 @@ const tenantSteps = [
 
 export function KwadFeature() {
   const t = useTranslations("Kwad");
+  const havana = useTranslations("Havana");
 
   return (
     <section id="kwad" className="section kwad field-walnut" aria-labelledby="kwad-title">
@@ -35,20 +37,43 @@ export function KwadFeature() {
         </div>
       </div>
 
+      {/* Where KWAD comes from: the till has to survive the network dropping mid-sale. */}
+      <div id="habana" className="frame grid havana-grid" aria-labelledby="havana-title">
+        <div className="havana-intro">
+          <h3 id="havana-title" className="heading-sub" data-split>
+            {havana("title")}
+          </h3>
+          <p className="lead" data-reveal>
+            {havana("body")}
+          </p>
+          <p className="havana-try" data-reveal>
+            {havana.rich("try", { strong: (chunks) => <strong>{chunks}</strong> })}
+          </p>
+        </div>
+        <div className="havana-demo" data-reveal>
+          <PosDemo />
+          <p className="caption">{havana("demo.note")}</p>
+        </div>
+      </div>
+
       <div className="frame">
-        <KwadModules />
+        <KwadModules
+          tail={
+            <p className="lead kwad-also-text" data-reveal>
+              {t("also")}
+            </p>
+          }
+        />
       </div>
 
       <div className="frame grid kwad-also">
-        <p className="lead kwad-also-text" data-reveal>
-          {t("also")}
-        </p>
         <figure className="kwad-also-shot kwad-also-reception" data-reveal>
-          <Shot id="reception" alt={t("alsoReceptionAlt")} sizes="(max-width: 900px) 100vw, 55vw" />
+          <Shot id="reception" alt={t("alsoReceptionAlt")} />
           <figcaption className="caption">{t("sample")}</figcaption>
         </figure>
         <figure className="kwad-also-shot kwad-also-audit" data-reveal>
-          <Shot id="audit" alt={t("alsoAuditAlt")} sizes="(max-width: 900px) 100vw, 55vw" />
+          <Shot id="audit" alt={t("alsoAuditAlt")} />
+          <figcaption className="caption">{t("alsoAuditCaption")}</figcaption>
         </figure>
       </div>
 

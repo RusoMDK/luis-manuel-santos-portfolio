@@ -11,7 +11,7 @@ declare const messages: {
     "label": "Main",
     "home": "Luisma, home",
     "kwad": "KWAD",
-    "work": "Work",
+    "roll": "Journey",
     "about": "About",
     "contact": "Contact",
     "cv": "CV"
@@ -26,25 +26,24 @@ declare const messages: {
   "Ticket": {
     "label": "Sales ticket: Luis Manuel Santos, full stack developer, available now",
     "header": "LUISMA · SALES TICKET",
-    "place": "Valladolid",
     "item": "Luis Manuel Santos",
     "qty": "× 1",
     "role": "Full Stack Developer",
     "included": "incl.",
     "total": "AVAILABLE",
     "totalValue": "NOW",
-    "totalNote": "Valladolid · remote or hybrid",
+    "totalNote": "Remote or hybrid",
     "barcodeLabel": "CV · scan or tap",
     "barcodeAria": "Open the CV as a PDF",
     "key": "Key",
     "thanks": "thank you",
-    "keyAria": "Go to the idempotent checkout demo"
+    "keyAria": "Go to the idempotent checkout demo",
+    "register": "Till 01"
   },
   "Havana": {
     "title": "I learned in Havana",
-    "body": "There is no Stripe there, and the connection drops halfway through a payment. Software has to hold up: three currencies, retries and not one duplicated sale.",
-    "photoAlt": "A street in Centro Habana seen from a balcony: peeling facades, cables overhead and people walking in the road",
-    "photoCaption": "Calle Hospital, Centro Habana.",
+    "body": "There is no Stripe there, and the connection drops halfway through a payment. KWAD comes from that: three currencies, retries and not one duplicated sale.",
+    "try": "<strong>Cut the network and charge.</strong> Press Charge as many times as you like: when the connection comes back, one sale is recorded.",
     "demo": {
       "label": "Point-of-sale demo",
       "register": "Till 1",
@@ -90,23 +89,18 @@ declare const messages: {
       "pos": {
         "title": "Point of sale by cashier and shift",
         "text": "Every sale travels with its idempotency key, and a till that is not paired cannot take payments.",
-        "alt": "KWAD point-of-sale screen blocking an unpaired till: “This terminal is not valid for operation”",
+        "alt": "KWAD point of sale on an unpaired device: it asks for the pairing code generated in the admin panel",
         "caption": "The till refuses to take payments on an unpaired device. Sample data."
       },
       "inventory": {
         "title": "Inventory with a ledger",
         "text": "Every movement stores the stock before and after. Transfers between shops and warehouses.",
-        "alt": "KWAD inventory movements table showing quantity and stock before and after, for example 30 (0 → 30)"
+        "alt": "KWAD inventory movements: each product with the quantity and the stock before and after, for example 30 (0 → 30)"
       },
       "currency": {
         "title": "Multi-currency",
         "text": "Accounting in several currencies, with the rate synced through a queue (BullMQ + Redis).",
-        "alt": "KWAD catalogue showing the price in dollars with its base in Cuban pesos, for example 1.16 USD on a 780 CUP base"
-      },
-      "store": {
-        "title": "The retailer's online shop",
-        "text": "Each retailer publishes a shop that uses the back-office catalogue and stock.",
-        "alt": "KWAD online shop panel with its public catalogue and setup sections"
+        "alt": "A KWAD catalogue product with a sale price of 1.16 USD on a 780 CUP base, cost, profit and margin"
       },
       "console": {
         "title": "Platform console",
@@ -124,9 +118,10 @@ declare const messages: {
       "demoPlan": "Beta",
       "active": "Active"
     },
-    "also": "Also: purchasing, cash registers, an audit log with the before and after of every change, and CSV, XLSX and PDF reports.",
-    "alsoReceptionAlt": "Goods receipt in KWAD: a purchase order with products, quantities and line cost in CUP",
-    "alsoAuditAlt": "KWAD audit log with purchase update events",
+    "also": "Also: each retailer's online shop, purchasing, cash registers, an audit log with the before and after of every change, and CSV, XLSX and PDF reports.",
+    "alsoReceptionAlt": "Items of a received purchase in KWAD: product, unit, quantity, cost and total in dollars, each with its amount recorded in CUP",
+    "alsoAuditAlt": "KWAD audit log: the total field of a purchase, before 547.46 and after 335380",
+    "alsoAuditCaption": "Audit: a purchase total before and after it was recorded in CUP. Sample data.",
     "tenant": {
       "title": "Every request knows whose it is",
       "steps": {
@@ -140,48 +135,278 @@ declare const messages: {
       "note": "Turborepo monorepo · Railway and Vercel."
     }
   },
-  "Work": {
-    "title": "Before KWAD",
-    "repo": "View repository",
-    "items": {
-      "sigies": {
-        "title": "SIGIES",
-        "meta": "FORTES · 2024–2026",
-        "description": "Software engineer on Cuba's national university admissions platform. Supporting the PHP system through the peak of every admissions round, new modules in NestJS and Angular, incremental migration and PostgreSQL modelling.",
-        "stack": "PHP · NestJS · Angular · PostgreSQL"
+  "Roll": {
+    "title": "The roll",
+    "lead": "The till keeps a copy of every sale on its audit roll. This is mine, year by year.",
+    "copy": "COPY",
+    "total": "TOTAL",
+    "months": [
+      "JAN",
+      "FEB",
+      "MAR",
+      "APR",
+      "MAY",
+      "JUN",
+      "JUL",
+      "AUG",
+      "SEP",
+      "OCT",
+      "NOV",
+      "DEC"
+    ],
+    "entries": {
+      "uci": {
+        "items": [
+          {
+            "name": "Computer Science Engineering",
+            "lines": [
+              "UCI, Havana"
+            ]
+          }
+        ],
+        "total": "OPEN"
       },
-      "iotTestbench": {
-        "title": "IoT Testbench",
-        "meta": "Thesis · 2024",
-        "description": "A test bench for physical sensors: readings arrive over MQTT, NestJS stores them in PostgreSQL with TypeORM and Angular displays them, with JWT and roles.",
-        "stack": "MQTT · NestJS · TypeORM · PostgreSQL · Angular"
+      "iotModule": {
+        "items": [
+          {
+            "name": "First IoT project",
+            "lines": [
+              "Storage module for IoT applications, in a UCI R&D project",
+              [
+                "incl.",
+                "Python"
+              ]
+            ]
+          }
+        ],
+        "total": "NO COPY",
+        "note": "Private repository: not printed."
+      },
+      "thesis": {
+        "items": [
+          {
+            "name": "Thesis: IoT Testbench",
+            "lines": [
+              [
+                "incl.",
+                "MQTT → NestJS → PostgreSQL → Angular"
+              ],
+              [
+                "incl.",
+                "TypeORM · JWT and roles"
+              ]
+            ]
+          },
+          {
+            "name": "Prototype",
+            "lines": [
+              [
+                "ESP32",
+                "brain"
+              ],
+              [
+                "DHT22",
+                "air"
+              ],
+              [
+                "Moisture sensor",
+                "soil"
+              ],
+              [
+                "LCD 16x2",
+                "readings"
+              ],
+              [
+                "Submersible pump + dual relay",
+                "watering"
+              ],
+              [
+                "9 V battery",
+                "pump"
+              ]
+            ]
+          }
+        ],
+        "total": "ENGINEER"
+      },
+      "sigies": {
+        "items": [
+          {
+            "name": "FORTES · SIGIES",
+            "lines": [
+              "Cuba's national platform for admission to higher education",
+              [
+                "incl.",
+                "support for the PHP system at the peak of every admissions round"
+              ],
+              [
+                "incl.",
+                "new modules in NestJS and Angular"
+              ],
+              [
+                "incl.",
+                "incremental migration and PostgreSQL modelling"
+              ]
+            ]
+          }
+        ],
+        "total": "2024–2026"
       },
       "iotPlatform": {
-        "title": "PlataformaIoT",
-        "meta": "Personal project · 2025",
-        "description": "Real-time telemetry: MQTT, a worker writing to MongoDB and Socket.IO feeding configurable dashboards, with alerts, exports and 2FA.",
-        "stack": "MQTT · Node.js · MongoDB · Socket.IO · React"
+        "items": [
+          {
+            "name": "PlataformaIoT",
+            "lines": [
+              "A seedbed, at a bigger scale: more sensors, lights and automation",
+              [
+                "incl.",
+                "MQTT · worker → MongoDB"
+              ],
+              [
+                "incl.",
+                "Socket.IO · dashboards"
+              ],
+              [
+                "incl.",
+                "board configurator with pins"
+              ],
+              [
+                "incl.",
+                "alerts · export · 2FA"
+              ],
+              [
+                "incl.",
+                "Cypress E2E tests"
+              ],
+              "Run on a schedule with a real-time clock module (RTC): around 8:00 it switched the pump on to water and the lights off; around 20:00 it switched the lights on."
+            ]
+          }
+        ],
+        "total": "BIGGER SCALE"
+      },
+      "proxyAgent": {
+        "items": [
+          {
+            "name": "ProxyAgent",
+            "lines": [
+              "Desktop app for working behind the university's NTLM proxy",
+              [
+                "incl.",
+                "Electron + React"
+              ],
+              [
+                "incl.",
+                "NTLM accounts, CNTLM and system proxy"
+              ],
+              [
+                "incl.",
+                "SSH tunnels · app launcher"
+              ]
+            ]
+          }
+        ],
+        "total": "PROTOTYPE"
+      },
+      "smartIot": {
+        "items": [
+          {
+            "name": "“Smart IoT”, UCIENCIA 2025",
+            "lines": []
+          }
+        ],
+        "total": "CO-AUTHOR"
       },
       "ecommerce": {
-        "title": "Tienda Virtual",
-        "meta": "Personal project · 2025",
-        "description": "An online shop with catalogue, cart, multi-currency and an admin panel. It became the base of the KWAD storefront.",
-        "stack": "Fastify · Prisma · PostgreSQL · React"
+        "items": [
+          {
+            "name": "Tienda Virtual",
+            "lines": [
+              "E-commerce",
+              [
+                "incl.",
+                "Fastify · Prisma · PostgreSQL · React"
+              ]
+            ]
+          }
+        ],
+        "total": "BASE OF KWAD'S STOREFRONT"
+      },
+      "kwad": {
+        "items": [
+          {
+            "name": "KWAD",
+            "lines": []
+          }
+        ],
+        "total": "IN PRODUCTION ↑"
+      },
+      "sesamo": {
+        "items": [
+          {
+            "name": "Sésamo",
+            "lines": [
+              "ProxyAgent, rewritten from scratch",
+              [
+                "incl.",
+                "Tauri 2 · Rust · React/TypeScript"
+              ],
+              [
+                "incl.",
+                "one trait per domain, implemented for macOS, Windows and Linux"
+              ],
+              [
+                "incl.",
+                "processes launched without a shell"
+              ],
+              [
+                "incl.",
+                "security rules drawn from real failures of the prototype"
+              ]
+            ]
+          }
+        ],
+        "total": "IN DEVELOPMENT",
+        "note": "Private."
+      },
+      "valladolid": {
+        "items": [
+          {
+            "name": "Move: Havana → Valladolid",
+            "lines": []
+          }
+        ],
+        "total": "TO BE CONTINUED"
       }
+    },
+    "kwadAria": "Go to KWAD, further up",
+    "thesisPhotoAlt": "The thesis prototype on a table: a breadboard with the ESP32 and the LCD (“Planta: Humeda / Humedad: 79%”), the dual relay, the 9 V battery, the pump in a cup of water and a potted plant with the soil moisture sensor",
+    "thesisLcdAlt": "The prototype's LCD reading “Temp: 25.60°C” and “IC: 27.06°C”",
+    "thesisCaption": "The thesis prototype, June 2024.",
+    "seedbedAlt": "The PlataformaIoT seedbed: a tray of soil with seedlings, wires and boards with their displays at the sides",
+    "seedbedCaption": "The PlataformaIoT seedbed, April 2025.",
+    "lcd": {
+      "label": "Replica of the prototype's 16x2 LCD",
+      "aria": "LCD: {state}. Soil moisture: {moisture}%. Temperature: {temp} °C. Heat index: {heat} °C. Pump: {pump}.",
+      "wet": "plant moist",
+      "dry": "plant dry",
+      "on": "on",
+      "off": "off",
+      "dryButton": "Dry the soil",
+      "relayOpen": "Relay open · pump off",
+      "relayClosed": "Relay closed · pump on",
+      "threshold": "Simulation threshold: 30%",
+      "note": "Simulation: values generated in your browser."
     }
   },
   "About": {
     "title": "About me",
     "portraitAlt": "Portrait of Luis Manuel Santos",
     "p1": "I'm Luisma. I trained as a Computer Science Engineer at UCI (2019–2024). I took postgraduate studies in Advanced Computing (UCI, 2025–2026).",
-    "p2": "At FORTES I spent two years on SIGIES, a system that takes its peaks every time an admissions round opens.",
-    "p3": "I co-authored “Smart IoT” (UCIENCIA 2025). My English is A2 and I am preparing for B2.",
-    "p4": "I have lived in Valladolid since October. I have a work permit and can start now. I am looking for full stack or backend roles: remote in Spain, or hybrid or on-site in Valladolid.",
+    "p2": "My English is A2 and I am preparing for B2.",
+    "p3": "I have a work permit and can start now. I am looking for full stack or backend roles: remote in Spain, or hybrid or on-site in Valladolid.",
     "signature": "Luis Manuel Santos Lezcano",
     "role": "Full stack developer",
-    "tearOff": "Tear off and write",
-    "photoAlt": "Calle de la Platería in Valladolid: a stone pedestrian street with iron balconies and a church facade at the end",
-    "photoCaption": "Calle de la Platería, Valladolid."
+    "tearOff": "Tear off and write"
   },
   "Contact": {
     "title": "Email me",
@@ -211,9 +436,7 @@ declare const messages: {
     "title": "Thank you for your visit",
     "message": "This ticket does not expire. If you need someone who takes a product from the database to the till, email me.",
     "linksLabel": "Links",
-    "rights": "© 2026 Luis Manuel Santos · Valladolid",
-    "credits": "Photos",
-    "creditsBy": "by {author}, <license>{name}</license>, via Wikimedia Commons, cropped"
+    "rights": "© 2026 Luis Manuel Santos"
   },
   "Metadata": {
     "title": "Luis Manuel Santos | Full stack developer in Valladolid",
