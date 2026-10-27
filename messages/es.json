@@ -87,7 +87,8 @@
       "pos": {
         "title": "TPV por cajero y turno",
         "text": "Cada venta viaja con su clave de idempotencia y la terminal no cobra si no está vinculada.",
-        "alt": "Pantalla del TPV de KWAD que bloquea una terminal no vinculada: «Esta terminal no es válida para operar»"
+        "alt": "Pantalla del TPV de KWAD que bloquea una terminal no vinculada: «Esta terminal no es válida para operar»",
+        "caption": "El TPV se niega a cobrar en un dispositivo no vinculado. Datos de ejemplo."
       },
       "inventory": {
         "title": "Inventario con libro",
@@ -102,7 +103,7 @@
       "store": {
         "title": "Tienda online del comercio",
         "text": "Cada comercio publica su tienda con el catálogo y el inventario del back-office.",
-        "alt": "Panel de tienda online de KWAD con el estado «Publicada» y los apartados de configuración"
+        "alt": "Panel de tienda online de KWAD con su catálogo público y los apartados de configuración"
       },
       "console": {
         "title": "Consola de plataforma",

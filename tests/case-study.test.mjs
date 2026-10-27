@@ -52,3 +52,34 @@ test("KWAD is the only case study; other work links to its repository", () => {
     assert.match(config, new RegExp(`repoHref: "https://github.com/RusoMDK/${repo}"`));
   }
 });
+
+test("old case-study URLs redirect, with and without a locale prefix", async () => {
+  // Evaluate the redirects() list from next.config.ts without loading Next.js.
+  const source = readSource("next.config.ts");
+  const body = source.slice(source.indexOf("async redirects()"), source.indexOf("\n  },\n};"));
+  const list = body.slice(body.indexOf("return [") + "return ".length, body.lastIndexOf("];") + 1);
+  const redirects = new Function(`return ${list}`)();
+
+  const match = (path) => {
+    for (const rule of redirects) {
+      const pattern = new RegExp(
+        "^" +
+          rule.source
+            .replace(/\/:locale\(es\|en\)/, "/(es|en)")
+            .replace(/\/:slug\*/, "(?:/.*)?") +
+          "$",
+      );
+      const found = path.match(pattern);
+      if (found) return rule.destination.replace(":locale", found[1] ?? "");
+    }
+    return null;
+  };
+
+  for (const prefix of ["", "/es", "/en"]) {
+    assert.equal(match(`${prefix}/projects/iot-platform`), "https://github.com/RusoMDK/PlataformaIoT");
+    assert.equal(match(`${prefix}/projects/ecommerce`), "https://github.com/RusoMDK/Tienda-Virtual");
+    assert.equal(match(`${prefix}/projects/creative-platform`), prefix || "/");
+  }
+  assert.equal(match("/es/kwad"), null);
+  assert.ok(redirects.every((rule) => rule.source.startsWith("/")));
+});

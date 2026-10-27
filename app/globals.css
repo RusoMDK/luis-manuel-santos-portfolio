@@ -317,8 +317,17 @@ a {
 
 /* ---------- Hero ---------- */
 
+/* The hero is as tall as its content, so Havana shows below it on a 1440×900 screen. */
 .hero {
-  padding-block: 56px 168px;
+  padding-block: 56px 64px;
+}
+
+.havana {
+  padding-top: 96px;
+}
+
+.kwad {
+  padding-top: min(120px, var(--section));
 }
 
 .hero-grid {
@@ -352,6 +361,12 @@ a {
 /* The ticket prints line by line, top to bottom, and ends in a torn edge. */
 .printer {
   grid-column: 9 / 13;
+  perspective: 1200px;
+}
+
+.ticket {
+  transform-origin: 50% 0;
+  will-change: transform;
 }
 
 .printer-mouth {
@@ -740,7 +755,7 @@ a {
 /* ---------- KWAD ---------- */
 
 .kwad-head {
-  align-items: end;
+  align-items: start;
   row-gap: 32px;
 }
 
@@ -835,11 +850,14 @@ a {
 }
 
 .shot {
+  display: block;
   background: var(--paper);
 }
 
 .shot img {
+  display: block;
   width: 100%;
+  height: auto;
 }
 
 .console {
@@ -1605,6 +1623,9 @@ a {
   .hero-lead {
     margin-top: 24px;
     font-size: 1.125rem;
+    /* The fallback face can wrap one line more than Libre Franklin; reserving four
+       lines keeps the ticket below from moving when the font arrives. */
+    min-height: 4lh;
   }
 
   .hero-actions {
@@ -1653,8 +1674,14 @@ a {
     gap: 40px;
   }
 
-  .module-frame {
+  .module-frame,
+  .phone-hidden {
     display: none;
+  }
+
+  /* Screenshots run edge to edge on a phone, so a 352px crop shows at 1.1×. */
+  .shot {
+    margin-inline: calc(var(--m) * -1);
   }
 
   .module-inline {

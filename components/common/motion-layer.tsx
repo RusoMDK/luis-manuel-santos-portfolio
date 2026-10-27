@@ -33,7 +33,7 @@ export default function MotionLayer({ scope }: { scope: React.RefObject<HTMLDivE
                 duration: 0.7,
                 ease: "power3.out",
                 stagger: 0.07,
-                scrollTrigger: { trigger: element, start: "top 88%", once: true },
+                scrollTrigger: { trigger: element, start: "top 96%", once: true },
               }),
           });
         }
@@ -77,6 +77,36 @@ export default function MotionLayer({ scope }: { scope: React.RefObject<HTMLDivE
             scrollTrigger: { trigger: folder, start: "top 80%", once: true },
           });
         }
+      });
+
+      // The paper leans towards the pointer, only with a precise pointer that can hover.
+      mm.add("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)", () => {
+        const printer = document.querySelector<HTMLElement>(".printer");
+        const paper = printer?.querySelector<HTMLElement>(".ticket");
+        if (!printer || !paper) return;
+
+        const tiltX = gsap.quickTo(paper, "rotationX", { duration: 0.6, ease: "power3.out" });
+        const tiltY = gsap.quickTo(paper, "rotationY", { duration: 0.6, ease: "power3.out" });
+
+        const onMove = (event: PointerEvent) => {
+          const box = printer.getBoundingClientRect();
+          const x = (event.clientX - box.left) / box.width - 0.5;
+          const y = (event.clientY - box.top) / box.height - 0.5;
+          tiltY(x * 7);
+          tiltX(-y * 5);
+        };
+        const onLeave = () => {
+          tiltX(0);
+          tiltY(0);
+        };
+
+        printer.addEventListener("pointermove", onMove);
+        printer.addEventListener("pointerleave", onLeave);
+        return () => {
+          printer.removeEventListener("pointermove", onMove);
+          printer.removeEventListener("pointerleave", onLeave);
+          gsap.set(paper, { clearProps: "transform" });
+        };
       });
     },
     { scope },

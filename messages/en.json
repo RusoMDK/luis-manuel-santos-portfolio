@@ -87,7 +87,8 @@
       "pos": {
         "title": "Point of sale by cashier and shift",
         "text": "Every sale travels with its idempotency key, and a till that is not paired cannot take payments.",
-        "alt": "KWAD point-of-sale screen blocking an unpaired till: “This terminal is not valid for operation”"
+        "alt": "KWAD point-of-sale screen blocking an unpaired till: “This terminal is not valid for operation”",
+        "caption": "The till refuses to take payments on an unpaired device. Sample data."
       },
       "inventory": {
         "title": "Inventory with a ledger",
@@ -102,7 +103,7 @@
       "store": {
         "title": "The retailer's online shop",
         "text": "Each retailer publishes a shop that uses the back-office catalogue and stock.",
-        "alt": "KWAD online shop panel marked “Published” with its setup sections"
+        "alt": "KWAD online shop panel with its public catalogue and setup sections"
       },
       "console": {
         "title": "Platform console",

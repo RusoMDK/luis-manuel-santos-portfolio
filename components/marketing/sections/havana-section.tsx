@@ -26,6 +26,7 @@ export function HavanaSection() {
                 height={havana.height}
                 alt={t("photoAlt")}
                 sizes="(max-width: 900px) 100vw, 34vw"
+                quality={60}
                 data-drift
               />
             </div>

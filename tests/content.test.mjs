@@ -134,3 +134,31 @@ test("each locale has its own Open Graph card and the old cover is gone", () => 
   assert.match(layout, /twitter: \{[\s\S]*images: \[image\]/);
   assert.equal(listFiles("public/images").some((path) => path.endsWith("og-cover.jpg")), false);
 });
+
+test("KWAD screenshots are cropped to stay legible on desktop and phone", () => {
+  // Reads width and height from a baseline or progressive JPEG's SOF marker.
+  const jpegSize = (buffer) => {
+    let offset = 2;
+    while (offset < buffer.length) {
+      const marker = buffer[offset + 1];
+      const length = buffer.readUInt16BE(offset + 2);
+      if (marker >= 0xc0 && marker <= 0xc2) {
+        return { height: buffer.readUInt16BE(offset + 5), width: buffer.readUInt16BE(offset + 7) };
+      }
+      offset += 2 + length;
+    }
+    throw new Error("No SOF marker");
+  };
+
+  const source = readSource("components/marketing/kwad/shot.tsx");
+  const entries = [...source.matchAll(/(desktop|mobile): \{ src: "([^"]+)", width: (\d+), height: (\d+) \}/g)];
+  assert.ok(entries.length >= 10);
+  for (const [, kind, src, width, height] of entries) {
+    const size = jpegSize(readFileSync(join(root, "public", src)));
+    assert.deepEqual(size, { width: Number(width), height: Number(height) }, src);
+    assert.ok(size.width <= (kind === "mobile" ? 420 : 900), `${src} is too wide to read`);
+  }
+  // A shot without a phone crop is hidden on phones, never shrunk.
+  assert.match(source, /mobile: null/);
+  assert.match(readSource("app/globals.css"), /\.phone-hidden \{\s*display: none;/);
+});

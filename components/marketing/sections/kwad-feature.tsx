@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/config/site";
 import { KwadModules } from "@/components/marketing/kwad/kwad-modules";
+import { Shot } from "@/components/marketing/kwad/shot";
 
 // Technology names are not translated; they sit on the right of each slip row.
 const tenantSteps = [
@@ -44,27 +44,11 @@ export function KwadFeature() {
           {t("also")}
         </p>
         <figure className="kwad-also-shot kwad-also-reception" data-reveal>
-          <div className="shot">
-            <Image
-              src="/images/kwad/crop/recepcion.jpg"
-              width={1280}
-              height={592}
-              alt={t("alsoReceptionAlt")}
-              sizes="(max-width: 900px) 100vw, 40vw"
-            />
-          </div>
+          <Shot id="reception" alt={t("alsoReceptionAlt")} sizes="(max-width: 900px) 100vw, 55vw" />
           <figcaption className="caption">{t("sample")}</figcaption>
         </figure>
         <figure className="kwad-also-shot kwad-also-audit" data-reveal>
-          <div className="shot">
-            <Image
-              src="/images/kwad/crop/auditoria.jpg"
-              width={1280}
-              height={212}
-              alt={t("alsoAuditAlt")}
-              sizes="(max-width: 900px) 100vw, 40vw"
-            />
-          </div>
+          <Shot id="audit" alt={t("alsoAuditAlt")} sizes="(max-width: 900px) 100vw, 55vw" />
         </figure>
       </div>
 

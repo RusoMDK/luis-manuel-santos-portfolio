@@ -1,16 +1,16 @@
 "use client";
 
-import Image from "next/image";
 import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
+import { hasPhoneCrop, Shot, type KwadShotId } from "./shot";
 
 const modules = [
-  { id: "pos", src: "/images/kwad/crop/terminal-bloqueada.jpg", width: 566, height: 520 },
-  { id: "inventory", src: "/images/kwad/crop/movimientos.jpg", width: 1280, height: 300 },
-  { id: "currency", src: "/images/kwad/crop/multimoneda.jpg", width: 860, height: 217 },
-  { id: "store", src: "/images/kwad/crop/tienda-online.jpg", width: 1280, height: 420 },
-  { id: "console", src: null, width: 0, height: 0 },
-] as const;
+  { id: "pos", shot: "terminal" },
+  { id: "inventory", shot: "ledger" },
+  { id: "currency", shot: "currency" },
+  { id: "store", shot: "store" },
+  { id: "console", shot: null },
+] as const satisfies readonly { id: string; shot: KwadShotId | null }[];
 
 type ModuleId = (typeof modules)[number]["id"];
 
@@ -46,7 +46,7 @@ export function KwadModules() {
   const [active, setActive] = useState<ModuleId>("pos");
 
   const picture = (module: (typeof modules)[number], sizes: string): ReactNode => {
-    if (!module.src) {
+    if (!module.shot) {
       return (
         <figure className="module-figure">
           <ConsoleFragment />
@@ -55,17 +55,11 @@ export function KwadModules() {
       );
     }
     return (
-      <figure className="module-figure">
-        <div className="shot">
-          <Image
-            src={module.src}
-            width={module.width}
-            height={module.height}
-            alt={t(`modules.${module.id}.alt`)}
-            sizes={sizes}
-          />
-        </div>
-        <figcaption className="caption">{t("sample")}</figcaption>
+      <figure className={hasPhoneCrop(module.shot) ? "module-figure" : "module-figure phone-hidden"}>
+        <Shot id={module.shot} alt={t(`modules.${module.id}.alt`)} sizes={sizes} />
+        <figcaption className="caption">
+          {module.id === "pos" ? t("modules.pos.caption") : t("sample")}
+        </figcaption>
       </figure>
     );
   };

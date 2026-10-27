@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/config/site";
 import { PageMotion } from "@/components/common/page-motion";
+import { hasPhoneCrop, Shot } from "@/components/marketing/kwad/shot";
 
 type KwadCaseStudyProps = {
   locale: "es" | "en";
@@ -65,10 +65,10 @@ const content = {
     shotAlt: "Recepción de mercancía en KWAD: orden de compra con productos, cantidades y coste por línea en CUP",
     sample: "Datos de ejemplo.",
     gallery: [
-      { src: "/images/kwad/crop/terminal-bloqueada.jpg", width: 566, height: 520, alt: "Pantalla del TPV de KWAD que bloquea una terminal no vinculada" },
-      { src: "/images/kwad/crop/movimientos.jpg", width: 1280, height: 300, alt: "Movimientos de inventario de KWAD con el stock antes y después" },
-      { src: "/images/kwad/crop/multimoneda.jpg", width: 860, height: 217, alt: "Catálogo de KWAD con precio en USD y base en CUP" },
-      { src: "/images/kwad/crop/tienda-online.jpg", width: 1280, height: 420, alt: "Panel de tienda online de KWAD con el estado «Publicada»" },
+      { shot: "terminal", alt: "Pantalla del TPV de KWAD que bloquea una terminal no vinculada", caption: "El TPV se niega a cobrar en un dispositivo no vinculado. Datos de ejemplo." },
+      { shot: "ledger", alt: "Movimientos de inventario de KWAD con el stock antes y después", caption: "Datos de ejemplo." },
+      { shot: "currency", alt: "Catálogo de KWAD con precio en USD y base en CUP", caption: "Datos de ejemplo." },
+      { shot: "store", alt: "Panel de tienda online de KWAD con su catálogo público y los apartados de configuración", caption: "Datos de ejemplo." },
     ],
   },
   en: {
@@ -94,10 +94,10 @@ const content = {
     shotAlt: "Goods receipt in KWAD: a purchase order with products, quantities and line cost in CUP",
     sample: "Sample data.",
     gallery: [
-      { src: "/images/kwad/crop/terminal-bloqueada.jpg", width: 566, height: 520, alt: "KWAD point-of-sale screen blocking an unpaired till" },
-      { src: "/images/kwad/crop/movimientos.jpg", width: 1280, height: 300, alt: "KWAD inventory movements with stock before and after" },
-      { src: "/images/kwad/crop/multimoneda.jpg", width: 860, height: 217, alt: "KWAD catalogue with USD price and CUP base" },
-      { src: "/images/kwad/crop/tienda-online.jpg", width: 1280, height: 420, alt: "KWAD online shop panel marked “Published”" },
+      { shot: "terminal", alt: "KWAD point-of-sale screen blocking an unpaired till", caption: "The till refuses to take payments on an unpaired device. Sample data." },
+      { shot: "ledger", alt: "KWAD inventory movements with stock before and after", caption: "Sample data." },
+      { shot: "currency", alt: "KWAD catalogue with USD price and CUP base", caption: "Sample data." },
+      { shot: "store", alt: "KWAD online shop panel with its public catalogue and setup sections", caption: "Sample data." },
     ],
   },
 } as const;
@@ -125,11 +125,9 @@ export const KwadCaseStudy = ({ locale }: KwadCaseStudyProps) => {
         </header>
 
         <figure className="frame case-shot">
-          <div className="shot">
-            <Image src="/images/kwad/crop/recepcion.jpg" width={1280} height={592} alt={copy.shotAlt} sizes="100vw" priority />
-          </div>
-          <figcaption className="caption">{copy.sample}</figcaption>
-        </figure>
+        <Shot id="reception" alt={copy.shotAlt} sizes="100vw" priority />
+        <figcaption className="caption">{copy.sample}</figcaption>
+      </figure>
 
         <section className="frame grid case-section" aria-labelledby="challenge-heading">
           <h2 id="challenge-heading" className="heading case-side" data-reveal>{copy.overviewTitle}</h2>
@@ -137,13 +135,18 @@ export const KwadCaseStudy = ({ locale }: KwadCaseStudyProps) => {
         </section>
 
         <ul className="frame grid case-gallery">
-          {copy.gallery.map((shot) => (
-            <li key={shot.src} className="case-gallery-item" data-reveal>
-              <div className="shot">
-                <Image src={shot.src} width={shot.width} height={shot.height} alt={shot.alt} sizes="(max-width: 900px) 100vw, 45vw" />
-              </div>
-            </li>
-          ))}
+          {copy.gallery.map((item) => (
+          <li
+            key={item.shot}
+            className={hasPhoneCrop(item.shot) ? "case-gallery-item" : "case-gallery-item phone-hidden"}
+            data-reveal
+          >
+            <figure>
+              <Shot id={item.shot} alt={item.alt} sizes="(max-width: 900px) 100vw, 45vw" />
+              <figcaption className="caption">{item.caption}</figcaption>
+            </figure>
+          </li>
+        ))}
         </ul>
 
         <section className="frame grid case-section" aria-labelledby="architecture-heading">
