@@ -5,7 +5,6 @@ import { HeroSection } from "@/components/marketing/sections/hero-section";
 import { KwadFeature } from "@/components/marketing/sections/kwad-feature";
 import { RollSection } from "@/components/marketing/sections/roll-section";
 import { AboutSection } from "@/components/marketing/sections/about-section";
-import { ContactSection } from "@/components/marketing/sections/contact-section";
 
 type MarketingHomePageProps = { params: Promise<{ locale: string }> };
 
@@ -22,7 +21,6 @@ const MarketingHomePage = async ({ params }: MarketingHomePageProps) => {
       <KwadFeature />
       <RollSection />
       <AboutSection />
-      <ContactSection locale={locale} />
     </PageMotion>
   );
 };

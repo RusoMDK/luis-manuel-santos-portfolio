@@ -37,10 +37,6 @@ export const kwadShots = {
     desktop: { src: "/images/kwad/crop/recepcion.jpg", width: 1252, height: 818, native: 626, minFont: 12, display: 626 },
     mobile: { src: "/images/kwad/crop/mobile/recepcion.jpg", width: 732, height: 640, native: 366, minFont: 14, display: 358 },
   },
-  audit: {
-    desktop: { src: "/images/kwad/crop/auditoria.jpg", width: 756, height: 322, native: 378, minFont: 11, display: 378 },
-    mobile: { src: "/images/kwad/crop/mobile/auditoria.jpg", width: 698, height: 486, native: 349, minFont: 11, display: 349 },
-  },
 } as const satisfies Record<string, { desktop: Source; mobile: Source }>;
 
 export type KwadShotId = keyof typeof kwadShots;

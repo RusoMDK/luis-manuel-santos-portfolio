@@ -2,20 +2,21 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { rollEntries, rollPhotos, type RollEntryId } from "@/config/site";
 import { ThesisLcdLazy } from "@/components/marketing/roll/thesis-lcd-lazy";
+import { Shot } from "@/components/marketing/kwad/shot";
 
-type Line = string | [string, string];
-type Item = { name: string; lines: Line[] };
+type Item = { name: string; lines: string[]; incl?: string[] };
 type Entry = (typeof rollEntries)[number];
 
-// Consecutive copies of the same year share one big year in the margin; the copy
-// where the ground turns to stone starts a group of its own.
-const groups = rollEntries.reduce<{ year: number; stone: boolean; entries: Entry[] }[]>((list, entry) => {
-  const stone = "stone" in entry && entry.stone;
+// One group per year: the year and its pictures on the right, its copies on the
+// left. The ground turns to stone inside the last group, at the copy marked stone.
+const groups = rollEntries.reduce<{ year: number; entries: Entry[] }[]>((list, entry) => {
   const last = list.at(-1);
-  if (last && last.year === entry.year && last.stone === stone) last.entries.push(entry);
-  else list.push({ year: entry.year, stone, entries: [entry] });
+  if (last && last.year === entry.year) last.entries.push(entry);
+  else list.push({ year: entry.year, entries: [entry] });
   return list;
 }, []);
+
+const pad = (month: number) => String(month).padStart(2, "0");
 
 function Copy({ entry }: { entry: Entry }) {
   const t = useTranslations("Roll");
@@ -24,12 +25,26 @@ function Copy({ entry }: { entry: Entry }) {
   const items = t.raw(`entries.${id}.items`) as Item[];
   const hasNote = t.has(`entries.${id}.note`);
   const total = t(`entries.${id}.total`);
-  const date = entry.month ? `${months[entry.month - 1]} ${entry.year}` : `${entry.year}`;
+  const label = (year: number, month: number | null) => (month ? `${months[month - 1]} ${year}` : `${year}`);
+  const stamp = (year: number, month: number | null) => (month ? `${year}-${pad(month)}` : `${year}`);
+  const until = "until" in entry ? entry.until : undefined;
 
   return (
-    <li className="roll-copy">
+    <li
+      className="roll-copy"
+      data-experience={"experience" in entry || undefined}
+      data-stone={"stone" in entry || undefined}
+    >
+      {"stone" in entry ? <span className="roll-ground" aria-hidden="true" /> : null}
+      {"experience" in entry ? <p className="roll-stamp">{t("experience")}</p> : null}
       <p className="roll-copy-head">
-        {t("copy")} · <time dateTime={entry.month ? `${entry.year}-${String(entry.month).padStart(2, "0")}` : `${entry.year}`}>{date}</time>
+        {t("copy")} · <time dateTime={stamp(entry.year, entry.month)}>{label(entry.year, entry.month)}</time>
+        {until !== undefined ? (
+          <>
+            {" – "}
+            {until ? <time dateTime={stamp(until.year, until.month)}>{label(until.year, until.month)}</time> : t("now")}
+          </>
+        ) : null}
       </p>
       {items.map((item) => (
         <div key={item.name} className="roll-item">
@@ -37,18 +52,16 @@ function Copy({ entry }: { entry: Entry }) {
             <span>{item.name}</span>
             <span>× 1</span>
           </p>
-          {item.lines.map((line) =>
-            typeof line === "string" ? (
-              <p key={line} className="roll-detail">
-                {line}
-              </p>
-            ) : (
-              <p key={line.join()} className="roll-row roll-line">
-                <span>{line[0]}</span>
-                <span>{line[1]}</span>
-              </p>
-            ),
-          )}
+          {item.lines.map((line) => (
+            <p key={line} className="roll-detail">
+              {line}
+            </p>
+          ))}
+          {item.incl ? (
+            <p className="roll-incl">
+              <span className="roll-incl-label">{t("incl")}</span> {item.incl.join(" · ")}
+            </p>
+          ) : null}
         </div>
       ))}
       <p className="roll-cut" aria-hidden="true" />
@@ -74,52 +87,57 @@ function Copy({ entry }: { entry: Entry }) {
   );
 }
 
-/** What sits beside a year: the photographs and the one live piece of the roll. */
-function Side({ entries }: { entries: Entry[] }) {
+/** The pictures of a year: the thesis and its one live piece, the seedbed, KWAD. */
+function Media({ ids }: { ids: string[] }) {
   const t = useTranslations("Roll");
-  const ids = entries.map((entry) => entry.id as string);
 
   if (ids.includes("thesis")) {
     return (
-      <div className="roll-side">
+      <>
         <figure className="roll-photos" data-reveal>
           <Image
             src={rollPhotos.thesisBench.src}
             width={rollPhotos.thesisBench.width}
             height={rollPhotos.thesisBench.height}
             alt={t("thesisPhotoAlt")}
-            sizes="(max-width: 900px) 100vw, 40vw"
+            sizes="(max-width: 900px) 50vw, 25vw"
           />
           <Image
             src={rollPhotos.thesisLcd.src}
             width={rollPhotos.thesisLcd.width}
             height={rollPhotos.thesisLcd.height}
             alt={t("thesisLcdAlt")}
-            sizes="(max-width: 900px) 100vw, 40vw"
+            sizes="(max-width: 900px) 50vw, 25vw"
           />
           <figcaption className="caption">{t("thesisCaption")}</figcaption>
         </figure>
         <ThesisLcdLazy />
-      </div>
+      </>
     );
   }
   if (ids.includes("iotPlatform")) {
     return (
-      <div className="roll-side">
-        <figure className="roll-photos" data-reveal>
-          <Image
-            src={rollPhotos.seedbed.src}
-            width={rollPhotos.seedbed.width}
-            height={rollPhotos.seedbed.height}
-            alt={t("seedbedAlt")}
-            sizes="(max-width: 900px) 100vw, 40vw"
-          />
-          <figcaption className="caption">{t("seedbedCaption")}</figcaption>
-        </figure>
-      </div>
+      <figure className="roll-photos" data-reveal>
+        <Image
+          src={rollPhotos.seedbed.src}
+          width={rollPhotos.seedbed.width}
+          height={rollPhotos.seedbed.height}
+          alt={t("seedbedAlt")}
+          sizes="(max-width: 900px) 100vw, 45vw"
+        />
+        <figcaption className="caption">{t("seedbedCaption")}</figcaption>
+      </figure>
     );
   }
-  return <div className="roll-side" />;
+  if (ids.includes("kwad")) {
+    return (
+      <figure className="roll-kwad" data-reveal>
+        <Shot id="reception" alt={t("receptionAlt")} />
+        <figcaption className="caption">{t("receptionCaption")}</figcaption>
+      </figure>
+    );
+  }
+  return null;
 }
 
 export function RollSection() {
@@ -137,22 +155,18 @@ export function RollSection() {
       </header>
 
       {groups.map((group, index) => (
-        <div
-          key={`${group.year}-${group.stone}`}
-          className={group.stone ? "roll-group field-stone" : "roll-group"}
-          data-last={index === groups.length - 1 || undefined}
-        >
-          <div className="frame roll-grid">
+        <div key={group.year} className="frame roll-group" data-last={index === groups.length - 1 || undefined}>
+          <div className="roll-side">
             <p className="roll-year" aria-hidden="true" data-roll-year>
               {group.year}
             </p>
-            <ol className="roll-strip" data-ui>
-              {group.entries.map((entry) => (
-                <Copy key={entry.id} entry={entry} />
-              ))}
-            </ol>
-            <Side entries={group.entries} />
+            <Media ids={group.entries.map((entry) => entry.id)} />
           </div>
+          <ol className="roll-strip" data-ui>
+            {group.entries.map((entry) => (
+              <Copy key={entry.id} entry={entry} />
+            ))}
+          </ol>
         </div>
       ))}
     </section>

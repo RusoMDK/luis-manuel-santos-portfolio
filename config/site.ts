@@ -31,22 +31,24 @@ export const ticketStack = [
   "TypeScript",
   "Node.js · NestJS · Fastify",
   "React · Angular",
-  "PostgreSQL",
+  "PostgreSQL · Prisma",
+  "Docker · Git",
 ] as const;
 
 // The roll: one dated copy per stage, oldest first. Months are 1-based; null
-// when only the year is certain. The copy for each entry lives in messages (Roll).
+// when only the year is certain; `until` closes a period (null: to this day).
+// Copies marked `experience` are jobs, printed wider and stamped. The copy for
+// each entry lives in messages (Roll).
 export const rollEntries = [
   { id: "uci", year: 2019, month: null },
-  { id: "iotModule", year: 2023, month: 11 },
   { id: "thesis", year: 2024, month: 6, repoHref: "https://github.com/RusoMDK/iot-testbench" },
-  { id: "sigies", year: 2024, month: 9 },
+  { id: "sigies", year: 2024, month: 9, until: { year: 2026, month: 10 }, experience: true },
   { id: "iotPlatform", year: 2025, month: 4, repoHref: "https://github.com/RusoMDK/PlataformaIoT" },
   { id: "proxyAgent", year: 2025, month: 6, repoHref: "https://github.com/RusoMDK/ProxyAgent-UCI" },
   // September or October 2025: no certain month, so it prints the year alone.
   { id: "smartIot", year: 2025, month: null },
   { id: "ecommerce", year: 2025, month: 11, repoHref: "https://github.com/RusoMDK/Tienda-Virtual" },
-  { id: "kwad", year: 2026, month: 4, anchor: "#kwad" },
+  { id: "kwad", year: 2026, month: 4, until: null, experience: true, anchor: "#kwad" },
   { id: "sesamo", year: 2026, month: 6 },
   // The ground turns from walnut to stone at this copy.
   { id: "valladolid", year: 2026, month: 10, stone: true },

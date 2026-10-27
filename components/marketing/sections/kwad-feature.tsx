@@ -2,7 +2,6 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/config/site";
 import { KwadModules } from "@/components/marketing/kwad/kwad-modules";
-import { Shot } from "@/components/marketing/kwad/shot";
 import { PosDemo } from "@/components/marketing/havana/pos-demo";
 
 // Technology names are not translated; they sit on the right of each slip row.
@@ -56,44 +55,32 @@ export function KwadFeature() {
         </div>
       </div>
 
+      {/* After the last module, the frame stays beside the rest of the product and
+          the one picture of its architecture. */}
       <div className="frame">
         <KwadModules
           tail={
-            <p className="lead kwad-also-text" data-reveal>
-              {t("also")}
-            </p>
+            <div className="kwad-tail">
+              <p className="lead" data-reveal>
+                {t("also")}
+              </p>
+              <div className="tenant-slip slip-paper zigzag-bottom" data-ui data-reveal>
+                <h3 className="tenant-title">{t("tenant.title")}</h3>
+                <ol className="itinerary">
+                  {tenantSteps.map((step) => (
+                    <li key={step.id} className="itinerary-row">
+                      <span>{t(`tenant.steps.${step.id}`)}</span>
+                      <span className="leader" aria-hidden="true" />
+                      <span>{step.tech}</span>
+                    </li>
+                  ))}
+                </ol>
+                <p className="itinerary-result">{t("tenant.result")}</p>
+                <p className="itinerary-note">{t("tenant.note")}</p>
+              </div>
+            </div>
           }
         />
-      </div>
-
-      <div className="frame grid kwad-also">
-        <figure className="kwad-also-shot kwad-also-reception" data-reveal>
-          <Shot id="reception" alt={t("alsoReceptionAlt")} />
-          <figcaption className="caption">{t("sample")}</figcaption>
-        </figure>
-        <figure className="kwad-also-shot kwad-also-audit" data-reveal>
-          <Shot id="audit" alt={t("alsoAuditAlt")} />
-          <figcaption className="caption">{t("alsoAuditCaption")}</figcaption>
-        </figure>
-      </div>
-
-      <div className="frame grid tenant">
-        <h3 className="heading tenant-title" data-reveal>
-          {t("tenant.title")}
-        </h3>
-        <div className="tenant-slip slip-paper zigzag-bottom" data-ui data-reveal>
-          <ol className="itinerary">
-            {tenantSteps.map((step) => (
-              <li key={step.id} className="itinerary-row">
-                <span>{t(`tenant.steps.${step.id}`)}</span>
-                <span className="leader" aria-hidden="true" />
-                <span>{step.tech}</span>
-              </li>
-            ))}
-          </ol>
-          <p className="itinerary-result">{t("tenant.result")}</p>
-          <p className="itinerary-note">{t("tenant.note")}</p>
-        </div>
       </div>
     </section>
   );

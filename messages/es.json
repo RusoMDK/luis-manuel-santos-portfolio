@@ -16,7 +16,7 @@
   "Hero": {
     "firstName": "Luis Manuel",
     "lastName": "Santos",
-    "lead": "Desarrollador full stack en Valladolid. Construyo KWAD, un SaaS de TPV e inventario para comercios, ya en producción.",
+    "lead": "Desarrollador full stack en Valladolid, con dos años como ingeniero de software en SIGIES, la plataforma nacional de ingreso universitario de Cuba. Ahora construyo KWAD, un SaaS de TPV e inventario ya en producción.",
     "primaryCta": "Escríbeme",
     "cvCta": "Descargar CV (PDF)"
   },
@@ -35,7 +35,11 @@
     "key": "Clave",
     "thanks": "gracias",
     "keyAria": "Ir a la demo de cobro con clave de idempotencia",
-    "register": "Caja 01"
+    "register": "Caja 01",
+    "experience": "Experiencia",
+    "experienceValue": "2 años (SIGIES) + KWAD",
+    "permit": "Permiso de trabajo en España",
+    "permitValue": "Sí"
   },
   "Havana": {
     "title": "Aprendí en La Habana",
@@ -98,27 +102,9 @@
         "title": "Multimoneda",
         "text": "Contabilidad en varias monedas, con la tasa sincronizada por una cola (BullMQ + Redis).",
         "alt": "Producto del catálogo de KWAD con precio de venta de 1,16 USD sobre una base de 780 CUP, coste, utilidad y margen"
-      },
-      "console": {
-        "title": "Consola de plataforma",
-        "text": "La tercera aplicación, con su propia identidad, desde la que opero todas las organizaciones.",
-        "fragment": "Fragmento ilustrativo de la consola."
       }
     },
-    "console": {
-      "title": "Organizaciones",
-      "org": "Organización",
-      "plan": "Plan",
-      "stores": "Tiendas",
-      "status": "Estado",
-      "demoOrg": "MiNegocio (demo)",
-      "demoPlan": "Beta",
-      "active": "Activa"
-    },
-    "also": "También: la tienda online de cada comercio, compras, caja, auditoría con el antes y el después de cada cambio, e informes en CSV, XLSX y PDF.",
-    "alsoReceptionAlt": "Ítems de una compra recibida en KWAD: producto, unidad, cantidad, coste y total en dólares, cada uno con su importe registrado en CUP",
-    "alsoAuditAlt": "Registro de auditoría de KWAD: el campo total de una compra, antes 547.46 y después 335380",
-    "alsoAuditCaption": "Auditoría: el total de una compra, antes y después de registrarla en CUP. Datos de ejemplo.",
+    "also": "También: la tienda online de cada comercio, la consola de plataforma, compras, caja, auditoría con el antes y el después de cada cambio, e informes en CSV, XLSX y PDF.",
     "tenant": {
       "title": "Cada petición sabe de quién es",
       "steps": {
@@ -157,70 +143,33 @@
           {
             "name": "Ingeniería en Ciencias Informáticas",
             "lines": [
-              "UCI, La Habana"
+              "UCI, La Habana",
+              "2023 · primer proyecto IoT: módulo de almacenamiento en un proyecto de I+D (Python)"
             ]
           }
         ],
-        "total": "ABIERTO"
-      },
-      "iotModule": {
-        "items": [
-          {
-            "name": "Primer proyecto IoT",
-            "lines": [
-              "Módulo de almacenamiento para aplicaciones IoT, en un proyecto de I+D de la UCI",
-              [
-                "incl.",
-                "Python"
-              ]
-            ]
-          }
-        ],
-        "total": "SIN COPIA",
-        "note": "Repositorio privado: no se imprime."
+        "total": "2019–2024"
       },
       "thesis": {
         "items": [
           {
             "name": "Tesis: IoT Testbench",
-            "lines": [
-              [
-                "incl.",
-                "MQTT → NestJS → PostgreSQL → Angular"
-              ],
-              [
-                "incl.",
-                "TypeORM · JWT y roles"
-              ]
+            "lines": [],
+            "incl": [
+              "MQTT → NestJS → PostgreSQL → Angular",
+              "TypeORM · JWT y roles"
             ]
           },
           {
             "name": "Prototipo",
-            "lines": [
-              [
-                "ESP32",
-                "cerebro"
-              ],
-              [
-                "DHT22",
-                "aire"
-              ],
-              [
-                "Sensor de humedad",
-                "suelo"
-              ],
-              [
-                "LCD 16x2",
-                "lecturas"
-              ],
-              [
-                "Bomba sumergible + relé doble",
-                "riego"
-              ],
-              [
-                "Pila de 9 V",
-                "bomba"
-              ]
+            "lines": [],
+            "incl": [
+              "ESP32 (cerebro)",
+              "DHT22 (aire)",
+              "sensor de humedad (suelo)",
+              "LCD 16x2 (lecturas)",
+              "bomba sumergible + relé doble (riego)",
+              "pila de 9 V (bomba)"
             ]
           }
         ],
@@ -229,76 +178,48 @@
       "sigies": {
         "items": [
           {
-            "name": "FORTES · SIGIES",
+            "name": "Ingeniero de software · FORTES (UCI)",
             "lines": [
-              "Plataforma nacional de ingreso a la educación superior en Cuba",
-              [
-                "incl.",
-                "soporte del sistema PHP en los picos de cada convocatoria"
-              ],
-              [
-                "incl.",
-                "módulos nuevos en NestJS y Angular"
-              ],
-              [
-                "incl.",
-                "migración incremental y modelado en PostgreSQL"
-              ]
+              "SIGIES, la plataforma nacional de ingreso a la educación superior en Cuba"
+            ],
+            "incl": [
+              "soporte del sistema PHP en los picos de cada convocatoria",
+              "módulos nuevos en NestJS y Angular",
+              "migración incremental y modelado en PostgreSQL"
             ]
           }
         ],
-        "total": "2024–2026"
+        "total": "2 AÑOS"
       },
       "iotPlatform": {
         "items": [
           {
             "name": "PlataformaIoT",
             "lines": [
-              "Un semillero, a más escala: más sensores, luces y automatización",
-              [
-                "incl.",
-                "MQTT · worker → MongoDB"
-              ],
-              [
-                "incl.",
-                "Socket.IO · dashboards"
-              ],
-              [
-                "incl.",
-                "configurador de placas con pines"
-              ],
-              [
-                "incl.",
-                "alertas · exportación · 2FA"
-              ],
-              [
-                "incl.",
-                "tests E2E con Cypress"
-              ],
-              "Automatizado por horario con un módulo de reloj (RTC): hacia las 8:00 encendía la bomba para regar y apagaba las luces; hacia las 20:00 encendía las luces."
+              "Un semillero, a más escala: más sensores, luces y automatización"
+            ],
+            "incl": [
+              "MQTT · worker → MongoDB",
+              "Socket.IO · dashboards",
+              "configurador de placas con pines",
+              "alertas · exportación · 2FA",
+              "tests E2E con Cypress"
             ]
           }
         ],
-        "total": "MÁS ESCALA"
+        "total": "SEMILLERO AUTOMATIZADO"
       },
       "proxyAgent": {
         "items": [
           {
             "name": "ProxyAgent",
             "lines": [
-              "App de escritorio para trabajar detrás del proxy NTLM de la universidad",
-              [
-                "incl.",
-                "Electron + React"
-              ],
-              [
-                "incl.",
-                "cuentas NTLM, CNTLM y proxy de sistema"
-              ],
-              [
-                "incl.",
-                "túneles SSH · lanzador de apps"
-              ]
+              "App de escritorio para trabajar detrás del proxy NTLM de la universidad"
+            ],
+            "incl": [
+              "Electron + React",
+              "cuentas NTLM, CNTLM y proxy de sistema",
+              "túneles SSH · lanzador de apps"
             ]
           }
         ],
@@ -318,11 +239,10 @@
           {
             "name": "Tienda Virtual",
             "lines": [
-              "E-commerce",
-              [
-                "incl.",
-                "Fastify · Prisma · PostgreSQL · React"
-              ]
+              "E-commerce"
+            ],
+            "incl": [
+              "Fastify · Prisma · PostgreSQL · React"
             ]
           }
         ],
@@ -332,7 +252,17 @@
         "items": [
           {
             "name": "KWAD",
-            "lines": []
+            "lines": [
+              "SaaS de TPV e inventario para comercios"
+            ],
+            "incl": [
+              "diseño, desarrollo y operación, en solitario",
+              "Fastify",
+              "Prisma",
+              "PostgreSQL",
+              "BullMQ",
+              "React"
+            ]
           }
         ],
         "total": "EN PRODUCCIÓN ↑"
@@ -342,23 +272,13 @@
           {
             "name": "Sésamo",
             "lines": [
-              "ProxyAgent, reescrito desde cero",
-              [
-                "incl.",
-                "Tauri 2 · Rust · React/TypeScript"
-              ],
-              [
-                "incl.",
-                "un trait por dominio, con implementación para macOS, Windows y Linux"
-              ],
-              [
-                "incl.",
-                "procesos lanzados sin shell"
-              ],
-              [
-                "incl.",
-                "reglas de seguridad que salen de fallos reales del prototipo"
-              ]
+              "ProxyAgent, reescrito desde cero"
+            ],
+            "incl": [
+              "Tauri 2 · Rust · React/TypeScript",
+              "un trait por dominio, con implementación para macOS, Windows y Linux",
+              "procesos lanzados sin shell",
+              "reglas de seguridad que salen de fallos reales del prototipo"
             ]
           }
         ],
@@ -380,7 +300,7 @@
     "thesisLcdAlt": "La pantalla LCD del prototipo con «Temp: 25.60°C» e «IC: 27.06°C»",
     "thesisCaption": "Prototipo de la tesis, junio de 2024.",
     "seedbedAlt": "Semillero de PlataformaIoT: una bandeja de tierra con plántulas, cables y placas a los lados con sus pantallas",
-    "seedbedCaption": "Semillero de PlataformaIoT, abril de 2025.",
+    "seedbedCaption": "Semillero de PlataformaIoT, abril de 2025. Automatizado por horario con un módulo de reloj (RTC): hacia las 8:00 encendía la bomba para regar y apagaba las luces; hacia las 20:00 encendía las luces.",
     "lcd": {
       "label": "Réplica de la LCD 16x2 del prototipo",
       "aria": "LCD: {state}. Humedad del suelo: {moisture} %. Temperatura: {temp} °C. Índice de calor: {heat} °C. Bomba: {pump}.",
@@ -393,17 +313,21 @@
       "relayClosed": "Relé cerrado · bomba encendida",
       "threshold": "Umbral de la simulación: 30 %",
       "note": "Simulación: valores generados en tu navegador."
-    }
+    },
+    "now": "HOY",
+    "experience": "EXPERIENCIA",
+    "incl": "incl.",
+    "receptionAlt": "Ítems de una compra recibida en KWAD: producto, unidad, cantidad, coste y total en dólares, cada uno con su importe registrado en CUP",
+    "receptionCaption": "KWAD · recepción de una compra, con cada importe en USD y en CUP. Datos de ejemplo."
   },
   "About": {
     "title": "Quién soy",
     "portraitAlt": "Retrato de Luis Manuel Santos",
-    "p1": "Soy Luisma. Me formé como Ingeniero en Ciencias Informáticas en la UCI (2019–2024). Cursé estudios de posgrado en Informática Avanzada (UCI, 2025–2026).",
-    "p2": "Mi inglés es A2 y estoy preparando el B2.",
-    "p3": "Tengo permiso de trabajo y me incorporo ya. Busco full stack o backend: remoto en España, o híbrido o presencial en Valladolid.",
+    "p1": "Soy Luisma. Me muevo cómodo en backend: modelado de datos en PostgreSQL, APIs con NestJS y Fastify, aislamiento multi-tenant y colas con BullMQ. En el front trabajo con React y Angular.",
+    "p2": "Soy Ingeniero en Ciencias Informáticas (UCI, 2019–2024) y cursé estudios de posgrado en Informática Avanzada (UCI, 2025–2026).",
+    "p3": "Español nativo, inglés A2 (preparando el B2). Tengo permiso de trabajo y me incorporo ya. Busco full stack o backend: remoto en España, o híbrido o presencial en Valladolid.",
     "signature": "Luis Manuel Santos Lezcano",
-    "role": "Desarrollador full stack",
-    "tearOff": "Recorta y escribe"
+    "role": "Desarrollador full stack"
   },
   "Contact": {
     "title": "Escríbeme",
@@ -430,8 +354,7 @@
     "cv": "CV en PDF"
   },
   "Footer": {
-    "title": "Gracias por su visita",
-    "message": "Este ticket no caduca. Si buscas a alguien que lleve un producto de la base de datos a la caja, escríbeme.",
+    "title": "Gracias por tu visita",
     "linksLabel": "Enlaces",
     "rights": "© 2026 Luis Manuel Santos"
   },

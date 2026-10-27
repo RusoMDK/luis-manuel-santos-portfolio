@@ -78,7 +78,6 @@ test("Valladolid shows in three places only: hero, the October 2026 copy and ava
 test("the roll prints every stage, oldest first, in both locales", () => {
   assert.deepEqual(rollIds, [
     "uci",
-    "iotModule",
     "thesis",
     "sigies",
     "iotPlatform",
@@ -89,7 +88,7 @@ test("the roll prints every stage, oldest first, in both locales", () => {
     "sesamo",
     "valladolid",
   ]);
-  const dates = [...rollBlock.matchAll(/year: (\d+), month: (\d+|null)/g)].map(([, year, month]) =>
+  const dates = [...rollBlock.matchAll(/id: "\w+", year: (\d+), month: (\d+|null)/g)].map(([, year, month]) =>
     Number(year) * 100 + (month === "null" ? 0 : Number(month)),
   );
   assert.equal(dates.length, rollIds.length);
@@ -104,16 +103,57 @@ test("the roll prints every stage, oldest first, in both locales", () => {
   }
   assert.equal(spanish.Roll.entries.thesis.total, "INGENIERO");
   assert.match(rollBlock, /id: "uci", year: 2019, month: null/);
-  assert.match(rollBlock, /id: "iotModule", year: 2023, month: 11/);
-  assert.match(rollBlock, /id: "kwad", year: 2026, month: 4, anchor: "#kwad"/);
   assert.match(rollBlock, /id: "valladolid", year: 2026, month: 10, stone: true/);
+  // The first IoT project is a line in the UCI copy, not a copy of its own.
+  assert.equal(spanish.Roll.entries.uci.items[0].lines[1], "2023 · primer proyecto IoT: módulo de almacenamiento en un proyecto de I+D (Python)");
+  for (const locale of [spanish, english]) {
+    assert.doesNotMatch(JSON.stringify(locale.Roll), /SIN COPIA|NO COPY|no se imprime|not printed/);
+  }
+  // Totals state the result, not a joke.
+  assert.equal(spanish.Roll.entries.uci.total, "2019–2024");
+  assert.equal(spanish.Roll.entries.iotPlatform.total, "SEMILLERO AUTOMATIZADO");
+  assert.equal(spanish.Roll.entries.sigies.total, "2 AÑOS");
+  assert.equal(spanish.Roll.entries.sigies.items[0].name, "Ingeniero de software · FORTES (UCI)");
+  assert.match(spanish.Roll.entries.sigies.items[0].lines[0], /^SIGIES/);
+  // One group per year: a single 2026, with the stone ground inside it.
+  assert.deepEqual([...new Set(rollIds.map((id) => rollBlock.match(new RegExp(`id: "${id}", year: (\\d+)`))[1]))], ["2019", "2024", "2025", "2026"]);
   assert.equal(spanish.Navigation.roll, "Trayectoria");
+  assert.doesNotMatch(readSource("components/marketing/sections/roll-section.tsx"), /last\.stone === stone/);
   assert.equal(spanish.Roll.title, "El rollo");
 });
 
-test("the KWAD module panel shows only modules with an honest picture", () => {
+test("the roll marks the two jobs so they are found without reading the rest", () => {
+  const jobs = [...rollBlock.matchAll(/id: "(\w+)"[^\n]*experience: true/g)].map((match) => match[1]);
+  assert.deepEqual(jobs, ["sigies", "kwad"]);
+  assert.match(rollBlock, /id: "sigies", year: 2024, month: 9, until: \{ year: 2026, month: 10 \}/);
+  assert.match(rollBlock, /id: "kwad", year: 2026, month: 4, until: null/);
+  const section = readSource("components/marketing/sections/roll-section.tsx");
+  assert.match(section, /data-experience=/);
+  assert.match(section, /t\("experience"\)/);
+  assert.equal(spanish.Roll.experience, "EXPERIENCIA");
+  assert.equal(spanish.Roll.now, "HOY");
+});
+
+test("the hero ticket prints experience and the work permit before availability", () => {
+  const ticket = readSource("components/marketing/ticket/hero-ticket.tsx");
+  const order = ['t("experience")', 't("permit")', 't("total")'].map((key) => ticket.indexOf(key));
+  assert.ok(order.every((index) => index > 0), "ticket lines missing");
+  assert.deepEqual([...order].sort((a, b) => a - b), order);
+  assert.equal(spanish.Ticket.experience, "Experiencia");
+  assert.equal(spanish.Ticket.experienceValue, "2 años (SIGIES) + KWAD");
+  assert.equal(spanish.Ticket.permit, "Permiso de trabajo en España");
+  // Printed as a drawn tick (an SVG, not the ✓ character); the word is for screen readers.
+  assert.equal(spanish.Ticket.permitValue, "Sí");
+  assert.match(ticket, /className="ticket-tick"[\s\S]*<svg[\s\S]*t\("permitValue"\)/);
+  assert.ok(english.Ticket.experience && english.Ticket.permit);
+  assert.match(config, /"PostgreSQL · Prisma",\n  "Docker · Git",\n\] as const;/);
+});
+
+test("the KWAD module panel shows only modules with a real capture", () => {
   for (const locale of [spanish, english]) {
-    assert.deepEqual(Object.keys(locale.Kwad.modules), ["pos", "inventory", "currency", "console"]);
+    assert.deepEqual(Object.keys(locale.Kwad.modules), ["pos", "inventory", "currency"]);
+    assert.equal(locale.Kwad.console, undefined);
+    assert.doesNotMatch(JSON.stringify(locale), /547\.46|335380/);
     for (const id of Object.keys(locale.Kwad.modules)) {
       assert.ok(locale.Kwad.modules[id].title && locale.Kwad.modules[id].text, `Missing KWAD module: ${id}`);
     }
@@ -122,6 +162,8 @@ test("the KWAD module panel shows only modules with an honest picture", () => {
   // The active module follows clicks, focus and the scroll, never the pointer.
   assert.doesNotMatch(panel, /onPointerEnter|onMouseEnter/);
   assert.doesNotMatch(panel, /0\d \/ 0\d/);
+  assert.doesNotMatch(panel, /ConsoleFragment|module-paper/);
+  assert.match(spanish.Kwad.also, /consola de plataforma/);
   assert.match(readSource("components/common/motion-layer.tsx"), /MODULE_ENTER_EVENT/);
 });
 
@@ -165,11 +207,35 @@ test("the about letter leaves SIGIES and Smart IoT to the roll", () => {
 });
 
 test("the about letter states the postgraduate studies as finished", () => {
-  assert.match(spanish.About.p1, /Cursé estudios de posgrado en Informática Avanzada \(UCI, 2025–2026\)/);
+  assert.match(spanish.About.p2, /Ingeniero en Ciencias Informáticas \(UCI, 2019–2024\)/);
+  assert.match(spanish.About.p2, /cursé estudios de posgrado en Informática Avanzada \(UCI, 2025–2026\)/);
   for (const locale of [spanish, english]) {
     const letter = Object.values(locale.About).join(" ");
     assert.doesNotMatch(letter, /\bsigo\b|máster|master|titulad|graduated/i);
   }
+});
+
+test("no public text calls the postgraduate studies a master's or a degree held", () => {
+  const files = [
+    "messages/es.json",
+    "messages/en.json",
+    "config/site.ts",
+    ...listFiles("components").filter((path) => path.endsWith(".tsx")),
+  ];
+  for (const path of files) {
+    assert.doesNotMatch(readSource(path), /máster|\bmaster'?s\b|titulad/i, `Wording in ${path}`);
+  }
+});
+
+test("the KWAD case study speaks to a tech lead, without filler", () => {
+  const study = readSource("components/marketing/sections/kwad-case-study.tsx");
+  for (const text of ["Qué demuestra", "documentación técnica", "Platform admin", "Marketing site", "What this work demonstrates", "←"]) {
+    assert.ok(!study.includes(text), `/kwad still says ${text}`);
+  }
+  assert.match(study, /subtitle: "TPV, inventario y tienda online para comercios\. En producción con su primer cliente\."/);
+  assert.match(study, /overviewTitle: "Vender cuando la red se cae"/);
+  assert.match(study, /cta: "Ver getkwad\.com"/);
+  assert.equal([...study.matchAll(/\{ title: "[^"]+", detail: /g)].length, 14);
 });
 
 test("the demo uses the agreed sample rates and labels them as samples", () => {
@@ -196,6 +262,16 @@ test("the ticket barcode uses a complete Code 128 table", () => {
     assert.equal(modules, index === 106 ? 13 : 11, `Pattern ${index} has ${modules} modules`);
   });
   assert.equal(new Set(patterns).size, 107);
+});
+
+test("contact and footer are one block, on every page", () => {
+  const footer = readSource("components/marketing/layout/site-footer.tsx");
+  assert.match(footer, /<footer id="contacto"/);
+  assert.match(footer, /ContactCoupon/);
+  assert.match(footer, /footer\("rights"\)/);
+  assert.equal(listFiles("components").some((path) => path.endsWith("contact-section.tsx")), false);
+  assert.equal(spanish.Footer.title, "Gracias por tu visita");
+  for (const locale of [spanish, english]) assert.equal(locale.Footer.message, undefined);
 });
 
 test("only Luisma's own photographs: no archive pictures, originals kept out of git", () => {
@@ -252,7 +328,7 @@ test("KWAD screenshots are sharp at 2x and their text reads at 11px or more", ()
       /(desktop|mobile): \{ src: "([^"]+)", width: (\d+), height: (\d+), native: (\d+), minFont: ([\d.]+), display: (\d+)/g,
     ),
   ];
-  assert.equal(entries.length, 10);
+  assert.equal(entries.length, 8);
   for (const [, kind, src, width, height, native, minFont, display] of entries) {
     const size = jpegSize(readFileSync(join(root, "public", src)));
     assert.deepEqual(size, { width: Number(width), height: Number(height) }, src);

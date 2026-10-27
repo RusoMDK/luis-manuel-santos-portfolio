@@ -39,6 +39,21 @@ export function HeroTicket() {
             ))}
           </ul>
           <p className="ticket-cut" aria-hidden="true" />
+          <p className="ticket-row">
+            <span>{t("experience")}</span>
+            <span>{t("experienceValue")}</span>
+          </p>
+          <p className="ticket-row">
+            <span>{t("permit")}</span>
+            {/* A printed tick; the word is for screen readers. */}
+            <span className="ticket-tick">
+              <svg viewBox="0 0 14 12" width="14" height="12" aria-hidden="true" focusable="false">
+                <path d="M1.5 6.5 5 10 12.5 1.5" fill="none" stroke="currentColor" strokeWidth="2" />
+              </svg>
+              <span className="sr-only">{t("permitValue")}</span>
+            </span>
+          </p>
+          <p className="ticket-cut" aria-hidden="true" />
           <p className="ticket-row ticket-big">
             <span>{t("total")}</span>
             <span>{t("totalValue")}</span>

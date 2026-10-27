@@ -23,15 +23,14 @@ test("featured work links to the localized KWAD case study", () => {
 
 test("case study documents five actual application boundaries", () => {
   const study = readSource("components/marketing/sections/kwad-case-study.tsx");
-  const applicationNames = ["Back-office", "Storefront", "Platform admin", "API", "Marketing site"];
-
-  for (const name of applicationNames) {
-    assert.ok(study.includes(`name: "${name}"`), `Missing application: ${name}`);
+  for (const name of ['name: "Back-office"', 'es: "Tienda online"', 'es: "Consola de plataforma"', 'name: "API"', 'name: "Web"']) {
+    assert.ok(study.includes(name), `Missing application: ${name}`);
   }
 
-  assert.match(study, /Tenant isolation/);
-  assert.match(study, /Aislamiento multi-tenant/);
-  assert.match(study, /proprietary/);
+  assert.match(study, /El tenant viaja con la petición/);
+  assert.match(study, /The tenant travels with the request/);
+  assert.match(study, /AsyncLocalStorage/);
+  assert.match(study, /El código es privado/);
 });
 
 test("case study provides content for both locales", () => {

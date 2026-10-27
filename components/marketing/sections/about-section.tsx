@@ -28,10 +28,6 @@ export function AboutSection() {
             <p className="signature">{t("signature")}</p>
             <p className="signature-role">{t("role")}</p>
           </div>
-          <div className="tear-off">
-            <span>{t("tearOff")}</span>
-            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-          </div>
         </article>
       </div>
     </section>

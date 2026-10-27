@@ -56,7 +56,7 @@ export default function MotionLayer({ scope }: { scope: React.RefObject<HTMLDivE
             }),
         });
 
-        // Each year in the roll's margin turns over, digit by digit, as its copies arrive.
+        // Each year of the roll turns over, digit by digit, as its group arrives.
         for (const year of gsap.utils.toArray<HTMLElement>("[data-roll-year]")) {
           SplitText.create(year, {
             type: "chars",
@@ -78,16 +78,21 @@ export default function MotionLayer({ scope }: { scope: React.RefObject<HTMLDivE
       // of the screen becomes the active one. This is state, not motion, so it runs
       // with reduced motion too.
       mm.add("(min-width: 901px)", () => {
-        for (const row of gsap.utils.toArray<HTMLElement>(".module-row")) {
+        // Past either end of the index the nearest row stays active, also after a jump.
+        const rows = gsap.utils.toArray<HTMLElement>(".module-row");
+        rows.forEach((row, index) => {
+          const enter = () => row.dispatchEvent(new Event(MODULE_ENTER_EVENT, { bubbles: true }));
           ScrollTrigger.create({
             trigger: row,
             start: "top center",
             end: "bottom center",
             onToggle: (self) => {
-              if (self.isActive) row.dispatchEvent(new Event(MODULE_ENTER_EVENT, { bubbles: true }));
+              if (self.isActive) enter();
             },
+            onLeave: index === rows.length - 1 ? enter : undefined,
+            onLeaveBack: index === 0 ? enter : undefined,
           });
-        }
+        });
       });
 
       // The paper leans towards the pointer, only with a precise pointer that can hover.
