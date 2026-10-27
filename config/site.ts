@@ -39,25 +39,6 @@ export const projects = [
   },
 ] as const;
 
-export const services = [
-  {
-    id: "frontend",
-    icon: "layout",
-  },
-  {
-    id: "backend",
-    icon: "server",
-  },
-  {
-    id: "fullstack",
-    icon: "layers",
-  },
-  {
-    id: "realtime",
-    icon: "radio",
-  },
-] as const;
-
 export const stack = [
   "TypeScript",
   "JavaScript",

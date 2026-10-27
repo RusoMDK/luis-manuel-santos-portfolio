@@ -3,7 +3,7 @@ import { AnimatedReveal } from "@/components/common/animated-reveal";
 import { Container } from "@/components/marketing/shared/container";
 import { SectionHeading } from "@/components/marketing/shared/section-heading";
 
-const experienceItems = ["engineering", "systems", "product"] as const;
+const experienceItems = ["systems", "engineering", "product"] as const;
 
 export function ExperienceSection() {
   const t = useTranslations("Experience");

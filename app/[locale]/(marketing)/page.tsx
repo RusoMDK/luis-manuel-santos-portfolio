@@ -1,8 +1,6 @@
 import { KwadFeature } from "@/components/marketing/sections/kwad-feature";
 import { HeroSection } from "@/components/marketing/sections/hero-section";
-import { ProofSection } from "@/components/marketing/sections/proof-section";
 import { ProjectsSection } from "@/components/marketing/sections/projects-section";
-import { ServicesSection } from "@/components/marketing/sections/services-section";
 import { StackSection } from "@/components/marketing/sections/stack-section";
 import { ExperienceSection } from "@/components/marketing/sections/experience-section";
 import { AboutSection } from "@/components/marketing/sections/about-section";
@@ -19,8 +17,6 @@ const MarketingHomePage = async ({ params }: MarketingHomePageProps) => {
       <ProjectsSection />
       <ExperienceSection />
       <StackSection />
-      <ServicesSection />
-      <ProofSection />
       <AboutSection />
       <ContactSection />
     </>
