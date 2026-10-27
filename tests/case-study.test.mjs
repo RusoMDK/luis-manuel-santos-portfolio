@@ -13,9 +13,12 @@ test("KWAD case study has a dedicated route and localized entry", () => {
 
 test("featured work links to the localized KWAD case study", () => {
   const featured = readSource("components/marketing/sections/kwad-feature.tsx");
+  const english = JSON.parse(readSource("messages/en.json"));
+  const spanish = JSON.parse(readSource("messages/es.json"));
   assert.match(featured, /href="\/kwad"/);
-  assert.match(featured, /Read the case study/);
-  assert.match(featured, /Ver caso de estudio/);
+  assert.match(featured, /t\("caseStudy"\)/);
+  assert.equal(english.Kwad.caseStudy, "Read the case study");
+  assert.equal(spanish.Kwad.caseStudy, "Ver caso de estudio");
 });
 
 test("case study documents five actual application boundaries", () => {

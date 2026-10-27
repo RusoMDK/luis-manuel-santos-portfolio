@@ -1,8 +1,10 @@
-import { KwadFeature } from "@/components/marketing/sections/kwad-feature";
+import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
+import { PageMotion } from "@/components/common/page-motion";
 import { HeroSection } from "@/components/marketing/sections/hero-section";
+import { HavanaSection } from "@/components/marketing/sections/havana-section";
+import { KwadFeature } from "@/components/marketing/sections/kwad-feature";
 import { ProjectsSection } from "@/components/marketing/sections/projects-section";
-import { StackSection } from "@/components/marketing/sections/stack-section";
-import { ExperienceSection } from "@/components/marketing/sections/experience-section";
 import { AboutSection } from "@/components/marketing/sections/about-section";
 import { ContactSection } from "@/components/marketing/sections/contact-section";
 
@@ -10,16 +12,20 @@ type MarketingHomePageProps = { params: Promise<{ locale: string }> };
 
 const MarketingHomePage = async ({ params }: MarketingHomePageProps) => {
   const { locale } = await params;
+  if (locale !== "es" && locale !== "en") {
+    notFound();
+  }
+  setRequestLocale(locale);
+
   return (
-    <>
-      <HeroSection />
-      <KwadFeature locale={locale} />
+    <PageMotion>
+      <HeroSection locale={locale} />
+      <HavanaSection />
+      <KwadFeature />
       <ProjectsSection />
-      <ExperienceSection />
-      <StackSection />
       <AboutSection />
-      <ContactSection />
-    </>
+      <ContactSection locale={locale} />
+    </PageMotion>
   );
 };
 

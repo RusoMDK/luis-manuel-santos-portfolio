@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { siteConfig } from "@/config/site";
+import { fontVariables } from "@/lib/fonts";
 
 type Props = {
   children: React.ReactNode;
@@ -74,5 +75,11 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   setRequestLocale(locale);
 
-  return <NextIntlClientProvider>{children}</NextIntlClientProvider>;
+  return (
+    <html lang={locale} className={fontVariables}>
+      <body>
+        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+      </body>
+    </html>
+  );
 }

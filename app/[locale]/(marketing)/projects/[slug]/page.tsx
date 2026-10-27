@@ -1,18 +1,7 @@
-import Image from "next/image";
-import {
-  ArrowLeft,
-  ArrowUpRight,
-  ExternalLink,
-  RadioTower,
-  ShieldCheck,
-  Workflow,
-} from "lucide-react";
 import { notFound } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { projects } from "@/config/site";
-import { Container } from "@/components/marketing/shared/container";
-import { buttonVariants } from "@/components/ui/button-variants";
-import { cn } from "@/lib/utils";
+import { PageMotion } from "@/components/common/page-motion";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -20,8 +9,7 @@ type Props = {
 
 const caseStudyContent = {
   en: {
-    eyebrow: "Case Study",
-    back: "Back to projects",
+    back: "Back to the portfolio",
     title: "PlataformaIoT",
     summary:
       "A personal full stack project to register IoT devices, ingest their readings in real time and display them in configurable dashboards.",
@@ -44,8 +32,7 @@ const caseStudyContent = {
     repoCta: "Open repository",
   },
   es: {
-    eyebrow: "Caso de estudio",
-    back: "Volver a proyectos",
+    back: "Volver al portfolio",
     title: "PlataformaIoT",
     summary:
       "Proyecto personal full stack para registrar dispositivos IoT, recibir sus lecturas en tiempo real y visualizarlas en dashboards configurables.",
@@ -80,128 +67,64 @@ export default async function ProjectCaseStudyPage({ params }: Props) {
     (item) => "caseStudySlug" in item && item.caseStudySlug === slug,
   );
 
-  if (!project) {
+  if (!project || !("repoHref" in project)) {
     notFound();
   }
 
   const content = locale === "es" ? caseStudyContent.es : caseStudyContent.en;
 
   return (
-    <section className="py-16 md:py-24">
-      <Container>
-        <div className="space-y-8">
-          <Link
-            href="/#projects"
-            className="inline-flex items-center gap-2 text-sm font-medium text-white/65 transition hover:text-white"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            {content.back}
-          </Link>
-
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div className="space-y-6">
-              <div className="inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs uppercase tracking-[0.24em] text-cyan-100">
-                {content.eyebrow}
-              </div>
-
-              <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-white md:text-6xl">
-                {content.title}
-              </h1>
-
-              <p className="max-w-2xl text-lg leading-8 text-white/65">
-                {content.summary}
-              </p>
-
-              <a
-                href={project.repoHref}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(
-                  buttonVariants({ variant: "outline" }),
-                  "rounded-full border-white/15 bg-white/5 text-white hover:bg-white/10 hover:text-white",
-                )}
-              >
-                {content.repoCta}
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </a>
-            </div>
-
-            <div className="overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_30px_120px_rgba(0,0,0,0.25)]">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] border border-white/10">
-                <Image
-                  src={project.image}
-                  alt={content.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 45vw"
-                />
-              </div>
-            </div>
+    <PageMotion>
+      <article className="case field-walnut">
+        <header className="frame grid case-head">
+          <p className="case-back">
+            <Link className="text-link" href="/#trabajo" transitionTypes={["case-study"]}>
+              ← {content.back}
+            </Link>
+          </p>
+          <h1 className="display case-title">{content.title}</h1>
+          <div className="case-intro">
+            <p className="lead">{content.summary}</p>
+            <a className="button case-cta" href={project.repoHref} target="_blank" rel="noopener noreferrer">
+              {content.repoCta}
+            </a>
           </div>
+        </header>
 
-          <div className="grid gap-6 lg:grid-cols-3">
-            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
-              <div className="flex items-center gap-3">
-                <div className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/5">
-                  <RadioTower className="h-5 w-5 text-cyan-300" />
-                </div>
-                <h2 className="text-xl font-semibold text-white">
-                  {content.challengeTitle}
-                </h2>
-              </div>
-              <p className="mt-4 text-sm leading-7 text-white/65">
-                {content.challenge}
-              </p>
-            </div>
+        <section className="frame grid case-section" aria-labelledby="challenge-heading">
+          <h2 id="challenge-heading" className="heading case-side" data-reveal>
+            {content.challengeTitle}
+          </h2>
+          <p className="case-main lead" data-reveal>{content.challenge}</p>
+        </section>
 
-            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
-              <div className="flex items-center gap-3">
-                <div className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/5">
-                  <Workflow className="h-5 w-5 text-cyan-300" />
-                </div>
-                <h2 className="text-xl font-semibold text-white">
-                  {content.architectureTitle}
-                </h2>
-              </div>
-              <p className="mt-4 text-sm leading-7 text-white/65">
-                {content.architecture}
-              </p>
-            </div>
+        <section className="frame grid case-section" aria-labelledby="architecture-heading">
+          <h2 id="architecture-heading" className="heading case-side" data-reveal>
+            {content.architectureTitle}
+          </h2>
+          <p className="case-main lead" data-reveal>{content.architecture}</p>
+        </section>
 
-            <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6">
-              <div className="flex items-center gap-3">
-                <div className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/5">
-                  <ShieldCheck className="h-5 w-5 text-cyan-300" />
-                </div>
-                <h2 className="text-xl font-semibold text-white">
-                  {content.outcomeTitle}
-                </h2>
-              </div>
-              <p className="mt-4 text-sm leading-7 text-white/65">
-                {content.outcome}
-              </p>
-            </div>
-          </div>
+        <section className="frame grid case-section" aria-labelledby="highlights-heading">
+          <h2 id="highlights-heading" className="heading case-side" data-reveal>
+            {content.highlightsTitle}
+          </h2>
+          <ul className="case-main decisions" data-reveal>
+            {content.highlights.map((item) => (
+              <li key={item}>
+                <p>{item}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-          <div className="rounded-[30px] border border-white/10 bg-white/[0.04] p-6 md:p-8">
-            <h2 className="text-2xl font-semibold text-white">
-              {content.highlightsTitle}
-            </h2>
-
-            <div className="mt-6 grid gap-4">
-              {content.highlights.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-start gap-3 rounded-2xl border border-white/10 bg-black/20 px-4 py-4 text-sm leading-7 text-white/70"
-                >
-                  <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-cyan-300" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Container>
-    </section>
+        <section className="frame grid case-section case-close" aria-labelledby="outcome-heading">
+          <h2 id="outcome-heading" className="heading case-side" data-reveal>
+            {content.outcomeTitle}
+          </h2>
+          <p className="case-main lead" data-reveal>{content.outcome}</p>
+        </section>
+      </article>
+    </PageMotion>
   );
 }

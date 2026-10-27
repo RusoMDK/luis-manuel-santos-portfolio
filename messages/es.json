@@ -1,154 +1,225 @@
 {
   "LanguageSwitcher": {
+    "label": "Idioma",
     "en": "EN",
     "es": "ES"
   },
   "Navigation": {
-    "work": "Proyectos",
-    "stack": "Stack",
-    "experience": "Experiencia",
+    "label": "Principal",
+    "home": "Luisma, inicio",
+    "kwad": "KWAD",
+    "work": "Trabajo",
     "about": "Sobre mí",
     "contact": "Contacto",
-    "cta": "Contacto"
+    "cv": "CV"
   },
   "Hero": {
-    "badge": "Buscando oportunidades Full Stack / Backend",
-    "role": "Desarrollador Full Stack",
-    "title": "Diseño interfaces. Construyo sistemas. Entrego productos completos.",
-    "description": "Soy Luis Manuel Santos, ingeniero informático en Valladolid. He trabajado con NestJS y Angular en FORTES y desarrollo KWAD, una plataforma SaaS B2B multiempresa.",
-    "primaryCta": "Ver proyectos",
-    "secondaryCta": "Trabajemos juntos",
-    "downloadCv": "Descargar CV",
-    "focusLabel": "Enfoque principal",
-    "focusTitle": "Frontend cuidado + backend sólido + visión de producto",
-    "bullet1": "Ejecución frontend de alto nivel",
-    "bullet2": "Arquitectura backend escalable",
-    "bullet3": "Sistemas en tiempo real e integraciones",
-    "bullet4": "Construcción orientada a negocio",
-    "location": "Valladolid, España"
+    "firstName": "Luis Manuel",
+    "lastName": "Santos",
+    "lead": "Desarrollador full stack en Valladolid. Construyo KWAD, un SaaS de TPV e inventario para comercios, ya en producción.",
+    "primaryCta": "Escríbeme",
+    "cvCta": "Descargar CV (PDF)"
   },
-  "Projects": {
-    "eyebrow": "Trabajo destacado",
-    "title": "Proyectos seleccionados que muestran diseño y profundidad técnica.",
-    "description": "Sistemas que he diseñado y construido, con problemas reales de arquitectura, producto e interfaz.",
-    "cta": "Ver caso de estudio",
-    "repoCta": "Ver repositorio",
+  "Ticket": {
+    "label": "Ticket de venta: Luis Manuel Santos, desarrollador full stack, disponible ya",
+    "header": "LUISMA · TICKET DE VENTA",
+    "place": "Valladolid",
+    "item": "Luis Manuel Santos",
+    "qty": "× 1",
+    "role": "Desarrollador Full Stack",
+    "included": "incl.",
+    "total": "DISPONIBLE",
+    "totalValue": "YA",
+    "totalNote": "Valladolid · remoto o híbrido",
+    "barcodeLabel": "CV · escanear o pulsar",
+    "barcodeAria": "Abrir el CV en PDF",
+    "key": "Clave",
+    "thanks": "gracias",
+    "keyAria": "Ir a la demo de cobro con clave de idempotencia"
+  },
+  "Havana": {
+    "title": "Aprendí en La Habana",
+    "body": "Allí no hay Stripe y la conexión se cae a mitad del cobro. El software tiene que aguantar: tres monedas, reintentos y ni una venta duplicada.",
+    "photoAlt": "Calle de Centro Habana vista desde un balcón: fachadas desconchadas, cables cruzando y gente caminando por la calzada",
+    "photoCaption": "Calle Hospital, Centro Habana.",
+    "demo": {
+      "label": "Demo del TPV",
+      "register": "Caja 1",
+      "products": {
+        "coffee": "Café molido 250 g",
+        "malta": "Malta lata 355 ml",
+        "milk": "Leche en polvo 1 kg",
+        "crackers": "Galletas de soda"
+      },
+      "add": "Añadir {name}",
+      "remove": "Quitar uno de {name}",
+      "currency": "Moneda",
+      "network": "Red",
+      "online": "Conectada",
+      "offline": "Cortada",
+      "charge": "Cobrar",
+      "reconnect": "Reconectar",
+      "newSale": "Nueva venta",
+      "total": "Total",
+      "empty": "Ticket vacío",
+      "key": "Clave",
+      "keyPending": "se crea al cobrar",
+      "rates": "Tasas de ejemplo: 1 USD = 650 CUP · 1 USD = 0,92 EUR",
+      "server": "Servidor · registro de ventas",
+      "attempts": "Intentos de cobro",
+      "sales": "Ventas registradas",
+      "noAttempts": "Todavía no hay intentos.",
+      "queued": "sin red · en cola",
+      "created": "201 · venta registrada",
+      "duplicate": "200 · misma clave, se ignora",
+      "result": "Venta registrada una vez · Total {total}",
+      "note": "Simulación en tu navegador del envío idempotente de ventas de KWAD."
+    }
+  },
+  "Kwad": {
+    "title": "KWAD está en producción",
+    "body": "Un SaaS B2B multi-tenant para comercio minorista. Lo diseño, lo programo y lo opero yo solo desde abril de 2026. Está en beta, con su primer cliente.",
+    "caseStudy": "Ver caso de estudio",
+    "site": "getkwad.com",
+    "sample": "Datos de ejemplo.",
+    "modulesLabel": "Módulos de KWAD",
+    "modules": {
+      "pos": {
+        "title": "TPV por cajero y turno",
+        "text": "Cada venta viaja con su clave de idempotencia y la terminal no cobra si no está vinculada.",
+        "alt": "Pantalla del TPV de KWAD que bloquea una terminal no vinculada: «Esta terminal no es válida para operar»"
+      },
+      "inventory": {
+        "title": "Inventario con libro",
+        "text": "Cada movimiento guarda el stock de antes y el de después. Traslados entre tiendas y almacenes.",
+        "alt": "Tabla de movimientos de inventario de KWAD con la cantidad y el stock antes y después, por ejemplo 30 (0 → 30)"
+      },
+      "currency": {
+        "title": "Multimoneda",
+        "text": "Contabilidad en varias monedas, con la tasa sincronizada por una cola (BullMQ + Redis).",
+        "alt": "Catálogo de KWAD con el precio en dólares y su base en pesos cubanos, por ejemplo 1,16 USD con base de 780 CUP"
+      },
+      "store": {
+        "title": "Tienda online del comercio",
+        "text": "Cada comercio publica su tienda con el catálogo y el inventario del back-office.",
+        "alt": "Panel de tienda online de KWAD con el estado «Publicada» y los apartados de configuración"
+      },
+      "console": {
+        "title": "Consola de plataforma",
+        "text": "La tercera aplicación, con su propia identidad, desde la que opero todas las organizaciones.",
+        "fragment": "Fragmento ilustrativo de la consola."
+      }
+    },
+    "console": {
+      "title": "Organizaciones",
+      "org": "Organización",
+      "plan": "Plan",
+      "stores": "Tiendas",
+      "status": "Estado",
+      "demoOrg": "MiNegocio (demo)",
+      "demoPlan": "Beta",
+      "active": "Activa"
+    },
+    "also": "También: compras, caja, auditoría con el antes y el después de cada cambio, e informes en CSV, XLSX y PDF.",
+    "alsoReceptionAlt": "Recepción de mercancía en KWAD: orden de compra con productos, cantidades y coste por línea en CUP",
+    "alsoAuditAlt": "Registro de auditoría de KWAD con eventos de actualización de compras",
+    "tenant": {
+      "title": "Cada petición sabe de quién es",
+      "steps": {
+        "arrive": "La petición llega con su tenant",
+        "resolve": "Se resuelve la organización",
+        "context": "El contexto viaja con la petición",
+        "rbac": "Permisos por rol en la organización",
+        "data": "Consulta a la base de datos"
+      },
+      "result": "Respuesta con los datos de un solo comercio",
+      "note": "Monorepo Turborepo · Railway y Vercel."
+    }
+  },
+  "Work": {
+    "title": "Antes de KWAD",
+    "repo": "Ver repositorio",
+    "caseStudy": "Ver caso de estudio",
     "items": {
+      "sigies": {
+        "title": "SIGIES",
+        "meta": "FORTES · 2024–2026",
+        "description": "Ingeniero de software en la plataforma nacional de ingreso a la educación superior en Cuba. Soporte del sistema PHP en los picos de cada convocatoria, módulos nuevos en NestJS y Angular, migración incremental y modelado en PostgreSQL.",
+        "stack": "PHP · NestJS · Angular · PostgreSQL"
+      },
+      "iotTestbench": {
+        "title": "IoT Testbench",
+        "meta": "Tesis · 2024",
+        "description": "Banco de pruebas para sensores físicos: las lecturas llegan por MQTT, NestJS las guarda en PostgreSQL con TypeORM y Angular las muestra, con JWT y roles.",
+        "stack": "MQTT · NestJS · TypeORM · PostgreSQL · Angular"
+      },
       "iotPlatform": {
-        "title": "PlataformaIoT · Telemetría en tiempo real",
-        "category": "Proyecto personal · Tiempo real",
-        "description": "Registro de dispositivos IoT con ingesta por MQTT: un worker persiste las lecturas en MongoDB y las emite en vivo por Socket.IO. Dashboards configurables, alertas por reglas y exportación a Excel, PDF y CSV."
+        "title": "PlataformaIoT",
+        "meta": "Proyecto personal · 2025",
+        "description": "Telemetría en tiempo real: MQTT, un worker que escribe en MongoDB y Socket.IO hacia dashboards configurables, con alertas, exportación y 2FA.",
+        "stack": "MQTT · Node.js · MongoDB · Socket.IO · React"
       },
       "ecommerce": {
         "title": "Tienda Virtual",
-        "category": "E-commerce · Full Stack",
-        "description": "Tienda online con catálogo filtrable, carrito, lista de deseos, multimoneda y panel de administración con stock, importación CSV y edición del home. Fue la base del storefront de KWAD."
-      },
-      "creativePlatform": {
-        "title": "ArtCollab",
-        "category": "Comunidad · Full Stack",
-        "description": "Plataforma para artistas: perfiles públicos, galería con archivos en Cloudinary, proyectos colaborativos, feedback y autenticación JWT con roles."
-      },
-      "kwad": {
-        "title": "KWAD · Plataforma SaaS B2B",
-        "category": "SaaS · Full Stack · Multi-tenant",
-        "description": "Desarrollo integral de una plataforma para comercios: punto de venta, inventario, cajas, e-commerce, permisos y panel de control de la plataforma."
-      }
-    }
-  },
-  "Stack": {
-    "eyebrow": "Stack",
-    "title": "Las herramientas detrás del trabajo.",
-    "description": "Elijo tecnologías según los objetivos del producto, la mantenibilidad y el rendimiento, no solo por moda.",
-    "coreEyebrow": "Tecnologías clave",
-    "coreTitle": "Herramientas que uso para construir productos modernos",
-    "coreMeta": "{count} tecnologías entre frontend, backend e infraestructura",
-    "highlights": {
-      "frontend": {
-        "title": "Frontend",
-        "description": "Interfaces en React y Angular con componentes reutilizables y estado bien gestionado."
-      },
-      "backend": {
-        "title": "Backend",
-        "description": "APIs escalables, lógica segura y arquitectura mantenible del lado del servidor."
-      },
-      "data": {
-        "title": "Datos",
-        "description": "Persistencia confiable, flujos con ORM y sistemas de datos bien estructurados."
-      },
-      "product": {
-        "title": "Stack de producto",
-        "description": "Herramientas elegidas por calidad de entrega, velocidad y mantenibilidad a largo plazo."
+        "meta": "Proyecto personal · 2025",
+        "description": "E-commerce con catálogo, carrito, multimoneda y panel de administración. Fue la base del storefront de KWAD.",
+        "stack": "Fastify · Prisma · PostgreSQL · React"
       }
     }
   },
   "About": {
-    "eyebrow": "Sobre mí",
-    "title": "Construyo productos con criterio, estructura e intención.",
-    "description": "Soy Desarrollador Full Stack: construyo desde la interfaz hasta la API y el modelo de datos, con foco en software mantenible y útil para quien lo usa.",
-    "sideEyebrow": "Lo que me diferencia",
-    "sideTitle": "Mentalidad de producto con profundidad técnica.",
-    "sideDescription": "Me importan tanto los detalles que perciben los usuarios como la arquitectura de la que depende el equipo.",
-    "point1": "Combino ejecución frontend pulida con profundidad backend.",
-    "point2": "Pienso en calidad de producto, no solo en completar código.",
-    "point3": "Construyo sistemas mantenibles y fiables.",
-    "point4": "Me importa la mantenibilidad, la confianza del usuario y la entrega real.",
-    "role": "Desarrollador Full Stack",
-    "availability": "Disponible",
-    "location": "Valladolid, España"
+    "title": "Quién soy",
+    "portraitAlt": "Retrato de Luis Manuel Santos",
+    "p1": "Soy Luisma. Me formé como Ingeniero en Ciencias Informáticas en la UCI (2019–2024). Cursé estudios de posgrado en Informática Avanzada (UCI, 2025–2026).",
+    "p2": "En FORTES pasé dos años en SIGIES, un sistema que recibe sus picos cada vez que abre una convocatoria.",
+    "p3": "Soy coautor de «Smart IoT» (UCIENCIA 2025). Mi inglés es A2 y estoy preparando el B2.",
+    "p4": "Desde octubre vivo en Valladolid. Tengo permiso de trabajo y me incorporo ya. Busco full stack o backend: remoto en España, o híbrido o presencial en Valladolid.",
+    "signature": "Luis Manuel Santos Lezcano",
+    "role": "Desarrollador full stack",
+    "tearOff": "Recorta y escribe",
+    "photoAlt": "Calle de la Platería en Valladolid: calle peatonal de piedra con balcones de hierro y, al fondo, la fachada de una iglesia",
+    "photoCaption": "Calle de la Platería, Valladolid."
   },
   "Contact": {
-    "eyebrow": "Abierto a nuevas oportunidades",
-    "title": "¿Buscáis un desarrollador que pueda convertir una idea en software real?",
-    "description": "Busco puestos Full Stack o Backend en remoto (España) o híbrido en Valladolid. Tengo permiso de trabajo e incorporación inmediata.",
-    "email": "Escríbeme",
+    "title": "Escríbeme",
+    "lead": "Prepara aquí el correo y se abrirá en tu cliente de email.",
+    "role": "Puesto",
+    "roles": {
+      "fullstack": "Full stack",
+      "backend": "Backend"
+    },
+    "mode": "Modalidad",
+    "modes": {
+      "remote": "Remoto",
+      "hybrid": "Híbrido",
+      "onsite": "Presencial"
+    },
+    "message": "Mensaje",
+    "messagePlaceholder": "Cuéntame el puesto, el equipo y el stack.",
+    "submit": "Abrir correo",
+    "subject": "Puesto {role} · {mode}",
+    "stamp": "PAGADO",
+    "opened": "Se ha abierto tu correo. Si no aparece, escribe a {email}.",
+    "linkedin": "LinkedIn",
     "github": "GitHub",
-    "linkedin": "LinkedIn"
+    "cv": "CV en PDF"
   },
   "Footer": {
-    "description": "Desarrollador Full Stack en Valladolid. TypeScript, Node.js, React y Angular, de la interfaz a la base de datos.",
-    "email": "Escríbeme",
-    "cv": "Ver CV",
-    "navigation": "Navegación",
-    "connect": "Conecta",
-    "work": "Proyectos",
-    "stack": "Stack",
-    "experience": "Experiencia",
-    "about": "Sobre mí",
-    "contact": "Contacto",
-    "rights": "Todos los derechos reservados.",
-    "builtWith": "Hecho con Next.js, Tailwind CSS y una obsesión poco sana por una UI bien pulida."
+    "title": "Gracias por su visita",
+    "message": "Este ticket no caduca. Si buscas a alguien que lleve un producto de la base de datos a la caja, escríbeme.",
+    "linksLabel": "Enlaces",
+    "rights": "© 2026 Luis Manuel Santos · Valladolid",
+    "credits": "Fotos",
+    "creditsBy": "de {author}, <license>{name}</license>, vía Wikimedia Commons"
   },
   "Metadata": {
-    "title": "Luis Manuel Santos | Desarrollador Full Stack",
-    "description": "Desarrollador Full Stack en Valladolid. React, TypeScript, Node.js, NestJS, Angular y arquitectura SaaS B2B."
+    "title": "Luis Manuel Santos | Desarrollador full stack en Valladolid",
+    "description": "Desarrollador full stack en Valladolid. Construyo KWAD, un SaaS de TPV e inventario para comercios, ya en producción. TypeScript, Node.js, NestJS, Fastify, React, Angular y PostgreSQL."
   },
-  "Experience": {
-    "eyebrow": "Experiencia",
-    "title": "Trayectoria profesional",
-    "description": "Proyectos propios y experiencia institucional, desde frontend y backend hasta seguridad y soporte.",
-    "items": {
-      "engineering": {
-        "period": "2024 — 2026",
-        "title": "Ingeniero de Software · FORTES",
-        "subtitle": "SIGIES · NestJS y Angular",
-        "badge": "Experiencia profesional",
-        "description": "Desarrollo de módulos para la nueva versión de SIGIES, incluyendo funcionalidades relacionadas con roles de usuarios, y soporte a la versión anterior."
-      },
-      "systems": {
-        "period": "2026 — actualidad",
-        "title": "KWAD · SaaS B2B",
-        "subtitle": "Desarrollo integral del producto",
-        "badge": "Proyecto propio · beta en producción",
-        "description": "Arquitectura multiempresa con API, back-office, storefront, panel de administración y landing. React, TypeScript, Fastify, Prisma y PostgreSQL."
-      },
-      "product": {
-        "period": "2025",
-        "title": "Investigación IoT",
-        "subtitle": "UCIENCIA · Sistemas conectados",
-        "badge": "Investigación",
-        "description": "Coautor del trabajo Smart IoT sobre gestión segura de sensores físicos y automatización basada en inteligencia artificial."
-      }
-    }
+  "NotFound": {
+    "title": "Ticket anulado",
+    "body": "Esta dirección no corresponde a ninguna venta.",
+    "stamp": "ANULADO",
+    "cta": "Volver al inicio"
   }
 }

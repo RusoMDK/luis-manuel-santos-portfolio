@@ -3,156 +3,227 @@
 
 declare const messages: {
   "LanguageSwitcher": {
+    "label": "Language",
     "en": "EN",
     "es": "ES"
   },
   "Navigation": {
+    "label": "Main",
+    "home": "Luisma, home",
+    "kwad": "KWAD",
     "work": "Work",
-    "stack": "Stack",
-    "experience": "Experience",
     "about": "About",
     "contact": "Contact",
-    "cta": "Contact"
+    "cv": "CV"
   },
   "Hero": {
-    "badge": "Open to Full Stack / Backend roles",
-    "role": "Full Stack Developer",
-    "title": "I design interfaces. Engineer systems. Ship complete products.",
-    "description": "I'm Luis Manuel Santos, a software engineer based in Valladolid, Spain. I worked with NestJS and Angular at FORTES and I develop KWAD, a multi-tenant B2B SaaS platform.",
-    "primaryCta": "View Projects",
-    "secondaryCta": "Let's Work Together",
-    "downloadCv": "Download CV",
-    "focusLabel": "Selected Focus",
-    "focusTitle": "Careful frontend + solid backend + product thinking",
-    "bullet1": "High-end frontend execution",
-    "bullet2": "Scalable backend architecture",
-    "bullet3": "Real-time systems and integrations",
-    "bullet4": "Business-focused product builds",
-    "location": "Valladolid, Spain"
+    "firstName": "Luis Manuel",
+    "lastName": "Santos",
+    "lead": "Full stack developer in Valladolid. I build KWAD, a point-of-sale and inventory SaaS for retailers, already in production.",
+    "primaryCta": "Email me",
+    "cvCta": "Download CV (PDF)"
   },
-  "Projects": {
-    "eyebrow": "Featured Work",
-    "title": "Selected projects that show both craft and technical depth.",
-    "description": "Systems I've designed and built, shaped by real architecture, product and UI challenges.",
-    "cta": "View Case Study",
-    "repoCta": "View Repository",
+  "Ticket": {
+    "label": "Sales ticket: Luis Manuel Santos, full stack developer, available now",
+    "header": "LUISMA · SALES TICKET",
+    "place": "Valladolid",
+    "item": "Luis Manuel Santos",
+    "qty": "× 1",
+    "role": "Full Stack Developer",
+    "included": "incl.",
+    "total": "AVAILABLE",
+    "totalValue": "NOW",
+    "totalNote": "Valladolid · remote or hybrid",
+    "barcodeLabel": "CV · scan or tap",
+    "barcodeAria": "Open the CV as a PDF",
+    "key": "Key",
+    "thanks": "thank you",
+    "keyAria": "Go to the idempotent checkout demo"
+  },
+  "Havana": {
+    "title": "I learned in Havana",
+    "body": "There is no Stripe there, and the connection drops halfway through a payment. Software has to hold up: three currencies, retries and not one duplicated sale.",
+    "photoAlt": "A street in Centro Habana seen from a balcony: peeling facades, cables overhead and people walking in the road",
+    "photoCaption": "Calle Hospital, Centro Habana.",
+    "demo": {
+      "label": "Point-of-sale demo",
+      "register": "Till 1",
+      "products": {
+        "coffee": "Ground coffee 250 g",
+        "malta": "Malta can 355 ml",
+        "milk": "Powdered milk 1 kg",
+        "crackers": "Soda crackers"
+      },
+      "add": "Add {name}",
+      "remove": "Remove one {name}",
+      "currency": "Currency",
+      "network": "Network",
+      "online": "Connected",
+      "offline": "Down",
+      "charge": "Charge",
+      "reconnect": "Reconnect",
+      "newSale": "New sale",
+      "total": "Total",
+      "empty": "Empty ticket",
+      "key": "Key",
+      "keyPending": "created on charge",
+      "rates": "Sample rates: 1 USD = 650 CUP · 1 USD = 0.92 EUR",
+      "server": "Server · sales log",
+      "attempts": "Charge attempts",
+      "sales": "Sales recorded",
+      "noAttempts": "No attempts yet.",
+      "queued": "offline · queued",
+      "created": "201 · sale recorded",
+      "duplicate": "200 · same key, ignored",
+      "result": "Sale recorded once · Total {total}",
+      "note": "An in-browser simulation of how KWAD sends sales idempotently."
+    }
+  },
+  "Kwad": {
+    "title": "KWAD is in production",
+    "body": "A multi-tenant B2B SaaS for retail. I have designed, built and run it on my own since April 2026. It is in beta with its first customer.",
+    "caseStudy": "Read the case study",
+    "site": "getkwad.com",
+    "sample": "Sample data.",
+    "modulesLabel": "KWAD modules",
+    "modules": {
+      "pos": {
+        "title": "Point of sale by cashier and shift",
+        "text": "Every sale travels with its idempotency key, and a till that is not paired cannot take payments.",
+        "alt": "KWAD point-of-sale screen blocking an unpaired till: “This terminal is not valid for operation”"
+      },
+      "inventory": {
+        "title": "Inventory with a ledger",
+        "text": "Every movement stores the stock before and after. Transfers between shops and warehouses.",
+        "alt": "KWAD inventory movements table showing quantity and stock before and after, for example 30 (0 → 30)"
+      },
+      "currency": {
+        "title": "Multi-currency",
+        "text": "Accounting in several currencies, with the rate synced through a queue (BullMQ + Redis).",
+        "alt": "KWAD catalogue showing the price in dollars with its base in Cuban pesos, for example 1.16 USD on a 780 CUP base"
+      },
+      "store": {
+        "title": "The retailer's online shop",
+        "text": "Each retailer publishes a shop that uses the back-office catalogue and stock.",
+        "alt": "KWAD online shop panel marked “Published” with its setup sections"
+      },
+      "console": {
+        "title": "Platform console",
+        "text": "The third application, with its own identity, from which I run every organisation.",
+        "fragment": "Illustrative fragment of the console."
+      }
+    },
+    "console": {
+      "title": "Organisations",
+      "org": "Organisation",
+      "plan": "Plan",
+      "stores": "Shops",
+      "status": "Status",
+      "demoOrg": "MiNegocio (demo)",
+      "demoPlan": "Beta",
+      "active": "Active"
+    },
+    "also": "Also: purchasing, cash registers, an audit log with the before and after of every change, and CSV, XLSX and PDF reports.",
+    "alsoReceptionAlt": "Goods receipt in KWAD: a purchase order with products, quantities and line cost in CUP",
+    "alsoAuditAlt": "KWAD audit log with purchase update events",
+    "tenant": {
+      "title": "Every request knows whose it is",
+      "steps": {
+        "arrive": "The request arrives with its tenant",
+        "resolve": "The organisation is resolved",
+        "context": "The context travels with the request",
+        "rbac": "Role permissions inside the organisation",
+        "data": "Database query"
+      },
+      "result": "A response with one retailer's data only",
+      "note": "Turborepo monorepo · Railway and Vercel."
+    }
+  },
+  "Work": {
+    "title": "Before KWAD",
+    "repo": "View repository",
+    "caseStudy": "Read the case study",
     "items": {
+      "sigies": {
+        "title": "SIGIES",
+        "meta": "FORTES · 2024–2026",
+        "description": "Software engineer on Cuba's national university admissions platform. Supporting the PHP system through the peak of every admissions round, new modules in NestJS and Angular, incremental migration and PostgreSQL modelling.",
+        "stack": "PHP · NestJS · Angular · PostgreSQL"
+      },
+      "iotTestbench": {
+        "title": "IoT Testbench",
+        "meta": "Thesis · 2024",
+        "description": "A test bench for physical sensors: readings arrive over MQTT, NestJS stores them in PostgreSQL with TypeORM and Angular displays them, with JWT and roles.",
+        "stack": "MQTT · NestJS · TypeORM · PostgreSQL · Angular"
+      },
       "iotPlatform": {
-        "title": "PlataformaIoT · Real-Time Telemetry",
-        "category": "Personal project · Real-time",
-        "description": "IoT device registry with MQTT ingestion: a worker persists readings to MongoDB and streams them live over Socket.IO. Configurable dashboards, rule-based alerts and exports to Excel, PDF and CSV."
+        "title": "PlataformaIoT",
+        "meta": "Personal project · 2025",
+        "description": "Real-time telemetry: MQTT, a worker writing to MongoDB and Socket.IO feeding configurable dashboards, with alerts, exports and 2FA.",
+        "stack": "MQTT · Node.js · MongoDB · Socket.IO · React"
       },
       "ecommerce": {
         "title": "Tienda Virtual",
-        "category": "E-commerce · Full Stack",
-        "description": "Online store with a filterable catalog, cart, wishlist, multi-currency pricing and an admin panel for stock, CSV import and home page editing. It became the foundation of KWAD's storefront."
-      },
-      "creativePlatform": {
-        "title": "ArtCollab",
-        "category": "Community · Full Stack",
-        "description": "Platform for artists: public profiles, a media gallery backed by Cloudinary, collaborative projects, feedback and JWT authentication with roles."
-      },
-      "kwad": {
-        "title": "KWAD · B2B SaaS Platform",
-        "category": "SaaS · Full Stack · Multi-tenant",
-        "description": "End-to-end development of a retail platform: POS, inventory, cash registers, e-commerce, permissions and platform administration."
-      }
-    }
-  },
-  "Stack": {
-    "eyebrow": "Stack",
-    "title": "The tools behind the work.",
-    "description": "I choose technologies based on product goals, maintainability and performance, not hype alone.",
-    "coreEyebrow": "Core technologies",
-    "coreTitle": "Tools I use to build modern products",
-    "coreMeta": "{count} technologies across frontend, backend and infrastructure",
-    "highlights": {
-      "frontend": {
-        "title": "Frontend",
-        "description": "React and Angular interfaces with reusable components and well-managed state."
-      },
-      "backend": {
-        "title": "Backend",
-        "description": "Scalable APIs, secure logic and maintainable server architecture."
-      },
-      "data": {
-        "title": "Data",
-        "description": "Reliable persistence, ORM workflows and structured data systems."
-      },
-      "product": {
-        "title": "Product Stack",
-        "description": "Tools chosen for delivery quality, speed and long-term maintainability."
+        "meta": "Personal project · 2025",
+        "description": "An online shop with catalogue, cart, multi-currency and an admin panel. It became the base of the KWAD storefront.",
+        "stack": "Fastify · Prisma · PostgreSQL · React"
       }
     }
   },
   "About": {
-    "eyebrow": "About Me",
-    "title": "I build products with taste, structure and intent.",
-    "description": "I'm a Full Stack Developer: I build from the interface down to the API and the data model, focused on maintainable software that is genuinely useful to the people using it.",
-    "sideEyebrow": "What sets me apart",
-    "sideTitle": "A product mindset with engineering depth.",
-    "sideDescription": "I care about the details users notice and the architecture teams depend on.",
-    "point1": "I combine polished frontend execution with backend depth.",
-    "point2": "I think in terms of product quality, not only code completion.",
-    "point3": "I build systems that are maintainable and reliable.",
-    "point4": "I care about maintainability, user trust and real delivery.",
-    "role": "Full Stack Developer",
-    "availability": "Open to work",
-    "location": "Valladolid, Spain"
+    "title": "About me",
+    "portraitAlt": "Portrait of Luis Manuel Santos",
+    "p1": "I'm Luisma. I trained as a Computer Science Engineer at UCI (2019–2024). I took postgraduate studies in Advanced Computing (UCI, 2025–2026).",
+    "p2": "At FORTES I spent two years on SIGIES, a system that takes its peaks every time an admissions round opens.",
+    "p3": "I co-authored “Smart IoT” (UCIENCIA 2025). My English is A2 and I am preparing for B2.",
+    "p4": "I have lived in Valladolid since October. I have a work permit and can start now. I am looking for full stack or backend roles: remote in Spain, or hybrid or on-site in Valladolid.",
+    "signature": "Luis Manuel Santos Lezcano",
+    "role": "Full stack developer",
+    "tearOff": "Tear off and write",
+    "photoAlt": "Calle de la Platería in Valladolid: a stone pedestrian street with iron balconies and a church facade at the end",
+    "photoCaption": "Calle de la Platería, Valladolid."
   },
   "Contact": {
-    "eyebrow": "Open to new opportunities",
-    "title": "Looking for an engineer who can turn an idea into working software?",
-    "description": "I'm looking for Full Stack or Backend roles, remote in Spain or hybrid in Valladolid. Authorized to work in Spain and available immediately.",
-    "email": "Email Me",
+    "title": "Email me",
+    "lead": "Draft the email here and it will open in your mail app.",
+    "role": "Role",
+    "roles": {
+      "fullstack": "Full stack",
+      "backend": "Backend"
+    },
+    "mode": "Work mode",
+    "modes": {
+      "remote": "Remote",
+      "hybrid": "Hybrid",
+      "onsite": "On-site"
+    },
+    "message": "Message",
+    "messagePlaceholder": "Tell me about the role, the team and the stack.",
+    "submit": "Open email",
+    "subject": "{role} role · {mode}",
+    "stamp": "PAID",
+    "opened": "Your email app should be open. If not, write to {email}.",
+    "linkedin": "LinkedIn",
     "github": "GitHub",
-    "linkedin": "LinkedIn"
+    "cv": "CV as PDF"
   },
   "Footer": {
-    "description": "Full Stack Developer in Valladolid, Spain. TypeScript, Node.js, React and Angular, from the interface to the database.",
-    "email": "Email me",
-    "cv": "View CV",
-    "navigation": "Navigation",
-    "connect": "Connect",
-    "work": "Work",
-    "stack": "Stack",
-    "experience": "Experience",
-    "about": "About",
-    "contact": "Contact",
-    "rights": "All rights reserved.",
-    "builtWith": "Built with Next.js, Tailwind CSS and an unhealthy respect for polished UI."
+    "title": "Thank you for your visit",
+    "message": "This ticket does not expire. If you need someone who takes a product from the database to the till, email me.",
+    "linksLabel": "Links",
+    "rights": "© 2026 Luis Manuel Santos · Valladolid",
+    "credits": "Photos",
+    "creditsBy": "by {author}, <license>{name}</license>, via Wikimedia Commons"
   },
   "Metadata": {
-    "title": "Luis Manuel Santos | Full Stack Developer",
-    "description": "Full Stack Developer in Valladolid, Spain. React, TypeScript, Node.js, NestJS, Angular and B2B SaaS architecture."
+    "title": "Luis Manuel Santos | Full stack developer in Valladolid",
+    "description": "Full stack developer in Valladolid. I build KWAD, a point-of-sale and inventory SaaS for retailers, already in production. TypeScript, Node.js, NestJS, Fastify, React, Angular and PostgreSQL."
   },
-  "Experience": {
-    "eyebrow": "Experience",
-    "title": "Professional experience",
-    "description": "Independent product development and institutional software, from frontend and backend to security and support.",
-    "items": {
-      "engineering": {
-        "period": "2024 — 2026",
-        "title": "Software Engineer · FORTES",
-        "subtitle": "SIGIES · NestJS and Angular",
-        "badge": "Professional role",
-        "description": "Developed modules for the new SIGIES version, including user-role functionality, and supported the legacy system."
-      },
-      "systems": {
-        "period": "2026 — present",
-        "title": "KWAD · B2B SaaS",
-        "subtitle": "End-to-end product development",
-        "badge": "Independent product · beta in production",
-        "description": "Multi-tenant architecture with API, back-office, storefront, platform administration and landing. React, TypeScript, Fastify, Prisma and PostgreSQL."
-      },
-      "product": {
-        "period": "2025",
-        "title": "IoT research",
-        "subtitle": "UCIENCIA · Connected systems",
-        "badge": "Research",
-        "description": "Co-authored Smart IoT, a publication on secure sensor management and AI-powered automation."
-      }
-    }
+  "NotFound": {
+    "title": "Ticket void",
+    "body": "This address does not match any sale.",
+    "stamp": "VOID",
+    "cta": "Back to the home page"
   }
 };
 export default messages;
