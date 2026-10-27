@@ -15,7 +15,7 @@ export function ContactSection({ locale }: ContactSectionProps) {
       <div className="frame">
         <div className="coupon" data-reveal>
           <div className="coupon-stub">
-            <h2 id="contact-title" className="heading">
+            <h2 id="contact-title" className="heading" data-split>
               {t("title")}
             </h2>
             <a className="coupon-email" href={`mailto:${siteConfig.email}`}>

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
 const readSource = (path) =>
   readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
@@ -39,4 +39,16 @@ test("case study provides content for both locales", () => {
   assert.match(source, /es: \{/);
   assert.match(source, /en: \{/);
   assert.match(source, /purpose\[locale\]/);
+});
+
+test("KWAD is the only case study; other work links to its repository", () => {
+  assert.equal(existsSync(new URL("../app/[locale]/(marketing)/projects", import.meta.url)), false);
+  const config = readSource("config/site.ts");
+  assert.doesNotMatch(config, /caseStudySlug/);
+  const section = readSource("components/marketing/sections/projects-section.tsx");
+  assert.doesNotMatch(section, /\/projects\//);
+  assert.match(section, /project\.repoHref/);
+  for (const repo of ["iot-testbench", "PlataformaIoT", "Tienda-Virtual"]) {
+    assert.match(config, new RegExp(`repoHref: "https://github.com/RusoMDK/${repo}"`));
+  }
 });

@@ -29,6 +29,13 @@ export async function generateMetadata({
   const title = t("title");
   const description = t("description");
   const url = `${siteConfig.url}/${locale}`;
+  const image = {
+    url: siteConfig.ogImage[locale],
+    width: 1200,
+    height: 630,
+    type: "image/png",
+    alt: title,
+  };
 
   return {
     title,
@@ -46,22 +53,16 @@ export async function generateMetadata({
       description,
       url,
       siteName: siteConfig.name,
-      locale,
+      locale: locale === "es" ? "es_ES" : "en_GB",
+      alternateLocale: locale === "es" ? "en_GB" : "es_ES",
       type: "website",
-      images: [
-        {
-          url: siteConfig.ogImage,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [siteConfig.ogImage],
+      images: [image],
     },
   };
 }

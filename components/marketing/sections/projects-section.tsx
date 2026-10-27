@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { projects } from "@/config/site";
 
 export function ProjectsSection() {
@@ -8,7 +7,7 @@ export function ProjectsSection() {
   return (
     <section id="trabajo" className="section work field-walnut-2" aria-labelledby="work-title">
       <div className="frame">
-        <h2 id="work-title" className="heading" data-reveal>
+        <h2 id="work-title" className="heading" data-split>
           {t("title")}
         </h2>
       </div>
@@ -28,11 +27,6 @@ export function ProjectsSection() {
               <div className="folder-text">
                 <p>{t(`items.${project.id}.description`)}</p>
                 <p className="folder-links">
-                  {"caseStudySlug" in project ? (
-                    <Link className="text-link" href={`/projects/${project.caseStudySlug}`} transitionTypes={["case-study"]}>
-                      {t("caseStudy")}
-                    </Link>
-                  ) : null}
                   {"repoHref" in project ? (
                     <a className="text-link" href={project.repoHref} target="_blank" rel="noopener noreferrer">
                       {t("repo")}

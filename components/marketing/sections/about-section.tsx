@@ -20,7 +20,7 @@ export function AboutSection() {
                 height={128}
                 alt={t("portraitAlt")}
               />
-              <h2 id="about-title" className="heading">
+              <h2 id="about-title" className="heading" data-split>
                 {t("title")}
               </h2>
             </header>

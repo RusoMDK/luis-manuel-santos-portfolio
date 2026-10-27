@@ -111,3 +111,26 @@ test("the ticket barcode uses a complete Code 128 table", () => {
   });
   assert.equal(new Set(patterns).size, 107);
 });
+
+test("photo credits say the pictures are cropped", () => {
+  assert.match(spanish.Footer.creditsBy, /<license>\{name\}<\/license>.*recortada/);
+  assert.match(english.Footer.creditsBy, /<license>\{name\}<\/license>.*cropped/);
+  const config = readSource("config/site.ts");
+  assert.equal((config.match(/licenseUrl: "https:\/\/creativecommons.org/g) ?? []).length, 2);
+});
+
+test("each locale has its own Open Graph card and the old cover is gone", () => {
+  const config = readSource("config/site.ts");
+  const layout = readSource("app/[locale]/layout.tsx");
+  for (const locale of ["es", "en"]) {
+    const path = `public/images/og/og-${locale}.png`;
+    assert.match(config, new RegExp(`${locale}: "/images/og/og-${locale}.png"`));
+    const png = readFileSync(join(root, path));
+    // PNG header: width and height are big-endian at bytes 16 and 20.
+    assert.equal(png.readUInt32BE(16), 1200, `${path} width`);
+    assert.equal(png.readUInt32BE(20), 630, `${path} height`);
+  }
+  assert.match(layout, /siteConfig\.ogImage\[locale\]/);
+  assert.match(layout, /twitter: \{[\s\S]*images: \[image\]/);
+  assert.equal(listFiles("public/images").some((path) => path.endsWith("og-cover.jpg")), false);
+});

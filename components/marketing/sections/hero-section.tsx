@@ -12,7 +12,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
   return (
     <section className="hero field-walnut" aria-labelledby="hero-title">
       <div className="frame grid hero-grid">
-        <div className="hero-copy" data-reveal>
+        <div className="hero-copy">
           <h1 id="hero-title" className="display">
             <span>{t("firstName")}</span> <span>{t("lastName")}</span>
           </h1>

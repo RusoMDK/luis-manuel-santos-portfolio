@@ -139,7 +139,6 @@
   "Work": {
     "title": "Antes de KWAD",
     "repo": "Ver repositorio",
-    "caseStudy": "Ver caso de estudio",
     "items": {
       "sigies": {
         "title": "SIGIES",
@@ -210,7 +209,7 @@
     "linksLabel": "Enlaces",
     "rights": "© 2026 Luis Manuel Santos · Valladolid",
     "credits": "Fotos",
-    "creditsBy": "de {author}, <license>{name}</license>, vía Wikimedia Commons"
+    "creditsBy": "de {author}, <license>{name}</license>, vía Wikimedia Commons, recortada"
   },
   "Metadata": {
     "title": "Luis Manuel Santos | Desarrollador full stack en Valladolid",

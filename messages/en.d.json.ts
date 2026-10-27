@@ -142,7 +142,6 @@ declare const messages: {
   "Work": {
     "title": "Before KWAD",
     "repo": "View repository",
-    "caseStudy": "Read the case study",
     "items": {
       "sigies": {
         "title": "SIGIES",
@@ -213,7 +212,7 @@ declare const messages: {
     "linksLabel": "Links",
     "rights": "© 2026 Luis Manuel Santos · Valladolid",
     "credits": "Photos",
-    "creditsBy": "by {author}, <license>{name}</license>, via Wikimedia Commons"
+    "creditsBy": "by {author}, <license>{name}</license>, via Wikimedia Commons, cropped"
   },
   "Metadata": {
     "title": "Luis Manuel Santos | Full stack developer in Valladolid",

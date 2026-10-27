@@ -4,7 +4,11 @@ export const siteConfig = {
   description:
     "Full stack developer in Valladolid. I build KWAD, a point-of-sale and inventory SaaS for retailers, already in production.",
   url: "https://luismsldev.vercel.app",
-  ogImage: "/images/og-cover.jpg",
+  // One Open Graph card per locale, drawn from the ticket (see .taste-skill/og).
+  ogImage: {
+    es: "/images/og/og-es.png",
+    en: "/images/og/og-en.png",
+  },
   email: "luissantoslezcano@gmail.com",
   github: "https://github.com/RusoMDK",
   linkedin: "https://www.linkedin.com/in/luissantosdev/",
@@ -40,7 +44,6 @@ export const projects = [
   },
   {
     id: "iotPlatform",
-    caseStudySlug: "iot-platform",
     repoHref: "https://github.com/RusoMDK/PlataformaIoT",
   },
   {

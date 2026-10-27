@@ -12,7 +12,7 @@ export function HavanaSection() {
     <section id="habana" className="section havana field-walnut-2" aria-labelledby="havana-title">
       <div className="frame grid havana-grid">
         <div className="havana-intro">
-          <h2 id="havana-title" className="heading" data-reveal>
+          <h2 id="havana-title" className="heading" data-split>
             {t("title")}
           </h2>
           <p className="lead" data-reveal>

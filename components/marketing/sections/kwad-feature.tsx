@@ -19,7 +19,7 @@ export function KwadFeature() {
   return (
     <section id="kwad" className="section kwad field-walnut" aria-labelledby="kwad-title">
       <div className="frame grid kwad-head">
-        <h2 id="kwad-title" className="heading kwad-title" data-reveal>
+        <h2 id="kwad-title" className="heading kwad-title" data-split>
           {t("title")}
         </h2>
         <div className="kwad-intro" data-reveal>
