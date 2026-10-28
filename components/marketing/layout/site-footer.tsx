@@ -42,12 +42,13 @@ export function SiteFooter({ locale }: SiteFooterProps) {
                 </a>
               </li>
             </ul>
-            <p className="coupon-imprint">
-              <span className="coupon-thanks">{footer("title")}</span>
-              <span>{footer("rights")}</span>
-            </p>
           </div>
           <ContactCoupon />
+          {/* Last in the coupon, under the form on a phone; under the links beside it on a laptop. */}
+          <p className="coupon-imprint">
+            <span className="coupon-thanks">{footer("title")}</span>
+            <span>{footer("rights")}</span>
+          </p>
         </div>
       </div>
     </footer>

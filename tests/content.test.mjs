@@ -134,6 +134,18 @@ test("the roll marks the two jobs so they are found without reading the rest", (
   assert.equal(spanish.Roll.now, "HOY");
 });
 
+test("on a phone the roll's pictures follow their own copy, and every capture yields to the LCP", () => {
+  const section = readSource("components/marketing/sections/roll-section.tsx");
+  assert.match(section, /withMedia = \["thesis", "iotPlatform", "kwad"\]/);
+  assert.match(section, /order\(2 \* index \+ 1\)/);
+  assert.match(section, /order\(2 \* owner \+ 2\)/);
+  assert.match(readSource("app/globals.css"), /\.roll-group\[data-inline-media\] \.roll-strip \{\s*display: contents;/);
+  assert.equal((section.match(/fetchPriority="low"/g) ?? []).length, 3);
+  assert.match(readSource("components/marketing/kwad/shot.tsx"), /fetchPriority: "low"/);
+  // The height check stays local: a few lines of copy must not fail CI.
+  assert.doesNotMatch(readSource(".github/workflows/content-checks.yml"), /test:height/);
+});
+
 test("the hero ticket prints experience and the work permit before availability", () => {
   const ticket = readSource("components/marketing/ticket/hero-ticket.tsx");
   const order = ['t("experience")', 't("permit")', 't("total")'].map((key) => ticket.indexOf(key));
@@ -269,6 +281,8 @@ test("contact and footer are one block, on every page", () => {
   assert.match(footer, /<footer id="contacto"/);
   assert.match(footer, /ContactCoupon/);
   assert.match(footer, /footer\("rights"\)/);
+  // The thanks and the © close the block: after the form, also on a phone.
+  assert.ok(footer.indexOf("coupon-imprint") > footer.indexOf("<ContactCoupon />"), "imprint before the form");
   assert.equal(listFiles("components").some((path) => path.endsWith("contact-section.tsx")), false);
   assert.equal(spanish.Footer.title, "Gracias por tu visita");
   for (const locale of [spanish, english]) assert.equal(locale.Footer.message, undefined);

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { rollEntries, rollPhotos, type RollEntryId } from "@/config/site";
@@ -18,7 +19,14 @@ const groups = rollEntries.reduce<{ year: number; entries: Entry[] }[]>((list, e
 
 const pad = (month: number) => String(month).padStart(2, "0");
 
-function Copy({ entry }: { entry: Entry }) {
+// The copies that carry pictures. On a phone the pictures print right after their copy.
+const withMedia = ["thesis", "iotPlatform", "kwad"] as const;
+const hasMedia = (id: RollEntryId): id is (typeof withMedia)[number] => (withMedia as readonly string[]).includes(id);
+const inlineOnPhone = (id: RollEntryId) => id !== "kwad";
+// The reading order on a phone: copy i is 2i + 1, the pictures of copy i are 2i + 2.
+const order = (value: number) => ({ "--order": value }) as CSSProperties;
+
+function Copy({ entry, index }: { entry: Entry; index: number }) {
   const t = useTranslations("Roll");
   const months = t.raw("months") as string[];
   const id: RollEntryId = entry.id;
@@ -32,6 +40,7 @@ function Copy({ entry }: { entry: Entry }) {
   return (
     <li
       className="roll-copy"
+      style={order(2 * index + 1)}
       data-experience={"experience" in entry || undefined}
       data-stone={"stone" in entry || undefined}
     >
@@ -87,11 +96,11 @@ function Copy({ entry }: { entry: Entry }) {
   );
 }
 
-/** The pictures of a year: the thesis and its one live piece, the seedbed, KWAD. */
-function Media({ ids }: { ids: string[] }) {
+/** The pictures of a copy: the thesis and its one live piece, the seedbed, KWAD. */
+function Media({ id }: { id: (typeof withMedia)[number] }) {
   const t = useTranslations("Roll");
 
-  if (ids.includes("thesis")) {
+  if (id === "thesis") {
     return (
       <>
         <figure className="roll-photos" data-reveal>
@@ -100,6 +109,7 @@ function Media({ ids }: { ids: string[] }) {
             width={rollPhotos.thesisBench.width}
             height={rollPhotos.thesisBench.height}
             alt={t("thesisPhotoAlt")}
+            fetchPriority="low"
             sizes="(max-width: 900px) 50vw, 25vw"
           />
           <Image
@@ -107,6 +117,7 @@ function Media({ ids }: { ids: string[] }) {
             width={rollPhotos.thesisLcd.width}
             height={rollPhotos.thesisLcd.height}
             alt={t("thesisLcdAlt")}
+            fetchPriority="low"
             sizes="(max-width: 900px) 50vw, 25vw"
           />
           <figcaption className="caption">{t("thesisCaption")}</figcaption>
@@ -115,7 +126,7 @@ function Media({ ids }: { ids: string[] }) {
       </>
     );
   }
-  if (ids.includes("iotPlatform")) {
+  if (id === "iotPlatform") {
     return (
       <figure className="roll-photos" data-reveal>
         <Image
@@ -123,21 +134,19 @@ function Media({ ids }: { ids: string[] }) {
           width={rollPhotos.seedbed.width}
           height={rollPhotos.seedbed.height}
           alt={t("seedbedAlt")}
+          fetchPriority="low"
           sizes="(max-width: 900px) 100vw, 45vw"
         />
         <figcaption className="caption">{t("seedbedCaption")}</figcaption>
       </figure>
     );
   }
-  if (ids.includes("kwad")) {
-    return (
-      <figure className="roll-kwad" data-reveal>
-        <Shot id="reception" alt={t("receptionAlt")} />
-        <figcaption className="caption">{t("receptionCaption")}</figcaption>
-      </figure>
-    );
-  }
-  return null;
+  return (
+    <figure className="roll-kwad" data-reveal>
+      <Shot id="reception" alt={t("receptionAlt")} />
+      <figcaption className="caption">{t("receptionCaption")}</figcaption>
+    </figure>
+  );
 }
 
 export function RollSection() {
@@ -154,21 +163,34 @@ export function RollSection() {
         </p>
       </header>
 
-      {groups.map((group, index) => (
-        <div key={group.year} className="frame roll-group" data-last={index === groups.length - 1 || undefined}>
-          <div className="roll-side">
-            <p className="roll-year" aria-hidden="true" data-roll-year>
-              {group.year}
-            </p>
-            <Media ids={group.entries.map((entry) => entry.id)} />
+      {groups.map((group, index) => {
+        const owner = group.entries.findIndex((entry) => hasMedia(entry.id));
+        const id = owner >= 0 ? group.entries[owner].id : null;
+        return (
+          <div
+            key={group.year}
+            className="frame roll-group"
+            data-last={index === groups.length - 1 || undefined}
+            data-inline-media={(id && inlineOnPhone(id)) || undefined}
+          >
+            <div className="roll-side">
+              <p className="roll-year" aria-hidden="true" data-roll-year>
+                {group.year}
+              </p>
+              {id && hasMedia(id) ? (
+                <div className="roll-media" style={order(2 * owner + 2)}>
+                  <Media id={id} />
+                </div>
+              ) : null}
+            </div>
+            <ol className="roll-strip" data-ui>
+              {group.entries.map((entry, position) => (
+                <Copy key={entry.id} entry={entry} index={position} />
+              ))}
+            </ol>
           </div>
-          <ol className="roll-strip" data-ui>
-            {group.entries.map((entry) => (
-              <Copy key={entry.id} entry={entry} />
-            ))}
-          </ol>
-        </div>
-      ))}
+        );
+      })}
     </section>
   );
 }

@@ -53,7 +53,13 @@ type ShotProps = {
 export function Shot({ id, alt, priority }: ShotProps) {
   const { desktop, mobile } = kwadShots[id];
   const pick = ({ src, width, height }: Source) => ({ src, width, height });
-  const { props: image } = getImageProps({ ...pick(desktop), alt, sizes: `${desktop.display}px`, priority });
+  // Below the fold a capture waits behind the page's largest paint: lazy and low priority.
+  const { props: image } = getImageProps({
+    ...pick(desktop),
+    alt,
+    sizes: `${desktop.display}px`,
+    ...(priority ? { priority } : { fetchPriority: "low" as const }),
+  });
   const { props: phone } = getImageProps({ ...pick(mobile), alt, sizes: `${mobile.display}px` });
   const style = { "--shot-w": `${desktop.display}px`, "--shot-w-phone": `${mobile.display}px` } as CSSProperties;
 

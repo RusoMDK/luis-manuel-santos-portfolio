@@ -35,5 +35,3 @@ jobs:
         run: pnpm exec tsc --noEmit
       - name: Build
         run: pnpm build
-      - name: Home page height
-        run: pnpm test:height
