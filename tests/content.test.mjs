@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
@@ -21,8 +21,12 @@ const listFiles = (dir) =>
   });
 
 const config = readSource("config/site.ts");
-const rollBlock = config.slice(config.indexOf("export const rollEntries"), config.indexOf("] as const;", config.indexOf("export const rollEntries")));
-const rollIds = [...rollBlock.matchAll(/id: "([^"]+)"/g)].map((match) => match[1]);
+
+// Every public source file the visitor's page is built from.
+const publicFiles = () =>
+  [...listFiles("app"), ...listFiles("components"), ...listFiles("config"), ...listFiles("lib"), ...listFiles("messages")].filter((path) =>
+    /\.(tsx?|json|css|mjs)$/.test(path),
+  );
 
 // Every string in a messages tree, with its dotted path.
 const strings = (value, prefix = "") =>
@@ -44,256 +48,248 @@ const jpegSize = (buffer) => {
   throw new Error("No SOF marker");
 };
 
+// PNG header: width and height are big-endian at bytes 16 and 20.
+const pngSize = (buffer) => ({ width: buffer.readUInt32BE(16), height: buffer.readUInt32BE(20) });
+
 test("Spanish and English translations preserve matching keys", () => {
   const flattenKeys = (value, prefix = "") =>
     Object.entries(value).flatMap(([key, entry]) => {
       const path = prefix ? `${prefix}.${key}` : key;
-      return entry && typeof entry === "object" && !Array.isArray(entry)
-        ? flattenKeys(entry, path)
-        : [path];
+      return entry && typeof entry === "object" && !Array.isArray(entry) ? flattenKeys(entry, path) : [path];
     });
   assert.deepEqual(flattenKeys(spanish).sort(), flattenKeys(english).sort());
+  // Arrays of rows (the diagram's sample data) keep the same length too.
+  assert.equal(spanish.Kwad.architecture.diagram.sample.a.length, english.Kwad.architecture.diagram.sample.a.length);
+  assert.equal(spanish.Kwad.architecture.diagram.sample.b.length, english.Kwad.architecture.diagram.sample.b.length);
+  for (const [path, text] of strings(english)) assert.ok(text.trim(), `Empty English string at ${path}`);
+  for (const [path, text] of strings(spanish)) assert.ok(text.trim(), `Empty Spanish string at ${path}`);
 });
 
-test("both locales describe the current location and core work", () => {
-  for (const locale of [spanish, english]) {
-    assert.match(locale.Hero.lead, /Valladolid/);
-    assert.match(locale.Hero.lead, /KWAD/);
-    assert.match(locale.Kwad.title, /KWAD/);
+test("every translation key the components use exists in both locales", () => {
+  const sources = [...listFiles("components"), ...listFiles("app")].filter((path) => path.endsWith(".tsx"));
+  const has = (messages, path) => path.split(".").reduce((node, key) => node?.[key], messages) !== undefined;
+  for (const path of sources) {
+    const source = readSource(path);
+    // useTranslations("Namespace") / getTranslations({ namespace: "Namespace" }) with plain t("key") calls.
+    const namespaces = [...source.matchAll(/(?:useTranslations\(|namespace: )"([\w.]+)"/g)].map((match) => match[1]);
+    if (namespaces.length !== 1) continue;
+    const [namespace] = namespaces;
+    for (const [, key] of source.matchAll(/\bt\("([\w.]+)"/g)) {
+      for (const [locale, messages] of [["es", spanish], ["en", english]]) {
+        assert.ok(has(messages, `${namespace}.${key}`), `${path}: ${locale} is missing ${namespace}.${key}`);
+      }
+    }
   }
 });
 
-test("Valladolid shows in three places only: hero, the October 2026 copy and availability", () => {
-  for (const locale of [spanish, english]) {
-    const visible = strings(locale).filter(([path]) => !path.startsWith("Metadata."));
-    const places = visible.filter(([, text]) => /Valladolid/.test(text)).map(([path]) => path);
-    assert.deepEqual(places, ["Hero.lead", "Roll.entries.valladolid.items.0.name", "About.p3"]);
-  }
-  // The hero ticket prints the till and the time, not the city.
-  assert.match(readSource("components/marketing/ticket/hero-ticket.tsx"), /\{t\("register"\)\} · /);
-  assert.equal(spanish.Ticket.totalNote, "Remoto o híbrido");
-  assert.equal(english.Ticket.totalNote, "Remote or hybrid");
-});
-
-test("the roll prints every stage, oldest first, in both locales", () => {
-  assert.deepEqual(rollIds, [
-    "uci",
-    "thesis",
-    "sigies",
-    "iotPlatform",
-    "proxyAgent",
-    "smartIot",
-    "ecommerce",
-    "kwad",
-    "sesamo",
-    "valladolid",
-  ]);
-  const dates = [...rollBlock.matchAll(/id: "\w+", year: (\d+), month: (\d+|null)/g)].map(([, year, month]) =>
-    Number(year) * 100 + (month === "null" ? 0 : Number(month)),
+test("the home says who, what and that he is available, in the agreed words", () => {
+  assert.equal(spanish.Hero.availability, "Disponible para empezar ya · remoto o en Valladolid");
+  assert.equal(spanish.Hero.title, "Hola, soy Luisma.");
+  assert.equal(
+    spanish.Hero.lead,
+    "Soy desarrollador full stack. Me gusta construir producto de punta a punta: la interfaz que usa la gente y la API que hay detrás.",
   );
-  assert.equal(dates.length, rollIds.length);
+  assert.match(spanish.Hero.body, /^Trabajo sobre todo con TypeScript, React, Angular, Node\.js y PostgreSQL\./);
+  assert.equal(spanish.Hero.primaryCta, "Ver proyectos");
+  assert.equal(spanish.Hero.cvCta, "Descargar CV");
+  assert.equal(spanish.Search.placeholder, "Prueba con «React» o «MQTT»");
+  assert.equal(spanish.Search.empty, "No encuentro nada con «{query}». Prueba con React, NestJS o MQTT.");
+  assert.equal(spanish.Search.help, "↑ ↓ para moverte · Enter para abrir · Esc para borrar");
+  assert.equal(spanish.Contact.title, "¿Te encaja mi perfil? Escríbeme y lo hablamos.");
   for (const locale of [spanish, english]) {
-    assert.equal(locale.Roll.months.length, 12);
-    for (const id of rollIds) {
-      const entry = locale.Roll.entries[id];
-      assert.ok(entry?.items?.length && entry.total, `Missing Roll.entries.${id}`);
-    }
-    // No numbering on the copies.
-    assert.doesNotMatch(JSON.stringify(locale.Roll), /Nº|No\. \d/);
+    assert.match(locale.Hero.availability, /Valladolid/);
+    assert.match(locale.Hero.body, /KWAD/);
+    assert.match(locale.Hero.body, /SIGIES/);
   }
-  assert.equal(spanish.Roll.entries.thesis.total, "INGENIERO");
-  assert.match(rollBlock, /id: "uci", year: 2019, month: null/);
-  assert.match(rollBlock, /id: "valladolid", year: 2026, month: 10, stone: true/);
-  // The first IoT project is a line in the UCI copy, not a copy of its own.
-  assert.equal(spanish.Roll.entries.uci.items[0].lines[1], "2023 · primer proyecto IoT: módulo de almacenamiento en un proyecto de I+D (Python)");
+});
+
+test("the KWAD claims promise no more than there is", () => {
+  assert.equal(
+    spanish.Approach.items.tenants.body,
+    "KWAD es multi-tenant: cada petición viaja con su organización, y un chequeo del CI busca consultas que podrían saltarse ese filtro y falla si aparece alguna nueva.",
+  );
+  assert.match(spanish.Kwad.architecture.body, /La idea es que ninguna capa dependa de que alguien se acuerde de pasar el organizationId\./);
+  assert.equal(spanish.Kwad.testing.body, "Cada cambio pasa por GitHub Actions.");
+  assert.equal(
+    spanish.Kwad.testing.steps.isolation.detail,
+    "Busca consultas que podrían saltarse el filtro de organización y falla si aparece alguna nueva.",
+  );
+  // The CI does not gate the deployment, and it does not prove isolation.
   for (const locale of [spanish, english]) {
-    assert.doesNotMatch(JSON.stringify(locale.Roll), /SIN COPIA|NO COPY|no se imprime|not printed/);
+    assert.doesNotMatch(locale.Kwad.testing.body, /producci|production/i);
+    assert.doesNotMatch(JSON.stringify(locale), /nadie vea datos|ninguna organización vea|nobody can see|no organisation can see/i);
   }
-  // Totals state the result, not a joke.
-  assert.equal(spanish.Roll.entries.uci.total, "2019–2024");
-  assert.equal(spanish.Roll.entries.iotPlatform.total, "SEMILLERO AUTOMATIZADO");
-  assert.equal(spanish.Roll.entries.sigies.total, "2 AÑOS");
-  assert.equal(spanish.Roll.entries.sigies.items[0].name, "Ingeniero de software · FORTES (UCI)");
-  assert.match(spanish.Roll.entries.sigies.items[0].lines[0], /^SIGIES/);
-  // One group per year: a single 2026, with the stone ground inside it.
-  assert.deepEqual([...new Set(rollIds.map((id) => rollBlock.match(new RegExp(`id: "${id}", year: (\\d+)`))[1]))], ["2019", "2024", "2025", "2026"]);
-  assert.equal(spanish.Navigation.roll, "Trayectoria");
-  assert.doesNotMatch(readSource("components/marketing/sections/roll-section.tsx"), /last\.stone === stone/);
-  assert.equal(spanish.Roll.title, "El rollo");
 });
 
-test("the roll marks the two jobs so they are found without reading the rest", () => {
-  const jobs = [...rollBlock.matchAll(/id: "(\w+)"[^\n]*experience: true/g)].map((match) => match[1]);
-  assert.deepEqual(jobs, ["sigies", "kwad"]);
-  assert.match(rollBlock, /id: "sigies", year: 2024, month: 9, until: \{ year: 2026, month: 10 \}/);
-  assert.match(rollBlock, /id: "kwad", year: 2026, month: 4, until: null/);
-  const section = readSource("components/marketing/sections/roll-section.tsx");
-  assert.match(section, /data-experience=/);
-  assert.match(section, /t\("experience"\)/);
-  assert.equal(spanish.Roll.experience, "EXPERIENCIA");
-  assert.equal(spanish.Roll.now, "HOY");
-});
-
-test("on a phone the roll's pictures follow their own copy, and every capture yields to the LCP", () => {
-  const section = readSource("components/marketing/sections/roll-section.tsx");
-  assert.match(section, /withMedia = \["thesis", "iotPlatform", "kwad"\]/);
-  assert.match(section, /order\(2 \* index \+ 1\)/);
-  assert.match(section, /order\(2 \* owner \+ 2\)/);
-  assert.match(readSource("app/globals.css"), /\.roll-group\[data-inline-media\] \.roll-strip \{\s*display: contents;/);
-  assert.equal((section.match(/fetchPriority="low"/g) ?? []).length, 3);
-  assert.match(readSource("components/marketing/kwad/shot.tsx"), /fetchPriority: "low"/);
-  // The height check stays local: a few lines of copy must not fail CI.
-  assert.doesNotMatch(readSource(".github/workflows/content-checks.yml"), /test:height/);
-});
-
-test("the hero ticket prints experience and the work permit before availability", () => {
-  const ticket = readSource("components/marketing/ticket/hero-ticket.tsx");
-  const order = ['t("experience")', 't("permit")', 't("total")'].map((key) => ticket.indexOf(key));
-  assert.ok(order.every((index) => index > 0), "ticket lines missing");
-  assert.deepEqual([...order].sort((a, b) => a - b), order);
-  assert.equal(spanish.Ticket.experience, "Experiencia");
-  assert.equal(spanish.Ticket.experienceValue, "2 años (SIGIES) + KWAD");
-  assert.equal(spanish.Ticket.permit, "Permiso de trabajo en España");
-  // Printed as a drawn tick (an SVG, not the ✓ character); the word is for screen readers.
-  assert.equal(spanish.Ticket.permitValue, "Sí");
-  assert.match(ticket, /className="ticket-tick"[\s\S]*<svg[\s\S]*t\("permitValue"\)/);
-  assert.ok(english.Ticket.experience && english.Ticket.permit);
-  assert.match(config, /"PostgreSQL · Prisma",\n  "Docker · Git",\n\] as const;/);
-});
-
-test("the KWAD module panel shows only modules with a real capture", () => {
+test("the projects are the five real ones, in order, with their links", () => {
+  const ids = [...config.matchAll(/^ {4}id: "(\w+)",$/gm)].map((match) => match[1]);
+  assert.deepEqual(ids, ["kwad", "sigies", "iotPlatform", "iotTestbench", "store"]);
+  assert.match(config, /id: "kwad",\n {4}href: "\/kwad"/);
+  assert.match(config, /id: "sigies",\n {4}href: null/);
+  assert.match(config, /href: "https:\/\/github\.com\/RusoMDK\/PlataformaIoT"/);
+  assert.match(config, /href: "https:\/\/github\.com\/RusoMDK\/iot-testbench"/);
+  assert.match(config, /href: "https:\/\/github\.com\/RusoMDK\/Tienda-Virtual"/);
   for (const locale of [spanish, english]) {
-    assert.deepEqual(Object.keys(locale.Kwad.modules), ["pos", "inventory", "currency"]);
-    assert.equal(locale.Kwad.console, undefined);
-    assert.doesNotMatch(JSON.stringify(locale), /547\.46|335380/);
-    for (const id of Object.keys(locale.Kwad.modules)) {
-      assert.ok(locale.Kwad.modules[id].title && locale.Kwad.modules[id].text, `Missing KWAD module: ${id}`);
+    assert.deepEqual(Object.keys(locale.Projects.items), ids);
+    for (const id of ids) {
+      const item = locale.Projects.items[id];
+      assert.ok(item.name && item.kind && item.years && item.description && item.cta, `Missing copy for ${id}`);
     }
   }
-  const panel = readSource("components/marketing/kwad/kwad-modules.tsx");
-  // The active module follows clicks, focus and the scroll, never the pointer.
-  assert.doesNotMatch(panel, /onPointerEnter|onMouseEnter/);
-  assert.doesNotMatch(panel, /0\d \/ 0\d/);
-  assert.doesNotMatch(panel, /ConsoleFragment|module-paper/);
-  assert.match(spanish.Kwad.also, /consola de plataforma/);
-  assert.match(readSource("components/common/motion-layer.tsx"), /MODULE_ENTER_EVENT/);
+  assert.equal(spanish.Projects.items.kwad.kind, "Proyecto propio");
+  assert.equal(spanish.Projects.items.kwad.years, "2026 – hoy");
+  assert.equal(spanish.Projects.items.sigies.kind, "Trabajo en FORTES (UCI)");
+  assert.equal(spanish.Projects.items.sigies.years, "2024 – 2026");
+});
+
+test("contact links are the real ones and both CVs exist", () => {
+  assert.match(config, /email: "luissantoslezcano@gmail\.com"/);
+  assert.match(config, /linkedin: "https:\/\/www\.linkedin\.com\/in\/luissantosdev\/"/);
+  assert.match(config, /github: "https:\/\/github\.com\/RusoMDK"/);
+  assert.match(config, /kwadUrl: "https:\/\/getkwad\.com"/);
+  for (const locale of ["es", "en"]) {
+    const path = `/docs/luis-manuel-santos-cv-${locale}.pdf`;
+    assert.match(config, new RegExp(`${locale}: "${path.replace(/\./g, "\\.")}"`));
+    const pdf = readFileSync(join(root, "public", path));
+    assert.equal(pdf.subarray(0, 5).toString(), "%PDF-", `${path} is not a PDF`);
+  }
+  const footer = readSource("components/layout/site-footer.tsx");
+  assert.match(footer, /<footer id="contacto"/);
+  for (const link of ["siteConfig.linkedin", "siteConfig.github", "siteConfig.cv[locale]", "mailto:${siteConfig.email}"]) {
+    assert.ok(footer.includes(link), `Contact is missing ${link}`);
+  }
+  const header = readSource("components/layout/site-header.tsx");
+  for (const href of ['"/#proyectos"', '"/kwad"', '"/#contacto"']) assert.ok(header.includes(href), `Header is missing ${href}`);
+  assert.match(header, /siteConfig\.cv\[locale\]/);
+  assert.match(header, /<ThemeToggle \/>/);
+  assert.match(header, /<LanguageSwitcher \/>/);
+});
+
+test("the search is a real combobox and shares its query with the filters", () => {
+  const search = readSource("components/home/project-search.tsx");
+  for (const attribute of ['role="combobox"', 'role="listbox"', 'role="option"', "aria-activedescendant", "aria-controls", "aria-selected"]) {
+    assert.ok(search.includes(attribute), `Search is missing ${attribute}`);
+  }
+  for (const key of ['"ArrowDown"', '"ArrowUp"', '"Enter"', '"Escape"']) assert.ok(search.includes(key), `Search ignores ${key}`);
+  assert.match(search, /event\.metaKey \|\| event\.ctrlKey\) && event\.key\.toLowerCase\(\) === "k"/);
+  const section = readSource("components/home/projects-section.tsx");
+  assert.match(section, /aria-pressed=/);
+  assert.match(section, /useProjects\(\)/);
+  assert.match(search, /useProjects\(\)/);
+});
+
+test("the headline names itself and hides what moves", () => {
+  const title = readSource("components/home/scramble-title.tsx");
+  assert.match(title, /aria-label=\{text\}/);
+  assert.match(title, /className="scramble" aria-hidden="true"/);
+  const motion = readSource("components/home/scramble-motion.tsx");
+  assert.match(motion, /useGSAP/);
+  assert.match(motion, /prefers-reduced-motion: reduce/);
+  // GSAP stays out of the first paint: the motion is its own chunk.
+  assert.match(title, /dynamic\(\(\) => import\("\.\/scramble-motion"\), \{ ssr: false \}\)/);
+  assert.doesNotMatch(title, /from "gsap"/);
+  const css = readSource("app/globals.css");
+  assert.match(css, /@media \(prefers-reduced-motion: no-preference\) \{\s*\.js \.scramble \.scramble-text/);
+});
+
+test("the glyph field never blocks the page", () => {
+  const backdrop = readSource("components/home/glyph-backdrop.tsx");
+  assert.match(backdrop, /dynamic\(\(\) => import\("\.\/glyph-field"\), \{ ssr: false \}\)/);
+  assert.match(backdrop, /requestIdleCallback/);
+  assert.match(backdrop, /aria-hidden="true"/);
+  const field = readSource("components/home/glyph-field.tsx");
+  assert.match(field, /getContext\("webgl2"/);
+  assert.match(field, /MAX_DPR = 2/);
+  assert.match(field, /IntersectionObserver/);
+  assert.match(field, /visibilitychange/);
+  assert.match(field, /prefers-reduced-motion: reduce/);
+  assert.match(field, /CELL = \{ w: 12, h: 22 \}/);
+  assert.equal(readSource("lib/glyphs.ts").includes('"{}[]()<>/;:=+-*_.|&#$01"'), true);
+});
+
+test("the theme follows the system, remembers the choice and never flashes", () => {
+  const css = readSource("app/globals.css");
+  for (const token of ["#0a0a0b", "#131316", "#26262b", "#ededef", "#9a9aa3", "#3b5bff", "#1c2342", "#8fa3ff", "#3dd68c"]) {
+    assert.ok(css.includes(token), `Missing dark token ${token}`);
+  }
+  for (const token of ["#f7f7f5", "#ffffff", "#e4e4e0", "#111113", "#5e5e66", "#2f4be0", "#e9edff", "#1f9d5a"]) {
+    assert.ok(css.includes(token), `Missing light token ${token}`);
+  }
+  assert.match(css, /@theme inline \{/);
+  assert.match(css, /prefers-color-scheme: dark/);
+  assert.doesNotMatch(css, /gradient\(|backdrop-filter/);
+  const layout = readSource("app/[locale]/layout.tsx");
+  assert.match(layout, /dangerouslySetInnerHTML=\{\{ __html: themeScript \}\}/);
+  assert.match(layout, /suppressHydrationWarning/);
+  assert.match(readSource("lib/theme.ts"), /localStorage\.getItem/);
+});
+
+test("Geist for text and Geist Mono for technical data, through next/font", () => {
+  const fonts = readSource("lib/fonts.ts");
+  assert.match(fonts, /import \{ Geist, Geist_Mono \} from "next\/font\/google"/);
+  assert.doesNotMatch(fonts, /Besley|Libre_Franklin/);
+});
+
+test("the old ticket concept is gone", () => {
+  for (const path of [
+    "components/marketing/ticket",
+    "components/marketing/roll",
+    "components/marketing/havana",
+    "components/marketing/contact",
+    "lib/code128.ts",
+    "lib/lcd-font.ts",
+    "lib/visit.ts",
+  ]) {
+    assert.equal(existsSync(join(root, path)), false, `${path} still exists`);
+  }
+  for (const locale of [spanish, english]) {
+    for (const namespace of ["Ticket", "Roll", "Havana", "Footer"]) assert.equal(locale[namespace], undefined, `${namespace} still in messages`);
+  }
+  for (const path of publicFiles()) {
+    assert.doesNotMatch(readSource(path), /ticket|TPV demo|cupón|coupon|barcode|zigzag/i, `Ticket wording in ${path}`);
+  }
 });
 
 test("public content never mentions embargo, VPS or VPN", () => {
-  const files = [
-    ...listFiles("app"),
-    ...listFiles("components"),
-    ...listFiles("config"),
-    ...listFiles("lib"),
-    ...listFiles("messages"),
-  ].filter((path) => /\.(tsx?|json|css|mjs)$/.test(path));
-  for (const path of files) {
+  for (const path of publicFiles()) {
     assert.doesNotMatch(readSource(path), /embargo|\bVPS\b|\bVPN\b/i, `Forbidden word in ${path}`);
   }
 });
 
+test("no payments, payment providers or unannounced plans reach public files", () => {
+  for (const path of publicFiles()) {
+    assert.doesNotMatch(readSource(path), /enzona|stripe|pasarela|payment gateway|transfermóvil/i, `Payments mentioned in ${path}`);
+  }
+});
+
 test("projects that left the portfolio stay out", () => {
-  const sources = [config, readSource("messages/es.json"), readSource("messages/en.json")];
-  for (const source of sources) {
+  for (const source of [config, readSource("messages/es.json"), readSource("messages/en.json")]) {
     assert.doesNotMatch(source, /ArtCollab|creativePlatform/);
   }
 });
 
-test("unannounced payment plans never reach public files", () => {
-  const files = [
-    ...listFiles("app"),
-    ...listFiles("components"),
-    ...listFiles("config"),
-    ...listFiles("lib"),
-    ...listFiles("messages"),
-  ].filter((path) => /\.(tsx?|json|css|mjs)$/.test(path));
-  for (const path of files) {
-    assert.doesNotMatch(readSource(path), /enzona/i, `EnZona mentioned in ${path}`);
-  }
-});
-
-test("the about letter leaves SIGIES and Smart IoT to the roll", () => {
-  for (const locale of [spanish, english]) {
-    assert.doesNotMatch(Object.values(locale.About).join(" "), /SIGIES|Smart IoT/);
-  }
-});
-
-test("the about letter states the postgraduate studies as finished", () => {
-  assert.match(spanish.About.p2, /Ingeniero en Ciencias Informáticas \(UCI, 2019–2024\)/);
-  assert.match(spanish.About.p2, /cursé estudios de posgrado en Informática Avanzada \(UCI, 2025–2026\)/);
-  for (const locale of [spanish, english]) {
-    const letter = Object.values(locale.About).join(" ");
-    assert.doesNotMatch(letter, /\bsigo\b|máster|master|titulad|graduated/i);
-  }
-});
-
 test("no public text calls the postgraduate studies a master's or a degree held", () => {
-  const files = [
-    "messages/es.json",
-    "messages/en.json",
-    "config/site.ts",
-    ...listFiles("components").filter((path) => path.endsWith(".tsx")),
-  ];
+  assert.match(spanish.About.body, /cursé estudios de posgrado en Informática Avanzada/);
+  assert.match(english.About.body, /postgraduate studies in Advanced Computing/);
+  const files = ["messages/es.json", "messages/en.json", "config/site.ts", ...listFiles("components").filter((path) => path.endsWith(".tsx"))];
   for (const path of files) {
-    assert.doesNotMatch(readSource(path), /máster|\bmaster'?s\b|titulad/i, `Wording in ${path}`);
+    assert.doesNotMatch(readSource(path), /máster|\bmaster'?s\b|titulad|graduated/i, `Wording in ${path}`);
   }
 });
 
-test("the KWAD case study speaks to a tech lead, without filler", () => {
-  const study = readSource("components/marketing/sections/kwad-case-study.tsx");
-  for (const text of ["Qué demuestra", "documentación técnica", "Platform admin", "Marketing site", "What this work demonstrates", "←"]) {
-    assert.ok(!study.includes(text), `/kwad still says ${text}`);
-  }
-  assert.match(study, /subtitle: "TPV, inventario y tienda online para comercios\. En producción con su primer cliente\."/);
-  assert.match(study, /overviewTitle: "Vender cuando la red se cae"/);
-  assert.match(study, /cta: "Ver getkwad\.com"/);
-  assert.equal([...study.matchAll(/\{ title: "[^"]+", detail: /g)].length, 14);
-});
-
-test("the demo uses the agreed sample rates and labels them as samples", () => {
-  assert.match(config, /CUP: 650/);
-  assert.match(config, /EUR: 0\.92/);
-  assert.match(spanish.Havana.demo.rates, /^Tasas de ejemplo: 1 USD = 650 CUP · 1 USD = 0,92 EUR$/);
-  assert.match(english.Havana.demo.rates, /^Sample rates: 1 USD = 650 CUP · 1 USD = 0\.92 EUR$/);
-});
-
-test("the tenant diagram does not invent a storefront domain", () => {
-  for (const locale of [spanish, english]) {
-    assert.doesNotMatch(JSON.stringify(locale.Kwad), /getkwad\.com\//);
-    assert.doesNotMatch(JSON.stringify(locale.Kwad), /\w+\.getkwad\.com/);
-  }
-});
-
-test("the ticket barcode uses a complete Code 128 table", () => {
-  const source = readSource("lib/code128.ts");
-  const table = source.slice(source.indexOf("["), source.indexOf("] as const"));
-  const patterns = [...table.matchAll(/"(\d+)"/g)].map((match) => match[1]);
-  assert.equal(patterns.length, 107);
-  patterns.forEach((pattern, index) => {
-    const modules = [...pattern].reduce((sum, digit) => sum + Number(digit), 0);
-    assert.equal(modules, index === 106 ? 13 : 11, `Pattern ${index} has ${modules} modules`);
-  });
-  assert.equal(new Set(patterns).size, 107);
-});
-
-test("contact and footer are one block, on every page", () => {
-  const footer = readSource("components/marketing/layout/site-footer.tsx");
-  assert.match(footer, /<footer id="contacto"/);
-  assert.match(footer, /ContactCoupon/);
-  assert.match(footer, /footer\("rights"\)/);
-  // The thanks and the © close the block: after the form, also on a phone.
-  assert.ok(footer.indexOf("coupon-imprint") > footer.indexOf("<ContactCoupon />"), "imprint before the form");
-  assert.equal(listFiles("components").some((path) => path.endsWith("contact-section.tsx")), false);
-  assert.equal(spanish.Footer.title, "Gracias por tu visita");
-  for (const locale of [spanish, english]) assert.equal(locale.Footer.message, undefined);
+test("SIGIES is described only with the agreed words", () => {
+  const sigies = strings(spanish).filter(([, text]) => /SIGIES/.test(text)).map(([path]) => path);
+  assert.deepEqual(sigies.sort(), ["Approach.items.production.body", "Hero.body", "Projects.items.sigies.name"].sort());
+  assert.equal(
+    spanish.Projects.items.sigies.description,
+    "La plataforma con la que Cuba gestiona el ingreso a la universidad. Mantuve el sistema antiguo en los picos de cada convocatoria y desarrollé módulos de la versión nueva.",
+  );
 });
 
 test("only Luisma's own photographs: no archive pictures, originals kept out of git", () => {
-  const sources = [config, readSource("messages/es.json"), readSource("messages/en.json"), readSource("app/globals.css")];
-  for (const source of sources) {
-    assert.doesNotMatch(source, /wikimedia|creativecommons|photoCredits|data-drift/i);
+  for (const source of [config, readSource("messages/es.json"), readSource("messages/en.json"), readSource("app/globals.css")]) {
+    assert.doesNotMatch(source, /wikimedia|creativecommons|photoCredits/i);
   }
-  assert.equal(listFiles("public/images").some((path) => path.includes("/places/")), false);
   assert.match(readSource(".gitignore"), /^\/public\/images\/invernadero\/originales\/$/m);
   const tracked = execFileSync("git", ["ls-files", "public/images/invernadero"], { cwd: root, encoding: "utf8" });
   assert.doesNotMatch(tracked, /originales/);
@@ -303,44 +299,45 @@ test("only Luisma's own photographs: no archive pictures, originals kept out of 
   for (const [, src, width, height] of photos) {
     assert.deepEqual(jpegSize(readFileSync(join(root, "public", src))), { width: Number(width), height: Number(height) }, src);
   }
-});
-
-test("the thesis LCD draws every character it prints", () => {
-  const font = readSource("lib/lcd-font.ts");
-  const glyphs = new Set([...font.matchAll(/^ {2}(?:"(.)"|(\w)): \[/gm)].map(([, quoted, bare]) => quoted ?? bare));
-  const printed = ["Planta: Humeda", "Planta: Seca", "Humedad: 79%", "Temp: 25.60°C", "IC: 27.06°C", "Bomba: ON", "Bomba: OFF"];
-  for (const text of printed) {
-    for (const char of text) assert.ok(glyphs.has(char), `No glyph for "${char}" in "${text}"`);
+  // The two IoT projects show their own hardware; their alt text exists in both languages.
+  assert.match(config, /id: "iotPlatform",[\s\S]*?photo: "seedbed"/);
+  assert.match(config, /id: "iotTestbench",[\s\S]*?photo: "thesisBench"/);
+  for (const locale of [spanish, english]) {
+    assert.ok(locale.Projects.items.iotPlatform.photoAlt && locale.Projects.items.iotTestbench.photoAlt);
   }
-  const panel = readSource("components/marketing/roll/lcd-panel.tsx");
-  for (const text of ["Planta: ", "Humeda", "Seca", "Humedad: ", "Temp: ", "IC: ", "Bomba: "]) assert.ok(panel.includes(text), text);
-  assert.match(panel, /PUMP_THRESHOLD = 30/);
-  assert.match(panel, /data-ui role="img" aria-label=\{reading\}/);
-  for (const locale of [spanish, english]) assert.match(locale.Roll.lcd.threshold, /30/);
+  // With a mouse the photo follows the pointer; on a touch screen it sits in the card.
+  const card = readSource("components/home/project-card.tsx");
+  assert.match(card, /\[@media\(hover:none\)\]:block/);
+  assert.match(card, /\[@media\(hover:none\)\]:hidden/);
+
+  const [, src, width, height] = config.match(/profileImage: \{ src: "([^"]+)", width: (\d+), height: (\d+) \}/);
+  assert.deepEqual(pngSize(readFileSync(join(root, "public", src))), { width: Number(width), height: Number(height) });
 });
 
-test("each locale has its own Open Graph card and the old cover is gone", () => {
-  const config = readSource("config/site.ts");
+test("each locale has its own Open Graph card, also on /kwad", () => {
   const layout = readSource("app/[locale]/layout.tsx");
+  const kwad = readSource("app/[locale]/(marketing)/kwad/page.tsx");
   for (const locale of ["es", "en"]) {
     const path = `public/images/og/og-${locale}.png`;
     assert.match(config, new RegExp(`${locale}: "/images/og/og-${locale}.png"`));
-    const png = readFileSync(join(root, path));
-    // PNG header: width and height are big-endian at bytes 16 and 20.
-    assert.equal(png.readUInt32BE(16), 1200, `${path} width`);
-    assert.equal(png.readUInt32BE(20), 630, `${path} height`);
+    assert.deepEqual(pngSize(readFileSync(join(root, path))), { width: 1200, height: 630 }, path);
   }
-  assert.match(layout, /siteConfig\.ogImage\[locale\]/);
-  assert.match(layout, /twitter: \{[\s\S]*images: \[image\]/);
-  assert.equal(listFiles("public/images").some((path) => path.endsWith("og-cover.jpg")), false);
+  for (const source of [layout, kwad]) {
+    assert.match(source, /siteConfig\.ogImage\[locale\]/);
+    assert.match(source, /twitter: \{[\s\S]*images: \[image\]/);
+    assert.match(source, /languages: \{/);
+  }
+  assert.match(kwad, /t\("kwadTitle"\)/);
+  for (const locale of [spanish, english]) {
+    assert.ok(locale.Metadata.title && locale.Metadata.description && locale.Metadata.kwadTitle && locale.Metadata.kwadDescription);
+    assert.ok(locale.Metadata.description.length <= 170, "Description too long for search results");
+  }
 });
 
 test("KWAD screenshots are sharp at 2x and their text reads at 11px or more", () => {
-  const source = readSource("components/marketing/kwad/shot.tsx");
+  const source = readSource("components/kwad/shot.tsx");
   const entries = [
-    ...source.matchAll(
-      /(desktop|mobile): \{ src: "([^"]+)", width: (\d+), height: (\d+), native: (\d+), minFont: ([\d.]+), display: (\d+)/g,
-    ),
+    ...source.matchAll(/(desktop|mobile): \{ src: "([^"]+)", width: (\d+), height: (\d+), native: (\d+), minFont: ([\d.]+), display: (\d+)/g),
   ];
   assert.equal(entries.length, 8);
   for (const [, kind, src, width, height, native, minFont, display] of entries) {
@@ -352,4 +349,10 @@ test("KWAD screenshots are sharp at 2x and their text reads at 11px or more", ()
     assert.ok(Number(display) <= Number(native), `${kind} ${src} is shown larger than captured`);
     assert.ok((Number(minFont) * Number(display)) / Number(native) >= 11, `${kind} ${src}: text below 11px`);
   }
+  // Below the fold a capture waits behind the page's largest paint.
+  assert.match(source, /fetchPriority: "low"/);
+});
+
+test("the height check stays local: a few lines of copy must not fail CI", () => {
+  assert.doesNotMatch(readSource(".github/workflows/content-checks.yml"), /test:height/);
 });
