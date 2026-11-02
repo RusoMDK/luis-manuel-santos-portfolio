@@ -97,7 +97,7 @@
       },
       "tenants": {
         "title": "Cada cliente, en su sitio",
-        "body": "KWAD es multi-tenant: cada petición viaja con su organización y el CI comprueba que nadie vea datos de otra."
+        "body": "KWAD es multi-tenant: cada petición viaja con su organización, y un chequeo del CI busca consultas que podrían saltarse ese filtro y falla si aparece alguna nueva."
       },
       "production": {
         "title": "Sistemas en producción",
@@ -152,7 +152,7 @@
     },
     "architecture": {
       "title": "Cada petición viaja con su organización",
-      "body": "La organización se resuelve al entrar y vive en un contexto de AsyncLocalStorage hasta la respuesta. Los permisos por rol se comprueban dentro de esa organización. Ninguna capa depende de que alguien se acuerde de pasar el organizationId.",
+      "body": "La organización se resuelve al entrar y vive en un contexto de AsyncLocalStorage hasta la respuesta. Los permisos por rol se comprueban dentro de esa organización. La idea es que ninguna capa dependa de que alguien se acuerde de pasar el organizationId.",
       "diagram": {
         "label": "Recorrido de una petición por la API de KWAD",
         "orgLabel": "La petición llega desde",
@@ -270,7 +270,7 @@
     },
     "testing": {
       "title": "Cómo lo pruebo",
-      "body": "Cada cambio pasa por GitHub Actions antes de llegar a producción.",
+      "body": "Cada cambio pasa por GitHub Actions.",
       "label": "Pasos del CI de KWAD",
       "steps": {
         "types": {
@@ -287,7 +287,7 @@
         },
         "isolation": {
           "title": "Aislamiento",
-          "detail": "Comprueba que ninguna organización vea datos de otra."
+          "detail": "Busca consultas que podrían saltarse el filtro de organización y falla si aparece alguna nueva."
         },
         "e2e": {
           "title": "E2E",

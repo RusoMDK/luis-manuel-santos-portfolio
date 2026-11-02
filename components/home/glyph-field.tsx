@@ -16,7 +16,9 @@ void main() { gl_Position = vec4(p, 0.0, 1.0); }`;
 
 // One full-screen triangle. Each 12×22 cell picks a glyph from the atlas: far from
 // the pointer it is faint and changes slowly; near it, it changes fast and lights up
-// in the accent (u_glow scales how much). A scan band runs down the field about every 20 s.
+// in the accent (u_glow scales how much). A scan band runs down the field about every 20 s,
+// softened where it crosses the header (u_header) so the navigation reads cleanly. Towards
+// the bottom edge the glyphs thin out, cell by cell, so the field ends without a cut.
 const FRAGMENT = `#version 300 es
 precision highp float;
 uniform vec2 u_res;
@@ -27,6 +29,7 @@ uniform float u_dpr;
 uniform sampler2D u_atlas;
 uniform float u_count;
 uniform float u_glow;
+uniform float u_header;
 out vec4 o;
 
 float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
@@ -45,13 +48,16 @@ void main() {
   float g = floor(hash(cell + tick * 0.137) * u_count);
   float rows = u_res.y / cellSize.y;
   float scan = exp(-pow((fract(u_time * 0.05) * (rows + 30.0) - 15.0 - cell.y) / 6.0, 2.0));
+  scan *= smoothstep(u_header * 0.5, u_header * 1.4, centre.y);
   float show = step(0.70 - 0.70 * max(near, scan * 0.5), hash(cell * 1.31 + 7.0));
+  // Fewer glyphs, not fainter ones: each cell drops out at its own depth near the bottom.
+  float keep = smoothstep(0.0, 0.32, 1.0 - centre.y / u_res.y);
+  show *= step(1.0 - keep, hash(cell * 0.73 + 3.1));
   float a = texture(u_atlas, vec2((g + local.x) / u_count, local.y)).r;
   vec3 bg = mix(vec3(0.969, 0.969, 0.961), vec3(0.039, 0.039, 0.043), u_dark);
   vec3 ink = mix(vec3(0.067, 0.067, 0.075), vec3(0.929, 0.929, 0.937), u_dark);
   vec3 accent = mix(vec3(0.184, 0.294, 0.878), vec3(0.42, 0.53, 1.0), u_dark);
-  float fade = smoothstep(0.0, 0.18, 1.0 - px.y / u_res.y);
-  float alpha = clamp(0.11 + scan * 0.14 + near * 0.75, 0.0, 1.0) * fade;
+  float alpha = clamp(0.11 + scan * 0.14 + near * 0.75, 0.0, 1.0);
   vec3 colour = mix(ink, accent, smoothstep(0.12, 0.6, near));
   o = vec4(mix(bg, colour, a * alpha * show), 1.0);
 }`;
@@ -116,7 +122,7 @@ export default function GlyphField() {
     gl.enableVertexAttribArray(position);
     gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
 
-    const names = ["u_res", "u_time", "u_mouse", "u_dark", "u_dpr", "u_atlas", "u_count", "u_glow"] as const;
+    const names = ["u_res", "u_time", "u_mouse", "u_dark", "u_dpr", "u_atlas", "u_count", "u_glow", "u_header"] as const;
     const u = Object.fromEntries(names.map((name) => [name, gl.getUniformLocation(program, name)])) as Record<
       (typeof names)[number],
       WebGLUniformLocation | null
@@ -188,6 +194,9 @@ export default function GlyphField() {
       canvas.width = Math.max(1, Math.round(box.width * dpr));
       canvas.height = Math.max(1, Math.round(box.height * dpr));
       gl.viewport(0, 0, canvas.width, canvas.height);
+      // The canvas starts at the top of the page, under the header.
+      const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 84;
+      gl.uniform1f(u.u_header, header * dpr);
       if (reduce) draw(performance.now());
     };
 

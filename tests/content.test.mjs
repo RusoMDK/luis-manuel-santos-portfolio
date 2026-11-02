@@ -103,6 +103,24 @@ test("the home says who, what and that he is available, in the agreed words", ()
   }
 });
 
+test("the KWAD claims promise no more than there is", () => {
+  assert.equal(
+    spanish.Approach.items.tenants.body,
+    "KWAD es multi-tenant: cada petición viaja con su organización, y un chequeo del CI busca consultas que podrían saltarse ese filtro y falla si aparece alguna nueva.",
+  );
+  assert.match(spanish.Kwad.architecture.body, /La idea es que ninguna capa dependa de que alguien se acuerde de pasar el organizationId\./);
+  assert.equal(spanish.Kwad.testing.body, "Cada cambio pasa por GitHub Actions.");
+  assert.equal(
+    spanish.Kwad.testing.steps.isolation.detail,
+    "Busca consultas que podrían saltarse el filtro de organización y falla si aparece alguna nueva.",
+  );
+  // The CI does not gate the deployment, and it does not prove isolation.
+  for (const locale of [spanish, english]) {
+    assert.doesNotMatch(locale.Kwad.testing.body, /producci|production/i);
+    assert.doesNotMatch(JSON.stringify(locale), /nadie vea datos|ninguna organización vea|nobody can see|no organisation can see/i);
+  }
+});
+
 test("the projects are the five real ones, in order, with their links", () => {
   const ids = [...config.matchAll(/^ {4}id: "(\w+)",$/gm)].map((match) => match[1]);
   assert.deepEqual(ids, ["kwad", "sigies", "iotPlatform", "iotTestbench", "store"]);
@@ -287,6 +305,10 @@ test("only Luisma's own photographs: no archive pictures, originals kept out of 
   for (const locale of [spanish, english]) {
     assert.ok(locale.Projects.items.iotPlatform.photoAlt && locale.Projects.items.iotTestbench.photoAlt);
   }
+  // With a mouse the photo follows the pointer; on a touch screen it sits in the card.
+  const card = readSource("components/home/project-card.tsx");
+  assert.match(card, /\[@media\(hover:none\)\]:block/);
+  assert.match(card, /\[@media\(hover:none\)\]:hidden/);
 
   const [, src, width, height] = config.match(/profileImage: \{ src: "([^"]+)", width: (\d+), height: (\d+) \}/);
   assert.deepEqual(pngSize(readFileSync(join(root, "public", src))), { width: Number(width), height: Number(height) });

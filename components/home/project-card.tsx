@@ -19,7 +19,8 @@ type ProjectCardProps = {
 /**
  * One project: kind and years, the name, what it is and what it is built with. The
  * name is the link and stretches over the whole card. Cards with a photograph of
- * their hardware float it beside the pointer on hover (only with a mouse).
+ * their hardware float it beside the pointer on hover with a mouse; on a touch
+ * screen, with no hover, the photograph sits at the top of the card instead.
  */
 export function ProjectCard({ project, layout, stackLabel }: ProjectCardProps) {
   const card = useRef<HTMLElement>(null);
@@ -59,6 +60,18 @@ export function ProjectCard({ project, layout, stackLabel }: ProjectCardProps) {
       id={`proyecto-${project.id}`}
       className={`group relative flex min-h-[240px] flex-col gap-4 rounded-[16px] border border-line bg-surface p-6 transition-[transform,border-color] duration-200 focus-within:border-muted hover:z-10 hover:-translate-y-1 hover:border-muted md:p-7 ${layout}`}
     >
+      {project.photo ? (
+        // Only without hover (phones, tablets); display: none elsewhere, so it is not fetched.
+        <Image
+          src={project.photo.src}
+          width={project.photo.width}
+          height={project.photo.height}
+          alt={project.photo.alt}
+          sizes="(min-width: 768px) 45vw, 100vw"
+          quality={60}
+          className="hidden aspect-[3/2] h-auto w-full rounded-[10px] object-cover [@media(hover:none)]:block"
+        />
+      ) : null}
       <p className="font-data text-[13px] text-muted">
         {project.kind} · {project.years}
       </p>

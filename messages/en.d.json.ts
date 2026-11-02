@@ -100,7 +100,7 @@ declare const messages: {
       },
       "tenants": {
         "title": "Every customer in their own space",
-        "body": "KWAD is multi-tenant: every request carries its organisation, and the CI checks that nobody can see another organisation's data."
+        "body": "KWAD is multi-tenant: every request carries its organisation, and a CI check looks for queries that could skip that filter and fails if a new one appears."
       },
       "production": {
         "title": "Systems in production",
@@ -155,7 +155,7 @@ declare const messages: {
     },
     "architecture": {
       "title": "Every request carries its organisation",
-      "body": "The organisation is resolved on the way in and lives in an AsyncLocalStorage context until the response. Role permissions are checked inside that organisation. No layer relies on someone remembering to pass the organizationId.",
+      "body": "The organisation is resolved on the way in and lives in an AsyncLocalStorage context until the response. Role permissions are checked inside that organisation. The idea is that no layer relies on someone remembering to pass the organizationId.",
       "diagram": {
         "label": "How a request travels through the KWAD API",
         "orgLabel": "The request comes from",
@@ -273,7 +273,7 @@ declare const messages: {
     },
     "testing": {
       "title": "How I test it",
-      "body": "Every change goes through GitHub Actions before it reaches production.",
+      "body": "Every change goes through GitHub Actions.",
       "label": "KWAD's CI steps",
       "steps": {
         "types": {
@@ -290,7 +290,7 @@ declare const messages: {
         },
         "isolation": {
           "title": "Isolation",
-          "detail": "Checks that no organisation can see another's data."
+          "detail": "Looks for queries that could skip the organisation filter and fails if a new one appears."
         },
         "e2e": {
           "title": "E2E",
