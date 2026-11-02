@@ -10,7 +10,7 @@ const apps = ["backoffice", "storefront", "console", "api", "web"] as const;
 const appStack: Record<(typeof apps)[number], string> = {
   backoffice: "React · TypeScript",
   storefront: "React · TypeScript",
-  console: "React · TypeScript",
+  console: "TypeScript",
   api: "Fastify · Prisma · PostgreSQL · BullMQ",
   web: "getkwad.com",
 };
