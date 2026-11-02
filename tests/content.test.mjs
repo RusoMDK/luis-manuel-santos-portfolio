@@ -319,7 +319,7 @@ test("each locale has its own Open Graph card, also on /kwad", () => {
   const kwad = readSource("app/[locale]/(marketing)/kwad/page.tsx");
   for (const locale of ["es", "en"]) {
     const path = `public/images/og/og-${locale}.png`;
-    assert.match(config, new RegExp(`${locale}: "/images/og/og-${locale}.png"`));
+    assert.match(config, new RegExp(`${locale}: "/images/og/og-${locale}\\.png(\\?v=\\d+)?"`));
     assert.deepEqual(pngSize(readFileSync(join(root, path))), { width: 1200, height: 630 }, path);
   }
   for (const source of [layout, kwad]) {
