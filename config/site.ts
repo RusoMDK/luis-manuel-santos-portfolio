@@ -3,8 +3,8 @@ export const siteConfig = {
   url: "https://luismsldev.vercel.app",
   // One Open Graph card per locale (see .taste-skill/og).
   ogImage: {
-    es: "/images/og/og-es.png",
-    en: "/images/og/og-en.png",
+    es: "/images/og/og-es.png?v=2",
+    en: "/images/og/og-en.png?v=2",
   },
   email: "luissantoslezcano@gmail.com",
   github: "https://github.com/RusoMDK",
