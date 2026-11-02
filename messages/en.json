@@ -2,370 +2,313 @@
   "LanguageSwitcher": {
     "label": "Language",
     "en": "EN",
-    "es": "ES"
+    "es": "ES",
+    "enName": "English",
+    "esName": "Español"
   },
   "Navigation": {
     "label": "Main",
-    "home": "Luisma, home",
+    "home": "Luis Manuel Santos, home",
+    "projects": "Projects",
     "kwad": "KWAD",
-    "roll": "Journey",
-    "about": "About",
     "contact": "Contact",
-    "cv": "CV"
+    "cv": "CV",
+    "cvLabel": "Download the CV as a PDF",
+    "toLight": "Switch to light theme",
+    "toDark": "Switch to dark theme",
+    "skip": "Skip to content"
   },
   "Hero": {
-    "firstName": "Luis Manuel",
-    "lastName": "Santos",
-    "lead": "Full stack developer in Valladolid, with two years as a software engineer on SIGIES, Cuba's national university admissions platform. Now I build KWAD, a point-of-sale and inventory SaaS already in production.",
-    "primaryCta": "Email me",
-    "cvCta": "Download CV (PDF)"
+    "availability": "Available to start now · remote or in Valladolid",
+    "title": "Hi, I'm Luisma.",
+    "lead": "I'm a full stack developer. I like building products end to end: the interface people use and the API behind it.",
+    "body": "I work mostly with TypeScript, React, Angular, Node.js and PostgreSQL. I spent two years on SIGIES, Cuba's university admissions platform, and now I'm building KWAD, software for shops that its first customer already uses.",
+    "primaryCta": "See projects",
+    "cvCta": "Download CV"
   },
-  "Ticket": {
-    "label": "Sales ticket: Luis Manuel Santos, full stack developer, available now",
-    "header": "LUISMA · SALES TICKET",
-    "item": "Luis Manuel Santos",
-    "qty": "× 1",
-    "role": "Full Stack Developer",
-    "included": "incl.",
-    "total": "AVAILABLE",
-    "totalValue": "NOW",
-    "totalNote": "Remote or hybrid",
-    "barcodeLabel": "CV · scan or tap",
-    "barcodeAria": "Open the CV as a PDF",
-    "key": "Key",
-    "thanks": "thank you",
-    "keyAria": "Go to the idempotent checkout demo",
-    "register": "Till 01",
-    "experience": "Experience",
-    "experienceValue": "2 years (SIGIES) + KWAD",
-    "permit": "Work permit in Spain",
-    "permitValue": "Yes"
+  "Search": {
+    "label": "Search projects and technologies",
+    "placeholder": "Try “React” or “MQTT”",
+    "clear": "Clear search",
+    "results": "Projects",
+    "count": "{count, plural, =0 {No projects} one {# project} other {# projects}}",
+    "empty": "Nothing matches “{query}”. Try React, NestJS or MQTT.",
+    "help": "↑ ↓ to move · Enter to open · Esc to clear",
+    "shortcut": "Search shortcut",
+    "open": "See project",
+    "openKwad": "Read the KWAD case study",
+    "openRepo": "See the code on GitHub",
+    "private": "The code is not public."
   },
-  "Havana": {
-    "title": "I learned in Havana",
-    "body": "There is no Stripe there, and the connection drops halfway through a payment. KWAD comes from that: three currencies, retries and not one duplicated sale.",
-    "try": "<strong>Cut the network and charge.</strong> Press Charge as many times as you like: when the connection comes back, one sale is recorded.",
-    "demo": {
-      "label": "Point-of-sale demo",
-      "register": "Till 1",
-      "products": {
-        "coffee": "Ground coffee 250 g",
-        "malta": "Malta can 355 ml",
-        "milk": "Powdered milk 1 kg",
-        "crackers": "Soda crackers"
-      },
-      "add": "Add {name}",
-      "remove": "Remove one {name}",
-      "currency": "Currency",
-      "network": "Network",
-      "online": "Connected",
-      "offline": "Down",
-      "charge": "Charge",
-      "reconnect": "Reconnect",
-      "newSale": "New sale",
-      "total": "Total",
-      "empty": "Empty ticket",
-      "key": "Key",
-      "keyPending": "created on charge",
-      "rates": "Sample rates: 1 USD = 650 CUP · 1 USD = 0.92 EUR",
-      "server": "Server · sales log",
-      "attempts": "Charge attempts",
-      "sales": "Sales recorded",
-      "noAttempts": "No attempts yet.",
-      "queued": "offline · queued",
-      "created": "201 · sale recorded",
-      "duplicate": "200 · same key, ignored",
-      "result": "Sale recorded once · Total {total}",
-      "note": "An in-browser simulation of how KWAD sends sales idempotently."
-    }
-  },
-  "Kwad": {
-    "title": "KWAD is in production",
-    "body": "A multi-tenant B2B SaaS for retail. I have designed, built and run it on my own since April 2026. It is in beta with its first customer.",
-    "caseStudy": "Read the case study",
-    "site": "getkwad.com",
-    "sample": "Sample data.",
-    "modulesLabel": "KWAD modules",
-    "modules": {
-      "pos": {
-        "title": "Point of sale by cashier and shift",
-        "text": "Every sale travels with its idempotency key, and a till that is not paired cannot take payments.",
-        "alt": "KWAD point of sale on an unpaired device: it asks for the pairing code generated in the admin panel",
-        "caption": "The till refuses to take payments on an unpaired device. Sample data."
-      },
-      "inventory": {
-        "title": "Inventory with a ledger",
-        "text": "Every movement stores the stock before and after. Transfers between shops and warehouses.",
-        "alt": "KWAD inventory movements: each product with the quantity and the stock before and after, for example 30 (0 → 30)"
-      },
-      "currency": {
-        "title": "Multi-currency",
-        "text": "Accounting in several currencies, with the rate synced through a queue (BullMQ + Redis).",
-        "alt": "A KWAD catalogue product with a sale price of 1.16 USD on a 780 CUP base, cost, profit and margin"
-      }
-    },
-    "also": "Also: each retailer's online shop, the platform console, purchasing, cash registers, an audit log with the before and after of every change, and CSV, XLSX and PDF reports.",
-    "tenant": {
-      "title": "Every request knows whose it is",
-      "steps": {
-        "arrive": "The request arrives with its tenant",
-        "resolve": "The organisation is resolved",
-        "context": "The context travels with the request",
-        "rbac": "Role permissions inside the organisation",
-        "data": "Database query"
-      },
-      "result": "A response with one retailer's data only",
-      "note": "Turborepo monorepo · Railway and Vercel."
-    }
-  },
-  "Roll": {
-    "title": "The roll",
-    "lead": "The till keeps a copy of every sale on its audit roll. This is mine, year by year.",
-    "copy": "COPY",
-    "total": "TOTAL",
-    "months": [
-      "JAN",
-      "FEB",
-      "MAR",
-      "APR",
-      "MAY",
-      "JUN",
-      "JUL",
-      "AUG",
-      "SEP",
-      "OCT",
-      "NOV",
-      "DEC"
-    ],
-    "entries": {
-      "uci": {
-        "items": [
-          {
-            "name": "Computer Science Engineering",
-            "lines": [
-              "UCI, Havana",
-              "2023 · first IoT project: a storage module in an R&D project (Python)"
-            ]
-          }
-        ],
-        "total": "2019–2024"
-      },
-      "thesis": {
-        "items": [
-          {
-            "name": "Thesis: IoT Testbench",
-            "lines": [],
-            "incl": [
-              "MQTT → NestJS → PostgreSQL → Angular",
-              "TypeORM · JWT and roles"
-            ]
-          },
-          {
-            "name": "Prototype",
-            "lines": [],
-            "incl": [
-              "ESP32 (brain)",
-              "DHT22 (air)",
-              "moisture sensor (soil)",
-              "LCD 16x2 (readings)",
-              "submersible pump + dual relay (watering)",
-              "9 V battery (pump)"
-            ]
-          }
-        ],
-        "total": "ENGINEER"
+  "Projects": {
+    "title": "Projects",
+    "lead": "A few things I've built. If you're looking for something specific, filter by technology.",
+    "filterLabel": "Filter by technology",
+    "all": "All",
+    "showAll": "Show all",
+    "empty": "No project uses {tech} yet.",
+    "stackLabel": "Technologies",
+    "items": {
+      "kwad": {
+        "name": "KWAD",
+        "kind": "Own project",
+        "years": "2026 – now",
+        "description": "Software for shops: till, inventory, purchasing and an online shop, all in one. I design and build it myself, and its first customer already uses it.",
+        "cta": "Read the case study"
       },
       "sigies": {
-        "items": [
-          {
-            "name": "Software engineer · FORTES (UCI)",
-            "lines": [
-              "SIGIES, Cuba's national platform for admission to higher education"
-            ],
-            "incl": [
-              "support for the PHP system at the peak of every admissions round",
-              "new modules in NestJS and Angular",
-              "incremental migration and PostgreSQL modelling"
-            ]
-          }
-        ],
-        "total": "2 YEARS"
+        "name": "SIGIES",
+        "kind": "Job at FORTES (UCI)",
+        "years": "2024 – 2026",
+        "description": "The platform Cuba uses to run university admissions. I kept the old system running through the peak of each admissions round and built modules for the new version.",
+        "cta": "The code is not public"
       },
       "iotPlatform": {
-        "items": [
-          {
-            "name": "PlataformaIoT",
-            "lines": [
-              "A seedbed, at a bigger scale: more sensors, lights and automation"
-            ],
-            "incl": [
-              "MQTT · worker → MongoDB",
-              "Socket.IO · dashboards",
-              "board configurator with pins",
-              "alerts · export · 2FA",
-              "Cypress E2E tests"
-            ]
-          }
-        ],
-        "total": "AUTOMATED SEEDBED"
+        "name": "PlataformaIoT",
+        "kind": "Personal project",
+        "years": "2025",
+        "description": "Connects sensors, receives their readings in real time and shows them on dashboards with alerts.",
+        "cta": "See on GitHub",
+        "photoAlt": "PlataformaIoT seedbed: a tray of soil with seedlings, wires and boards with their screens on each side"
       },
-      "proxyAgent": {
-        "items": [
-          {
-            "name": "ProxyAgent",
-            "lines": [
-              "Desktop app for working behind the university's NTLM proxy"
-            ],
-            "incl": [
-              "Electron + React",
-              "NTLM accounts, CNTLM and system proxy",
-              "SSH tunnels · app launcher"
-            ]
-          }
-        ],
-        "total": "PROTOTYPE"
+      "iotTestbench": {
+        "name": "IoT Testbench",
+        "kind": "Final-year project",
+        "years": "2024",
+        "description": "Collects, stores and visualises tests of physical devices.",
+        "cta": "See on GitHub",
+        "photoAlt": "The thesis prototype on a table: a breadboard with the ESP32 and the LCD, the relay, the pump in a glass of water and a potted plant with the soil moisture sensor"
       },
-      "smartIot": {
-        "items": [
-          {
-            "name": "“Smart IoT”, UCIENCIA 2025",
-            "lines": []
-          }
-        ],
-        "total": "CO-AUTHOR"
-      },
-      "ecommerce": {
-        "items": [
-          {
-            "name": "Tienda Virtual",
-            "lines": [
-              "E-commerce"
-            ],
-            "incl": [
-              "Fastify · Prisma · PostgreSQL · React"
-            ]
-          }
-        ],
-        "total": "BASE OF KWAD'S STOREFRONT"
-      },
-      "kwad": {
-        "items": [
-          {
-            "name": "KWAD",
-            "lines": [
-              "Point-of-sale and inventory SaaS for retailers"
-            ],
-            "incl": [
-              "design, development and operation, on my own",
-              "Fastify",
-              "Prisma",
-              "PostgreSQL",
-              "BullMQ",
-              "React"
-            ]
-          }
-        ],
-        "total": "IN PRODUCTION ↑"
-      },
-      "sesamo": {
-        "items": [
-          {
-            "name": "Sésamo",
-            "lines": [
-              "ProxyAgent, rewritten from scratch"
-            ],
-            "incl": [
-              "Tauri 2 · Rust · React/TypeScript",
-              "one trait per domain, implemented for macOS, Windows and Linux",
-              "processes launched without a shell",
-              "security rules drawn from real failures of the prototype"
-            ]
-          }
-        ],
-        "total": "IN DEVELOPMENT",
-        "note": "Private."
-      },
-      "valladolid": {
-        "items": [
-          {
-            "name": "Move: Havana → Valladolid",
-            "lines": []
-          }
-        ],
-        "total": "TO BE CONTINUED"
+      "store": {
+        "name": "Tienda Virtual",
+        "kind": "Personal project",
+        "years": "2025",
+        "description": "An online shop that ended up as the base for KWAD's shop.",
+        "cta": "See on GitHub"
       }
-    },
-    "kwadAria": "Go to KWAD, further up",
-    "thesisPhotoAlt": "The thesis prototype on a table: a breadboard with the ESP32 and the LCD (“Planta: Humeda / Humedad: 79%”), the dual relay, the 9 V battery, the pump in a cup of water and a potted plant with the soil moisture sensor",
-    "thesisLcdAlt": "The prototype's LCD reading “Temp: 25.60°C” and “IC: 27.06°C”",
-    "thesisCaption": "The thesis prototype, June 2024.",
-    "seedbedAlt": "The PlataformaIoT seedbed: a tray of soil with seedlings, wires and boards with their displays at the sides",
-    "seedbedCaption": "The PlataformaIoT seedbed, April 2025. Run on a schedule with a real-time clock module (RTC): around 8:00 it switched the pump on to water and the lights off; around 20:00 it switched the lights on.",
-    "lcd": {
-      "label": "Replica of the prototype's 16x2 LCD",
-      "aria": "LCD: {state}. Soil moisture: {moisture}%. Temperature: {temp} °C. Heat index: {heat} °C. Pump: {pump}.",
-      "wet": "plant moist",
-      "dry": "plant dry",
-      "on": "on",
-      "off": "off",
-      "dryButton": "Dry the soil",
-      "relayOpen": "Relay open · pump off",
-      "relayClosed": "Relay closed · pump on",
-      "threshold": "Simulation threshold: 30%",
-      "note": "Simulation: values generated in your browser."
-    },
-    "now": "TODAY",
-    "experience": "EXPERIENCE",
-    "incl": "incl.",
-    "receptionAlt": "Items of a received purchase in KWAD: product, unit, quantity, cost and total in dollars, each with its amount recorded in CUP",
-    "receptionCaption": "KWAD · a received purchase, with every amount in USD and in CUP. Sample data."
+    }
+  },
+  "Approach": {
+    "title": "How I work",
+    "items": {
+      "ci": {
+        "title": "Real tests and CI",
+        "body": "In KWAD, every change goes through GitHub Actions: types, tests with Vitest, migrations on an empty database and end-to-end tests with Playwright for the five key flows."
+      },
+      "tenants": {
+        "title": "Every customer in their own space",
+        "body": "KWAD is multi-tenant: every request carries its organisation, and the CI checks that nobody can see another organisation's data."
+      },
+      "production": {
+        "title": "Systems in production",
+        "body": "At SIGIES I learned to keep a production system running while it was being rewritten piece by piece with NestJS and Angular."
+      }
+    }
   },
   "About": {
     "title": "About me",
     "portraitAlt": "Portrait of Luis Manuel Santos",
-    "p1": "I'm Luisma. I'm at home on the backend: data modelling in PostgreSQL, APIs with NestJS and Fastify, multi-tenant isolation and queues with BullMQ. On the front end I work with React and Angular.",
-    "p2": "I'm a Computer Science Engineer (UCI, 2019–2024) and I took postgraduate studies in Advanced Computing (UCI, 2025–2026).",
-    "p3": "Native Spanish, English A2 (preparing for B2). I have a work permit and can start now. I'm looking for full stack or backend roles: remote in Spain, or hybrid or on-site in Valladolid.",
-    "signature": "Luis Manuel Santos Lezcano",
-    "role": "Full stack developer"
+    "body": "I'm from Havana and I've lived in Valladolid since October 2026. I studied Computer Science Engineering at the UCI and then took postgraduate studies in Advanced Computing: machine learning, big data, IoT and cybersecurity. Spanish is my native language and my English is basic (A2); I'm working on it."
   },
   "Contact": {
-    "title": "Email me",
-    "lead": "Draft the email here and it will open in your mail app.",
-    "role": "Role",
-    "roles": {
-      "fullstack": "Full stack",
-      "backend": "Backend"
-    },
-    "mode": "Work mode",
-    "modes": {
-      "remote": "Remote",
-      "hybrid": "Hybrid",
-      "onsite": "On-site"
-    },
-    "message": "Message",
-    "messagePlaceholder": "Tell me about the role, the team and the stack.",
-    "submit": "Open email",
-    "subject": "{role} role · {mode}",
-    "stamp": "PAID",
-    "opened": "Your email app should be open. If not, write to {email}.",
+    "title": "Does my profile fit? Write to me and let's talk.",
+    "emailLabel": "Write to {email}",
+    "linksLabel": "Links",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "cv": "CV as PDF"
-  },
-  "Footer": {
-    "title": "Thank you for your visit",
-    "linksLabel": "Links",
+    "cv": "CV as PDF",
     "rights": "© 2026 Luis Manuel Santos"
   },
+  "Kwad": {
+    "back": "Back to projects",
+    "title": "KWAD",
+    "facts": "Own project · 2026 – now · In beta",
+    "lead": "Software for shops: till, inventory, purchasing and an online shop, all in one. It's in beta and its first customer already uses it.",
+    "site": "Visit getkwad.com",
+    "contact": "Email me",
+    "heroAlt": "Items of a received purchase in KWAD: product, unit, quantity, cost and total in dollars, each with its amount recorded in CUP",
+    "sample": "Sample data.",
+    "what": {
+      "title": "What it is and who it's for",
+      "body": "KWAD is a multi-tenant B2B SaaS for shops: each shop has its own till, inventory, purchasing, cash and online shop, with the books kept in several currencies. It works for a shop with one store or one with several stores and warehouses."
+    },
+    "role": {
+      "title": "My role",
+      "body": "I've designed, built and run it on my own since April 2026: the data model, the API, the applications and the deployment.",
+      "facts": {
+        "since": "Since",
+        "sinceValue": "April 2026",
+        "team": "Team",
+        "teamValue": "just me",
+        "stack": "Stack",
+        "stackValue": "Fastify · Prisma · PostgreSQL · React",
+        "repo": "Repository",
+        "repoValue": "Turborepo monorepo",
+        "deploy": "Deployment",
+        "deployValue": "Railway and Vercel",
+        "status": "Status",
+        "statusValue": "beta in production"
+      }
+    },
+    "architecture": {
+      "title": "Every request carries its organisation",
+      "body": "The organisation is resolved on the way in and lives in an AsyncLocalStorage context until the response. Role permissions are checked inside that organisation. No layer relies on someone remembering to pass the organizationId.",
+      "diagram": {
+        "label": "How a request travels through the KWAD API",
+        "orgLabel": "The request comes from",
+        "orgA": "Organisation A",
+        "orgB": "Organisation B",
+        "send": "Send request",
+        "again": "Run again",
+        "stepsLabel": "Steps",
+        "status": "Step {step} of {total}: {title}",
+        "note": "Simplified diagram. Sample data.",
+        "rows": "Rows it returns",
+        "steps": {
+          "arrive": {
+            "title": "The request arrives",
+            "detail": "It comes with the user who makes it and the organisation they work in."
+          },
+          "resolve": {
+            "title": "The organisation is resolved",
+            "detail": "The Fastify API sets the organisation once, on the way in."
+          },
+          "context": {
+            "title": "The context travels with the request",
+            "detail": "AsyncLocalStorage keeps the organisation until the response, without passing it from function to function."
+          },
+          "rbac": {
+            "title": "Role permissions",
+            "detail": "The role is checked inside that organisation, not globally."
+          },
+          "data": {
+            "title": "Database query",
+            "detail": "Queries to PostgreSQL, through Prisma, run inside that organisation."
+          },
+          "response": {
+            "title": "Response",
+            "detail": "Only one shop's data comes back."
+          }
+        },
+        "sample": {
+          "columns": {
+            "product": "Product",
+            "quantity": "Quantity",
+            "stock": "Stock"
+          },
+          "a": [
+            {
+              "product": "Rice 1 kg",
+              "quantity": "+60",
+              "stock": "0 → 60"
+            },
+            {
+              "product": "Black beans 1 kg",
+              "quantity": "+40",
+              "stock": "0 → 40"
+            }
+          ],
+          "b": [
+            {
+              "product": "Vegetable oil 1 L",
+              "quantity": "+36",
+              "stock": "0 → 36"
+            },
+            {
+              "product": "Sugar 1 kg",
+              "quantity": "+50",
+              "stock": "0 → 50"
+            }
+          ]
+        }
+      },
+      "appsTitle": "Five pieces, one product",
+      "apps": {
+        "backoffice": {
+          "name": "Back office",
+          "purpose": "Till, inventory, purchasing, cash, staff and reports for each shop."
+        },
+        "storefront": {
+          "name": "Online shop",
+          "purpose": "Each shop's public catalogue, with the stock from the back office."
+        },
+        "console": {
+          "name": "Platform console",
+          "purpose": "Onboarding and running organisations, with its own identity."
+        },
+        "api": {
+          "name": "API",
+          "purpose": "Business rules, authentication, isolation by organisation and queued jobs."
+        },
+        "web": {
+          "name": "Website",
+          "purpose": "The product's website, at getkwad.com."
+        }
+      }
+    },
+    "modules": {
+      "title": "The modules",
+      "pos": {
+        "title": "Till by cashier, terminal and shift",
+        "text": "Every sale leaves the till with its own key. If the network drops and the cashier retries, the server recognises the key and doesn't record the sale twice. An unpaired terminal won't operate.",
+        "alt": "KWAD till on an unpaired device: it asks for the pairing code from the admin panel before it will operate",
+        "caption": "The till on an unpaired device. Sample data."
+      },
+      "inventory": {
+        "title": "Inventory with a movement ledger",
+        "text": "No operation overwrites a quantity. Every receipt, issue, purchase receipt or transfer between stores and warehouses is a movement with the stock before and after.",
+        "alt": "KWAD inventory movements: each product with its quantity and the stock before and after, for example 30 (0 → 30)",
+        "caption": "Inventory movements. Sample data."
+      },
+      "currency": {
+        "title": "Multi-currency books",
+        "text": "The books are kept in CUP and shown in USD or other currencies. The exchange rate is synced by a queued job, with BullMQ on Redis.",
+        "alt": "A product in the KWAD catalogue with its sale price in USD over a CUP base, cost, profit and margin",
+        "caption": "A catalogue product, in USD and CUP. Sample data."
+      },
+      "also": "Also: purchasing, cash, each shop's online shop, the platform console, an audit log with the before and after of every change, and reports in CSV, XLSX and PDF."
+    },
+    "testing": {
+      "title": "How I test it",
+      "body": "Every change goes through GitHub Actions before it reaches production.",
+      "label": "KWAD's CI steps",
+      "steps": {
+        "types": {
+          "title": "Types",
+          "detail": "Type checking with TypeScript."
+        },
+        "unit": {
+          "title": "Tests",
+          "detail": "Tests with Vitest."
+        },
+        "migrations": {
+          "title": "Migrations",
+          "detail": "Applied to an empty database."
+        },
+        "isolation": {
+          "title": "Isolation",
+          "detail": "Checks that no organisation can see another's data."
+        },
+        "e2e": {
+          "title": "E2E",
+          "detail": "Playwright runs through the five key flows."
+        }
+      }
+    },
+    "status": {
+      "title": "Where it stands",
+      "body": "In beta and in production with its first customer. The code is private: here I show decisions and screenshots from a test environment, never customer data."
+    }
+  },
   "Metadata": {
-    "title": "Luis Manuel Santos | Full stack developer in Valladolid",
-    "description": "Full stack developer in Valladolid. I build KWAD, a point-of-sale and inventory SaaS for retailers, already in production. TypeScript, Node.js, NestJS, Fastify, React, Angular and PostgreSQL."
+    "title": "Luis Manuel Santos | Full stack developer",
+    "description": "Full stack developer, available now, remote or in Valladolid. I build KWAD, software for shops already in production. TypeScript, React, Node.js and PostgreSQL.",
+    "kwadTitle": "KWAD case study | Luis Manuel Santos",
+    "kwadDescription": "KWAD, a multi-tenant SaaS for shops that I design and build on my own: till, inventory, purchasing and an online shop. Architecture, modules, CI, status."
   },
   "NotFound": {
-    "title": "Ticket void",
-    "body": "This address does not match any sale.",
-    "stamp": "VOID",
+    "title": "This page doesn't exist",
+    "body": "The link may be out of date. The projects are on the home page.",
     "cta": "Back to the home page"
   }
 }

@@ -1,18 +1,22 @@
-import { Besley, Libre_Franklin } from "next/font/google";
+// taste-skill-ignore applies on the Geist Mono lines: the brief sets it for technical data.
+import { Geist, Geist_Mono } from "next/font/google"; // taste-skill-ignore
 
-// Display: a Clarendon, like the letterpress labels and signs of Havana.
-export const display = Besley({
+// Geist sets the text and the headlines; the monospaced cut only the technical data
+// (availability, dates, technologies, filters and keyboard shortcuts).
+export const sans = Geist({
   subsets: ["latin"],
-  weight: "800",
-  variable: "--font-display",
+  variable: "--font-geist",
   display: "swap",
 });
 
-export const text = Libre_Franklin({
+export const mono = Geist_Mono({ // taste-skill-ignore
   subsets: ["latin"],
-  weight: ["400", "600"],
-  variable: "--font-text",
+  // One static weight: the smallest file for a few lines of data.
+  weight: "400",
+  variable: "--font-geist-mono",
   display: "swap",
+  // Never the largest paint (that is set in Geist): no preload.
+  preload: false,
 });
 
-export const fontVariables = `${display.variable} ${text.variable}`;
+export const fontVariables = `${sans.variable} ${mono.variable}`;

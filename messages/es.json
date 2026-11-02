@@ -2,370 +2,313 @@
   "LanguageSwitcher": {
     "label": "Idioma",
     "en": "EN",
-    "es": "ES"
+    "es": "ES",
+    "enName": "English",
+    "esName": "Español"
   },
   "Navigation": {
     "label": "Principal",
-    "home": "Luisma, inicio",
+    "home": "Luis Manuel Santos, inicio",
+    "projects": "Proyectos",
     "kwad": "KWAD",
-    "roll": "Trayectoria",
-    "about": "Sobre mí",
     "contact": "Contacto",
-    "cv": "CV"
+    "cv": "CV",
+    "cvLabel": "Descargar el CV en PDF",
+    "toLight": "Cambiar a tema claro",
+    "toDark": "Cambiar a tema oscuro",
+    "skip": "Saltar al contenido"
   },
   "Hero": {
-    "firstName": "Luis Manuel",
-    "lastName": "Santos",
-    "lead": "Desarrollador full stack en Valladolid, con dos años como ingeniero de software en SIGIES, la plataforma nacional de ingreso universitario de Cuba. Ahora construyo KWAD, un SaaS de TPV e inventario ya en producción.",
-    "primaryCta": "Escríbeme",
-    "cvCta": "Descargar CV (PDF)"
+    "availability": "Disponible para empezar ya · remoto o en Valladolid",
+    "title": "Hola, soy Luisma.",
+    "lead": "Soy desarrollador full stack. Me gusta construir producto de punta a punta: la interfaz que usa la gente y la API que hay detrás.",
+    "body": "Trabajo sobre todo con TypeScript, React, Angular, Node.js y PostgreSQL. Pasé dos años en SIGIES, la plataforma de ingreso a la universidad en Cuba, y ahora construyo KWAD, un software para comercios que ya usa su primer cliente.",
+    "primaryCta": "Ver proyectos",
+    "cvCta": "Descargar CV"
   },
-  "Ticket": {
-    "label": "Ticket de venta: Luis Manuel Santos, desarrollador full stack, disponible ya",
-    "header": "LUISMA · TICKET DE VENTA",
-    "item": "Luis Manuel Santos",
-    "qty": "× 1",
-    "role": "Desarrollador Full Stack",
-    "included": "incl.",
-    "total": "DISPONIBLE",
-    "totalValue": "YA",
-    "totalNote": "Remoto o híbrido",
-    "barcodeLabel": "CV · escanear o pulsar",
-    "barcodeAria": "Abrir el CV en PDF",
-    "key": "Clave",
-    "thanks": "gracias",
-    "keyAria": "Ir a la demo de cobro con clave de idempotencia",
-    "register": "Caja 01",
-    "experience": "Experiencia",
-    "experienceValue": "2 años (SIGIES) + KWAD",
-    "permit": "Permiso de trabajo en España",
-    "permitValue": "Sí"
+  "Search": {
+    "label": "Buscar proyectos y tecnologías",
+    "placeholder": "Prueba con «React» o «MQTT»",
+    "clear": "Borrar búsqueda",
+    "results": "Proyectos",
+    "count": "{count, plural, =0 {Ningún proyecto} one {# proyecto} other {# proyectos}}",
+    "empty": "No encuentro nada con «{query}». Prueba con React, NestJS o MQTT.",
+    "help": "↑ ↓ para moverte · Enter para abrir · Esc para borrar",
+    "shortcut": "Atajo para buscar",
+    "open": "Ver proyecto",
+    "openKwad": "Ver el caso de KWAD",
+    "openRepo": "Ver el código en GitHub",
+    "private": "El código no es público."
   },
-  "Havana": {
-    "title": "Aprendí en La Habana",
-    "body": "Allí no hay Stripe y la conexión se cae a mitad del cobro. KWAD nace de eso: tres monedas, reintentos y ni una venta duplicada.",
-    "try": "<strong>Corta la red y cobra.</strong> Pulsa Cobrar las veces que quieras: al volver la conexión, se registra una sola venta.",
-    "demo": {
-      "label": "Demo del TPV",
-      "register": "Caja 1",
-      "products": {
-        "coffee": "Café molido 250 g",
-        "malta": "Malta lata 355 ml",
-        "milk": "Leche en polvo 1 kg",
-        "crackers": "Galletas de soda"
-      },
-      "add": "Añadir {name}",
-      "remove": "Quitar uno de {name}",
-      "currency": "Moneda",
-      "network": "Red",
-      "online": "Conectada",
-      "offline": "Cortada",
-      "charge": "Cobrar",
-      "reconnect": "Reconectar",
-      "newSale": "Nueva venta",
-      "total": "Total",
-      "empty": "Ticket vacío",
-      "key": "Clave",
-      "keyPending": "se crea al cobrar",
-      "rates": "Tasas de ejemplo: 1 USD = 650 CUP · 1 USD = 0,92 EUR",
-      "server": "Servidor · registro de ventas",
-      "attempts": "Intentos de cobro",
-      "sales": "Ventas registradas",
-      "noAttempts": "Todavía no hay intentos.",
-      "queued": "sin red · en cola",
-      "created": "201 · venta registrada",
-      "duplicate": "200 · misma clave, se ignora",
-      "result": "Venta registrada una vez · Total {total}",
-      "note": "Simulación en tu navegador del envío idempotente de ventas de KWAD."
-    }
-  },
-  "Kwad": {
-    "title": "KWAD está en producción",
-    "body": "Un SaaS B2B multi-tenant para comercio minorista. Lo diseño, lo programo y lo opero yo solo desde abril de 2026. Está en beta, con su primer cliente.",
-    "caseStudy": "Ver caso de estudio",
-    "site": "getkwad.com",
-    "sample": "Datos de ejemplo.",
-    "modulesLabel": "Módulos de KWAD",
-    "modules": {
-      "pos": {
-        "title": "TPV por cajero y turno",
-        "text": "Cada venta viaja con su clave de idempotencia y la terminal no cobra si no está vinculada.",
-        "alt": "TPV de KWAD en un dispositivo sin vincular: pide el código de vinculación que se genera en el panel administrativo",
-        "caption": "El TPV se niega a cobrar en un dispositivo no vinculado. Datos de ejemplo."
-      },
-      "inventory": {
-        "title": "Inventario con libro",
-        "text": "Cada movimiento guarda el stock de antes y el de después. Traslados entre tiendas y almacenes.",
-        "alt": "Movimientos de inventario de KWAD: cada producto con la cantidad y el stock antes y después, por ejemplo 30 (0 → 30)"
-      },
-      "currency": {
-        "title": "Multimoneda",
-        "text": "Contabilidad en varias monedas, con la tasa sincronizada por una cola (BullMQ + Redis).",
-        "alt": "Producto del catálogo de KWAD con precio de venta de 1,16 USD sobre una base de 780 CUP, coste, utilidad y margen"
-      }
-    },
-    "also": "También: la tienda online de cada comercio, la consola de plataforma, compras, caja, auditoría con el antes y el después de cada cambio, e informes en CSV, XLSX y PDF.",
-    "tenant": {
-      "title": "Cada petición sabe de quién es",
-      "steps": {
-        "arrive": "La petición llega con su tenant",
-        "resolve": "Se resuelve la organización",
-        "context": "El contexto viaja con la petición",
-        "rbac": "Permisos por rol en la organización",
-        "data": "Consulta a la base de datos"
-      },
-      "result": "Respuesta con los datos de un solo comercio",
-      "note": "Monorepo Turborepo · Railway y Vercel."
-    }
-  },
-  "Roll": {
-    "title": "El rollo",
-    "lead": "La caja guarda una copia de cada venta en el rollo de auditoría. Este es el mío, año a año.",
-    "copy": "COPIA",
-    "total": "TOTAL",
-    "months": [
-      "ENE",
-      "FEB",
-      "MAR",
-      "ABR",
-      "MAY",
-      "JUN",
-      "JUL",
-      "AGO",
-      "SEP",
-      "OCT",
-      "NOV",
-      "DIC"
-    ],
-    "entries": {
-      "uci": {
-        "items": [
-          {
-            "name": "Ingeniería en Ciencias Informáticas",
-            "lines": [
-              "UCI, La Habana",
-              "2023 · primer proyecto IoT: módulo de almacenamiento en un proyecto de I+D (Python)"
-            ]
-          }
-        ],
-        "total": "2019–2024"
-      },
-      "thesis": {
-        "items": [
-          {
-            "name": "Tesis: IoT Testbench",
-            "lines": [],
-            "incl": [
-              "MQTT → NestJS → PostgreSQL → Angular",
-              "TypeORM · JWT y roles"
-            ]
-          },
-          {
-            "name": "Prototipo",
-            "lines": [],
-            "incl": [
-              "ESP32 (cerebro)",
-              "DHT22 (aire)",
-              "sensor de humedad (suelo)",
-              "LCD 16x2 (lecturas)",
-              "bomba sumergible + relé doble (riego)",
-              "pila de 9 V (bomba)"
-            ]
-          }
-        ],
-        "total": "INGENIERO"
+  "Projects": {
+    "title": "Proyectos",
+    "lead": "Algunas cosas que he construido. Si buscas algo concreto, filtra por tecnología.",
+    "filterLabel": "Filtrar por tecnología",
+    "all": "Todos",
+    "showAll": "Ver todos",
+    "empty": "Ningún proyecto usa {tech} todavía.",
+    "stackLabel": "Tecnologías",
+    "items": {
+      "kwad": {
+        "name": "KWAD",
+        "kind": "Proyecto propio",
+        "years": "2026 – hoy",
+        "description": "Un software para comercios: caja, inventario, compras y tienda online, todo en uno. Lo diseño y lo programo yo, y ya lo usa su primer cliente.",
+        "cta": "Ver el caso de estudio"
       },
       "sigies": {
-        "items": [
-          {
-            "name": "Ingeniero de software · FORTES (UCI)",
-            "lines": [
-              "SIGIES, la plataforma nacional de ingreso a la educación superior en Cuba"
-            ],
-            "incl": [
-              "soporte del sistema PHP en los picos de cada convocatoria",
-              "módulos nuevos en NestJS y Angular",
-              "migración incremental y modelado en PostgreSQL"
-            ]
-          }
-        ],
-        "total": "2 AÑOS"
+        "name": "SIGIES",
+        "kind": "Trabajo en FORTES (UCI)",
+        "years": "2024 – 2026",
+        "description": "La plataforma con la que Cuba gestiona el ingreso a la universidad. Mantuve el sistema antiguo en los picos de cada convocatoria y desarrollé módulos de la versión nueva.",
+        "cta": "El código no es público"
       },
       "iotPlatform": {
-        "items": [
-          {
-            "name": "PlataformaIoT",
-            "lines": [
-              "Un semillero, a más escala: más sensores, luces y automatización"
-            ],
-            "incl": [
-              "MQTT · worker → MongoDB",
-              "Socket.IO · dashboards",
-              "configurador de placas con pines",
-              "alertas · exportación · 2FA",
-              "tests E2E con Cypress"
-            ]
-          }
-        ],
-        "total": "SEMILLERO AUTOMATIZADO"
+        "name": "PlataformaIoT",
+        "kind": "Proyecto personal",
+        "years": "2025",
+        "description": "Conecta sensores, recibe sus lecturas en tiempo real y las muestra en paneles con alertas.",
+        "cta": "Ver en GitHub",
+        "photoAlt": "Semillero de PlataformaIoT: una bandeja de tierra con plántulas, cables y placas a los lados con sus pantallas"
       },
-      "proxyAgent": {
-        "items": [
-          {
-            "name": "ProxyAgent",
-            "lines": [
-              "App de escritorio para trabajar detrás del proxy NTLM de la universidad"
-            ],
-            "incl": [
-              "Electron + React",
-              "cuentas NTLM, CNTLM y proxy de sistema",
-              "túneles SSH · lanzador de apps"
-            ]
-          }
-        ],
-        "total": "PROTOTIPO"
+      "iotTestbench": {
+        "name": "IoT Testbench",
+        "kind": "Proyecto de fin de carrera",
+        "years": "2024",
+        "description": "Recoge, guarda y visualiza las pruebas de dispositivos físicos.",
+        "cta": "Ver en GitHub",
+        "photoAlt": "Prototipo de la tesis sobre una mesa: placa de pruebas con el ESP32 y la pantalla LCD, el relé, la bomba en un vaso de agua y una planta con el sensor de humedad del suelo"
       },
-      "smartIot": {
-        "items": [
-          {
-            "name": "«Smart IoT», UCIENCIA 2025",
-            "lines": []
-          }
-        ],
-        "total": "COAUTOR"
-      },
-      "ecommerce": {
-        "items": [
-          {
-            "name": "Tienda Virtual",
-            "lines": [
-              "E-commerce"
-            ],
-            "incl": [
-              "Fastify · Prisma · PostgreSQL · React"
-            ]
-          }
-        ],
-        "total": "BASE DEL STOREFRONT DE KWAD"
-      },
-      "kwad": {
-        "items": [
-          {
-            "name": "KWAD",
-            "lines": [
-              "SaaS de TPV e inventario para comercios"
-            ],
-            "incl": [
-              "diseño, desarrollo y operación, en solitario",
-              "Fastify",
-              "Prisma",
-              "PostgreSQL",
-              "BullMQ",
-              "React"
-            ]
-          }
-        ],
-        "total": "EN PRODUCCIÓN ↑"
-      },
-      "sesamo": {
-        "items": [
-          {
-            "name": "Sésamo",
-            "lines": [
-              "ProxyAgent, reescrito desde cero"
-            ],
-            "incl": [
-              "Tauri 2 · Rust · React/TypeScript",
-              "un trait por dominio, con implementación para macOS, Windows y Linux",
-              "procesos lanzados sin shell",
-              "reglas de seguridad que salen de fallos reales del prototipo"
-            ]
-          }
-        ],
-        "total": "EN DESARROLLO",
-        "note": "Privado."
-      },
-      "valladolid": {
-        "items": [
-          {
-            "name": "Mudanza: La Habana → Valladolid",
-            "lines": []
-          }
-        ],
-        "total": "CONTINUARÁ"
+      "store": {
+        "name": "Tienda Virtual",
+        "kind": "Proyecto personal",
+        "years": "2025",
+        "description": "Una tienda online que acabó siendo la base de la tienda de KWAD.",
+        "cta": "Ver en GitHub"
       }
-    },
-    "kwadAria": "Ir a KWAD, más arriba",
-    "thesisPhotoAlt": "Prototipo de la tesis sobre una mesa: placa de pruebas con el ESP32 y la pantalla LCD («Planta: Humeda / Humedad: 79%»), el relé doble, la pila de 9 V, la bomba en un vaso de agua y una planta en su maceta con el sensor de humedad del suelo",
-    "thesisLcdAlt": "La pantalla LCD del prototipo con «Temp: 25.60°C» e «IC: 27.06°C»",
-    "thesisCaption": "Prototipo de la tesis, junio de 2024.",
-    "seedbedAlt": "Semillero de PlataformaIoT: una bandeja de tierra con plántulas, cables y placas a los lados con sus pantallas",
-    "seedbedCaption": "Semillero de PlataformaIoT, abril de 2025. Automatizado por horario con un módulo de reloj (RTC): hacia las 8:00 encendía la bomba para regar y apagaba las luces; hacia las 20:00 encendía las luces.",
-    "lcd": {
-      "label": "Réplica de la LCD 16x2 del prototipo",
-      "aria": "LCD: {state}. Humedad del suelo: {moisture} %. Temperatura: {temp} °C. Índice de calor: {heat} °C. Bomba: {pump}.",
-      "wet": "planta húmeda",
-      "dry": "planta seca",
-      "on": "encendida",
-      "off": "apagada",
-      "dryButton": "Secar la tierra",
-      "relayOpen": "Relé abierto · bomba apagada",
-      "relayClosed": "Relé cerrado · bomba encendida",
-      "threshold": "Umbral de la simulación: 30 %",
-      "note": "Simulación: valores generados en tu navegador."
-    },
-    "now": "HOY",
-    "experience": "EXPERIENCIA",
-    "incl": "incl.",
-    "receptionAlt": "Ítems de una compra recibida en KWAD: producto, unidad, cantidad, coste y total en dólares, cada uno con su importe registrado en CUP",
-    "receptionCaption": "KWAD · recepción de una compra, con cada importe en USD y en CUP. Datos de ejemplo."
+    }
+  },
+  "Approach": {
+    "title": "Cómo trabajo",
+    "items": {
+      "ci": {
+        "title": "Tests y CI de verdad",
+        "body": "En KWAD, cada cambio pasa por GitHub Actions: tipos, tests con Vitest, migraciones sobre una base de datos vacía y pruebas E2E con Playwright de los cinco flujos clave."
+      },
+      "tenants": {
+        "title": "Cada cliente, en su sitio",
+        "body": "KWAD es multi-tenant: cada petición viaja con su organización y el CI comprueba que nadie vea datos de otra."
+      },
+      "production": {
+        "title": "Sistemas en producción",
+        "body": "En SIGIES aprendí a mantener en pie un sistema en producción mientras se reescribía por partes con NestJS y Angular."
+      }
+    }
   },
   "About": {
-    "title": "Quién soy",
+    "title": "Sobre mí",
     "portraitAlt": "Retrato de Luis Manuel Santos",
-    "p1": "Soy Luisma. Me muevo cómodo en backend: modelado de datos en PostgreSQL, APIs con NestJS y Fastify, aislamiento multi-tenant y colas con BullMQ. En el front trabajo con React y Angular.",
-    "p2": "Soy Ingeniero en Ciencias Informáticas (UCI, 2019–2024) y cursé estudios de posgrado en Informática Avanzada (UCI, 2025–2026).",
-    "p3": "Español nativo, inglés A2 (preparando el B2). Tengo permiso de trabajo y me incorporo ya. Busco full stack o backend: remoto en España, o híbrido o presencial en Valladolid.",
-    "signature": "Luis Manuel Santos Lezcano",
-    "role": "Desarrollador full stack"
+    "body": "Soy de La Habana y vivo en Valladolid desde octubre de 2026. Estudié Ingeniería en Ciencias Informáticas en la UCI y después cursé estudios de posgrado en Informática Avanzada: machine learning, big data, IoT y ciberseguridad. Hablo español nativo e inglés básico (A2), que estoy mejorando."
   },
   "Contact": {
-    "title": "Escríbeme",
-    "lead": "Prepara aquí el correo y se abrirá en tu cliente de email.",
-    "role": "Puesto",
-    "roles": {
-      "fullstack": "Full stack",
-      "backend": "Backend"
-    },
-    "mode": "Modalidad",
-    "modes": {
-      "remote": "Remoto",
-      "hybrid": "Híbrido",
-      "onsite": "Presencial"
-    },
-    "message": "Mensaje",
-    "messagePlaceholder": "Cuéntame el puesto, el equipo y el stack.",
-    "submit": "Abrir correo",
-    "subject": "Puesto {role} · {mode}",
-    "stamp": "PAGADO",
-    "opened": "Se ha abierto tu correo. Si no aparece, escribe a {email}.",
+    "title": "¿Te encaja mi perfil? Escríbeme y lo hablamos.",
+    "emailLabel": "Escribir a {email}",
+    "linksLabel": "Enlaces",
     "linkedin": "LinkedIn",
     "github": "GitHub",
-    "cv": "CV en PDF"
-  },
-  "Footer": {
-    "title": "Gracias por tu visita",
-    "linksLabel": "Enlaces",
+    "cv": "CV en PDF",
     "rights": "© 2026 Luis Manuel Santos"
   },
+  "Kwad": {
+    "back": "Volver a los proyectos",
+    "title": "KWAD",
+    "facts": "Proyecto propio · 2026 – hoy · En beta",
+    "lead": "Un software para comercios: caja, inventario, compras y tienda online, todo en uno. Está en beta y ya lo usa su primer cliente.",
+    "site": "Ver getkwad.com",
+    "contact": "Escríbeme",
+    "heroAlt": "Ítems de una compra recibida en KWAD: producto, unidad, cantidad, coste y total en dólares, cada uno con su importe registrado en CUP",
+    "sample": "Datos de ejemplo.",
+    "what": {
+      "title": "Qué es y para quién",
+      "body": "KWAD es un SaaS B2B multi-tenant para comercios: cada comercio tiene su TPV, su inventario, sus compras, su caja y su propia tienda online, con la contabilidad en varias monedas. Sirve a un comercio con una tienda o a uno con varias tiendas y almacenes."
+    },
+    "role": {
+      "title": "Mi papel",
+      "body": "Lo diseño, lo programo y lo opero yo solo desde abril de 2026: el modelo de datos, la API, las aplicaciones y el despliegue.",
+      "facts": {
+        "since": "Desde",
+        "sinceValue": "abril de 2026",
+        "team": "Equipo",
+        "teamValue": "en solitario",
+        "stack": "Stack",
+        "stackValue": "Fastify · Prisma · PostgreSQL · React",
+        "repo": "Repositorio",
+        "repoValue": "monorepo con Turborepo",
+        "deploy": "Despliegue",
+        "deployValue": "Railway y Vercel",
+        "status": "Estado",
+        "statusValue": "beta en producción"
+      }
+    },
+    "architecture": {
+      "title": "Cada petición viaja con su organización",
+      "body": "La organización se resuelve al entrar y vive en un contexto de AsyncLocalStorage hasta la respuesta. Los permisos por rol se comprueban dentro de esa organización. Ninguna capa depende de que alguien se acuerde de pasar el organizationId.",
+      "diagram": {
+        "label": "Recorrido de una petición por la API de KWAD",
+        "orgLabel": "La petición llega desde",
+        "orgA": "Organización A",
+        "orgB": "Organización B",
+        "send": "Enviar petición",
+        "again": "Repetir",
+        "stepsLabel": "Pasos",
+        "status": "Paso {step} de {total}: {title}",
+        "note": "Esquema simplificado. Datos de ejemplo.",
+        "rows": "Filas que devuelve",
+        "steps": {
+          "arrive": {
+            "title": "Llega la petición",
+            "detail": "Llega con el usuario que la hace y la organización en la que trabaja."
+          },
+          "resolve": {
+            "title": "Se resuelve la organización",
+            "detail": "La API, en Fastify, fija la organización una sola vez, al entrar."
+          },
+          "context": {
+            "title": "El contexto viaja con la petición",
+            "detail": "AsyncLocalStorage guarda la organización hasta la respuesta, sin pasarla de función en función."
+          },
+          "rbac": {
+            "title": "Permisos por rol",
+            "detail": "El rol se comprueba dentro de esa organización, no en general."
+          },
+          "data": {
+            "title": "Consulta a la base de datos",
+            "detail": "Las consultas a PostgreSQL, con Prisma, se hacen dentro de esa organización."
+          },
+          "response": {
+            "title": "Respuesta",
+            "detail": "Solo vuelven los datos de un comercio."
+          }
+        },
+        "sample": {
+          "columns": {
+            "product": "Producto",
+            "quantity": "Cantidad",
+            "stock": "Stock"
+          },
+          "a": [
+            {
+              "product": "Arroz 1 kg",
+              "quantity": "+60",
+              "stock": "0 → 60"
+            },
+            {
+              "product": "Frijoles negros 1 kg",
+              "quantity": "+40",
+              "stock": "0 → 40"
+            }
+          ],
+          "b": [
+            {
+              "product": "Aceite vegetal 1 L",
+              "quantity": "+36",
+              "stock": "0 → 36"
+            },
+            {
+              "product": "Azúcar 1 kg",
+              "quantity": "+50",
+              "stock": "0 → 50"
+            }
+          ]
+        }
+      },
+      "appsTitle": "Cinco piezas, un producto",
+      "apps": {
+        "backoffice": {
+          "name": "Back-office",
+          "purpose": "TPV, inventario, compras, caja, empleados e informes de cada comercio."
+        },
+        "storefront": {
+          "name": "Tienda online",
+          "purpose": "El catálogo público de cada comercio, con el stock del back-office."
+        },
+        "console": {
+          "name": "Consola de plataforma",
+          "purpose": "Alta y operación de organizaciones, con su propia identidad."
+        },
+        "api": {
+          "name": "API",
+          "purpose": "Reglas de negocio, autenticación, aislamiento por organización y trabajos en cola."
+        },
+        "web": {
+          "name": "Web",
+          "purpose": "La presentación del producto, en getkwad.com."
+        }
+      }
+    },
+    "modules": {
+      "title": "Los módulos",
+      "pos": {
+        "title": "TPV por cajero, terminal y turno",
+        "text": "Cada venta sale del TPV con su clave. Si la red se corta y el cajero reintenta, el servidor reconoce la clave y no la registra dos veces. Una terminal sin vincular no opera.",
+        "alt": "TPV de KWAD en un dispositivo sin vincular: pide el código de vinculación del panel administrativo antes de operar",
+        "caption": "El TPV en un dispositivo sin vincular. Datos de ejemplo."
+      },
+      "inventory": {
+        "title": "Inventario con libro de movimientos",
+        "text": "Ninguna operación sobrescribe una cantidad. Cada entrada, salida, recepción o traslado entre tiendas y almacenes es un movimiento con el stock de antes y el de después.",
+        "alt": "Movimientos de inventario de KWAD: cada producto con la cantidad y el stock antes y después, por ejemplo 30 (0 → 30)",
+        "caption": "Movimientos de inventario. Datos de ejemplo."
+      },
+      "currency": {
+        "title": "Contabilidad multimoneda",
+        "text": "La contabilidad se lleva en CUP y se presenta en USD u otras monedas. El tipo de cambio se sincroniza con un trabajo en cola, con BullMQ sobre Redis.",
+        "alt": "Producto del catálogo de KWAD con precio de venta en USD sobre una base en CUP, coste, utilidad y margen",
+        "caption": "Un producto del catálogo, en USD y en CUP. Datos de ejemplo."
+      },
+      "also": "También: compras, caja, la tienda online de cada comercio, la consola de plataforma, auditoría con el antes y el después de cada cambio, e informes en CSV, XLSX y PDF."
+    },
+    "testing": {
+      "title": "Cómo lo pruebo",
+      "body": "Cada cambio pasa por GitHub Actions antes de llegar a producción.",
+      "label": "Pasos del CI de KWAD",
+      "steps": {
+        "types": {
+          "title": "Tipos",
+          "detail": "Comprobación de tipos con TypeScript."
+        },
+        "unit": {
+          "title": "Tests",
+          "detail": "Tests con Vitest."
+        },
+        "migrations": {
+          "title": "Migraciones",
+          "detail": "Se aplican sobre una base de datos vacía."
+        },
+        "isolation": {
+          "title": "Aislamiento",
+          "detail": "Comprueba que ninguna organización vea datos de otra."
+        },
+        "e2e": {
+          "title": "E2E",
+          "detail": "Playwright recorre los cinco flujos clave."
+        }
+      }
+    },
+    "status": {
+      "title": "En qué estado está",
+      "body": "En beta y en producción con su primer cliente. El código es privado: aquí enseño decisiones y capturas de un entorno de prueba, nunca datos de clientes."
+    }
+  },
   "Metadata": {
-    "title": "Luis Manuel Santos | Desarrollador full stack en Valladolid",
-    "description": "Desarrollador full stack en Valladolid. Construyo KWAD, un SaaS de TPV e inventario para comercios, ya en producción. TypeScript, Node.js, NestJS, Fastify, React, Angular y PostgreSQL."
+    "title": "Luis Manuel Santos | Desarrollador full stack",
+    "description": "Desarrollador full stack, disponible ya en remoto o en Valladolid. Construyo KWAD, un software para comercios en producción. TypeScript, React, Node.js y PostgreSQL.",
+    "kwadTitle": "KWAD, caso de estudio | Luis Manuel Santos",
+    "kwadDescription": "KWAD, un SaaS multi-tenant para comercios que diseño y programo yo solo: TPV, inventario, compras y tienda online. Arquitectura, módulos, CI y estado."
   },
   "NotFound": {
-    "title": "Ticket anulado",
-    "body": "Esta dirección no corresponde a ninguna venta.",
-    "stamp": "ANULADO",
+    "title": "Esta página no existe",
+    "body": "Puede que el enlace sea antiguo. Los proyectos están en la portada.",
     "cta": "Volver al inicio"
   }
 }
